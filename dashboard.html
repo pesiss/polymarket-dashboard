@@ -574,7 +574,7 @@
             const pnlData = [];
             let cumulative = 0;
             trades.forEach(t => {
-                cumulative += t.notional_value || 0;
+                cumulative += t.pnl || 0; // Corrected: Sum P&L, not notional value
                 pnlData.push(cumulative);
             });
 
