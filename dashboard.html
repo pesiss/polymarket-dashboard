@@ -411,8 +411,8 @@
                     data = generateSampleData();
                 }
 
-                // Ensure data.performance is always defined
-                const performanceData = data.performance || generateSampleData().performance;
+                // Ensure data.strategies is always defined (use .strategies not .performance)
+                const performanceData = data.strategies || generateSampleData().performance;
 
                 updateStats(data);
                 updateStrategies(performanceData);
