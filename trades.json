@@ -1,0 +1,158 @@
+{
+  "paper_capital": 1000,
+  "allocated": {
+    "binary_complement_arb": 300,
+    "catalyst_momentum": 400,
+    "favorite_compounder": 300
+  },
+  "portfolio": {
+    "total_value": 1000,
+    "cash_available": 1000,
+    "open_positions": 6,
+    "closed_positions": 0,
+    "total_pnl": 0,
+    "total_roi": 0.0
+  },
+  "trades": [
+    {
+      "trade_id": "WHA_891D3C32",
+      "timestamp": "2026-02-25T04:21:17.818298Z",
+      "strategy": "Whale Copy-Trading",
+      "market_id": "market_1",
+      "market_name": "Theo4 \u2192 Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.67,
+      "position_size": 29,
+      "notional_value": 19.43,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null
+    },
+    {
+      "trade_id": "SET_F68264C1",
+      "timestamp": "2026-02-25T04:21:17.818939Z",
+      "strategy": "Settlement Edge",
+      "market_id": "market_5",
+      "market_name": "Will there be a crypto market crash >30% in 2026?",
+      "side": "NO",
+      "entry_price": 0.38,
+      "position_size": 25,
+      "notional_value": 9.5,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null
+    },
+    {
+      "trade_id": "WHA_E92D0A28",
+      "timestamp": "2026-02-25T04:21:25.897298Z",
+      "strategy": "Whale Copy-Trading",
+      "market_id": "market_1",
+      "market_name": "Theo4 \u2192 Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.67,
+      "position_size": 29,
+      "notional_value": 19.43,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null
+    },
+    {
+      "trade_id": "SET_CF0B6BA1",
+      "timestamp": "2026-02-25T04:21:25.897756Z",
+      "strategy": "Settlement Edge",
+      "market_id": "market_5",
+      "market_name": "Will there be a crypto market crash >30% in 2026?",
+      "side": "NO",
+      "entry_price": 0.38,
+      "position_size": 25,
+      "notional_value": 9.5,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null
+    },
+    {
+      "trade_id": "WHA_51A2D524",
+      "timestamp": "2026-02-25T04:25:01.372021Z",
+      "strategy": "Whale Copy-Trading",
+      "market_id": "market_1",
+      "market_name": "Theo4 \u2192 Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.67,
+      "position_size": 29,
+      "notional_value": 19.43,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null
+    },
+    {
+      "trade_id": "SET_88A9067C",
+      "timestamp": "2026-02-25T04:25:01.372493Z",
+      "strategy": "Settlement Edge",
+      "market_id": "market_5",
+      "market_name": "Will there be a crypto market crash >30% in 2026?",
+      "side": "NO",
+      "entry_price": 0.38,
+      "position_size": 25,
+      "notional_value": 9.5,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null
+    }
+  ],
+  "performance": {
+    "binary_complement_arb": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
+    },
+    "catalyst_momentum": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
+    },
+    "favorite_compounder": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
+    },
+    "whale_copy_trading": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
+    },
+    "settlement_edge": {
+      "trades": 0,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
+    }
+  },
+  "last_updated": "2026-02-25T04:25:01.373547Z",
+  "status": "LIVE"
+}

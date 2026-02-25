@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polymarket Late Entry Strategy - Live Dashboard</title>
+    <title>Polymarket Paper Trading - Live Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <style>
         * {
@@ -20,7 +20,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
@@ -81,6 +81,44 @@
             color: #ef4444;
         }
         
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .strategy-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .strategy-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .strategy-stat {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+        
+        .strategy-stat-label {
+            color: #666;
+        }
+        
+        .strategy-stat-value {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
         .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -119,8 +157,9 @@
         }
         
         td {
-            padding: 15px;
+            padding: 12px 15px;
             border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95em;
         }
         
         tr:hover {
@@ -155,6 +194,19 @@
             color: #ef4444;
         }
         
+        .badge.open {
+            background: #fef3c7;
+            color: #f59e0b;
+        }
+        
+        .update-time {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
         footer {
             text-align: center;
             color: white;
@@ -166,27 +218,32 @@
 <body>
     <div class="container">
         <header>
-            <h1>📈 Polymarket Late Entry Strategy</h1>
-            <p class="subtitle">AI-Powered Paper Trading Dashboard | 81% Win Rate</p>
+            <h1>📊 Polymarket Paper Trading</h1>
+            <p class="subtitle">5 Active Strategies | Live Dashboard</p>
         </header>
         
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Total P&L</div>
-                <div class="stat-value positive" id="total-pnl">+$167.93</div>
+                <div class="stat-value positive" id="total-pnl">$0.00</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Capital</div>
-                <div class="stat-value" id="capital">$1,167.93</div>
+                <div class="stat-value" id="capital">$1,000.00</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Win Rate</div>
-                <div class="stat-value" id="win-rate">100.0%</div>
+                <div class="stat-label">ROI</div>
+                <div class="stat-value" id="roi">0.00%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total Trades</div>
-                <div class="stat-value" id="total-trades">10</div>
+                <div class="stat-value" id="total-trades">0</div>
             </div>
+        </div>
+        
+        <h2 style="color: white; margin-bottom: 20px; font-size: 1.5em;">📈 Strategy Performance</h2>
+        
+        <div class="strategies-grid" id="strategies-container">
         </div>
         
         <div class="charts-grid">
@@ -194,20 +251,22 @@
                 <canvas id="pnlChart"></canvas>
             </div>
             <div class="chart-container">
-                <canvas id="winRateChart"></canvas>
+                <canvas id="strategiesChart"></canvas>
             </div>
         </div>
+        
+        <h2 style="color: white; margin-top: 30px; margin-bottom: 20px; font-size: 1.5em;">🔄 Live Trades</h2>
         
         <div class="trades-table">
             <table>
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Strategy</th>
                         <th>Market</th>
+                        <th>Side</th>
                         <th>Entry Price</th>
-                        <th>Exit Price</th>
-                        <th>P&L</th>
-                        <th>Result</th>
+                        <th>Status</th>
                         <th>Time</th>
                     </tr>
                 </thead>
@@ -216,124 +275,204 @@
             </table>
         </div>
         
+        <div class="update-time">
+            Last Updated: <span id="update-time">Loading...</span> UTC
+            <br>
+            Auto-refresh every 30 seconds
+        </div>
+        
         <footer>
-            <p>🚀 Powered by OpenClaw | Strategy: Late Entry (Wait for Confirmation)</p>
+            <p>🚀 Powered by OpenClaw | 5 Strategies: Arbitrage | Momentum | Compounder | Whale Copy | Settlement Edge</p>
             <p>Paper Trading Only - No Real Capital At Risk</p>
         </footer>
     </div>
     
     <script>
+        let pnlChart = null;
+        let strategiesChart = null;
+        
         // Load trades data
         async function loadDashboard() {
             try {
-                // For now, use hardcoded data (will load from API in production)
-                const trades = [
-                    {id: 1, market: "Bitcoin Up by 10% (24h)", entry: 0.32, exit: 0.68, pnl: 42.50, pnl_percent: 212.5, is_win: true, entry_time: "2026-02-24T14:00:00Z"},
-                    {id: 2, market: "Ethereum Up by 5% (12h)", entry: 0.38, exit: 0.65, pnl: 14.21, pnl_percent: 71.0, is_win: true, entry_time: "2026-02-24T19:00:00Z"},
-                    {id: 3, market: "Solana Up by 3% (6h)", entry: 0.35, exit: 0.62, pnl: 15.43, pnl_percent: 77.1, is_win: true, entry_time: "2026-02-24T23:00:00Z"},
-                    {id: 4, market: "Bitcoin Up by 15% (48h)", entry: 0.30, exit: 0.70, pnl: 46.67, pnl_percent: 233.3, is_win: true, entry_time: "2026-02-25T03:00:00Z"},
-                    {id: 5, market: "Ethereum Up by 8% (24h)", entry: 0.42, exit: 0.48, pnl: 2.86, pnl_percent: 14.3, is_win: true, entry_time: "2026-02-25T08:00:00Z"},
-                    {id: 6, market: "Solana Up by 5% (12h)", entry: 0.34, exit: 0.69, pnl: 20.59, pnl_percent: 102.9, is_win: true, entry_time: "2026-02-25T13:00:00Z"},
-                    {id: 7, market: "Bitcoin Up by 7% (6h)", entry: 0.36, exit: 0.55, pnl: 10.56, pnl_percent: 52.8, is_win: true, entry_time: "2026-02-25T18:00:00Z"},
-                    {id: 8, market: "Ethereum Up by 10% (24h)", entry: 0.33, exit: 0.71, pnl: 23.03, pnl_percent: 115.1, is_win: true, entry_time: "2026-02-25T23:00:00Z"},
-                    {id: 9, market: "Solana Up by 4% (12h)", entry: 0.39, exit: 0.50, pnl: 5.64, pnl_percent: 28.2, is_win: true, entry_time: "2026-02-26T04:00:00Z"},
-                    {id: 10, market: "Bitcoin Up by 12% (48h)", entry: 0.31, exit: 0.72, pnl: -12.70, pnl_percent: -63.5, is_win: false, entry_time: "2026-02-26T09:00:00Z"}
-                ];
+                // Try to fetch live data from GitHub raw content
+                const response = await fetch('https://raw.githubusercontent.com/pesiss/polymarket-dashboard/main/trades.json', {
+                    cache: 'no-store'
+                });
                 
-                updateStats(trades);
-                updateCharts(trades);
-                updateTable(trades);
+                let data;
+                if (response.ok) {
+                    data = await response.json();
+                } else {
+                    // Fallback to sample data
+                    data = generateSampleData();
+                }
+                
+                updateStats(data);
+                updateStrategies(data.performance);
+                updateCharts(data.trades);
+                updateTable(data.trades);
+                
+                document.getElementById('update-time').textContent = new Date().toISOString().split('T')[1].split('.')[0];
             } catch (e) {
                 console.error("Error loading dashboard:", e);
+                document.getElementById('update-time').textContent = 'Error loading data';
             }
         }
         
-        function updateStats(trades) {
-            const totalPnL = trades.reduce((sum, t) => sum + t.pnl, 0);
-            const capital = 1000 + totalPnL;
-            const wins = trades.filter(t => t.is_win).length;
-            const winRate = (wins / trades.length * 100).toFixed(1);
+        function generateSampleData() {
+            return {
+                paper_capital: 1000,
+                portfolio: {
+                    total_pnl: 0,
+                    total_roi: 0,
+                    open_positions: 0
+                },
+                performance: {
+                    binary_complement_arb: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    catalyst_momentum: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    favorite_compounder: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    whale_copy_trading: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    settlement_edge: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0}
+                },
+                trades: []
+            };
+        }
+        
+        function updateStats(data) {
+            const totalPnL = data.portfolio.total_pnl || 0;
+            const capital = data.paper_capital + totalPnL;
+            const roi = data.portfolio.total_roi || 0;
+            const totalTrades = data.trades.length;
             
             document.getElementById('total-pnl').textContent = `${totalPnL > 0 ? '+' : ''}$${totalPnL.toFixed(2)}`;
+            document.getElementById('total-pnl').className = `stat-value ${totalPnL > 0 ? 'positive' : totalPnL < 0 ? 'negative' : ''}`;
             document.getElementById('capital').textContent = `$${capital.toFixed(2)}`;
-            document.getElementById('win-rate').textContent = `${winRate}%`;
-            document.getElementById('total-trades').textContent = trades.length;
+            document.getElementById('roi').textContent = `${roi > 0 ? '+' : ''}${roi.toFixed(2)}%`;
+            document.getElementById('total-trades').textContent = totalTrades;
+        }
+        
+        function updateStrategies(performance) {
+            const container = document.getElementById('strategies-container');
+            const strategies = [
+                {key: 'binary_complement_arb', name: '1️⃣ Binary Complement Arbitrage', color: '#667eea'},
+                {key: 'catalyst_momentum', name: '2️⃣ Catalyst Momentum', color: '#f59e0b'},
+                {key: 'favorite_compounder', name: '3️⃣ Favorite Compounder', color: '#10b981'},
+                {key: 'whale_copy_trading', name: '4️⃣ Whale Copy-Trading', color: '#8b5cf6'},
+                {key: 'settlement_edge', name: '5️⃣ Settlement Edge', color: '#ec4899'}
+            ];
+            
+            container.innerHTML = strategies.map(s => {
+                const perf = performance[s.key] || {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0};
+                return `
+                    <div class="strategy-card">
+                        <div class="strategy-name" style="border-bottom-color: ${s.color};">
+                            ${s.name}
+                        </div>
+                        <div class="strategy-stat">
+                            <span class="strategy-stat-label">Trades</span>
+                            <span class="strategy-stat-value">${perf.trades}</span>
+                        </div>
+                        <div class="strategy-stat">
+                            <span class="strategy-stat-label">Wins</span>
+                            <span class="strategy-stat-value" style="color: #10b981;">${perf.wins}</span>
+                        </div>
+                        <div class="strategy-stat">
+                            <span class="strategy-stat-label">Losses</span>
+                            <span class="strategy-stat-value" style="color: #ef4444;">${perf.losses}</span>
+                        </div>
+                        <div class="strategy-stat">
+                            <span class="strategy-stat-label">Win Rate</span>
+                            <span class="strategy-stat-value">${perf.win_rate.toFixed(1)}%</span>
+                        </div>
+                        <div class="strategy-stat">
+                            <span class="strategy-stat-label">P&L</span>
+                            <span class="strategy-stat-value" style="color: ${perf.total_pnl > 0 ? '#10b981' : perf.total_pnl < 0 ? '#ef4444' : '#667eea'};">
+                                ${perf.total_pnl > 0 ? '+' : ''}$${perf.total_pnl.toFixed(2)}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
         
         function updateCharts(trades) {
             // P&L Chart
-            const pnlCtx = document.getElementById('pnlChart').getContext('2d');
-            new Chart(pnlCtx, {
+            const pnlData = [];
+            let cumulative = 0;
+            trades.forEach(t => {
+                cumulative += t.notional_value || 0;
+                pnlData.push(cumulative);
+            });
+            
+            const pnlCtx = document.getElementById('pnlChart');
+            if (pnlChart) pnlChart.destroy();
+            pnlChart = new Chart(pnlCtx, {
                 type: 'line',
                 data: {
                     labels: trades.map((_, i) => `Trade ${i + 1}`),
                     datasets: [{
                         label: 'Cumulative P&L',
-                        data: trades.reduce((acc, t, i) => {
-                            acc.push((acc[i-1] || 0) + t.pnl);
-                            return acc;
-                        }, []),
+                        data: pnlData,
                         borderColor: '#667eea',
                         backgroundColor: 'rgba(102, 126, 234, 0.1)',
                         tension: 0.3,
                         fill: true,
-                        pointRadius: 4
+                        pointRadius: 3
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: true }
-                    },
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
+                    plugins: {legend: {display: true}},
+                    scales: {y: {beginAtZero: true}}
                 }
             });
             
-            // Win Rate Chart
-            const wins = trades.filter(t => t.is_win).length;
-            const losses = trades.length - wins;
-            const wrCtx = document.getElementById('winRateChart').getContext('2d');
-            new Chart(wrCtx, {
-                type: 'doughnut',
+            // Strategies comparison
+            const strategiesCtx = document.getElementById('strategiesChart');
+            if (strategiesChart) strategiesChart.destroy();
+            strategiesChart = new Chart(strategiesCtx, {
+                type: 'bar',
                 data: {
-                    labels: ['Wins', 'Losses'],
+                    labels: ['Arbitrage', 'Momentum', 'Compounder', 'Whale Copy', 'Settlement'],
                     datasets: [{
-                        data: [wins, losses],
-                        backgroundColor: ['#10b981', '#ef4444'],
-                        borderColor: ['#059669', '#dc2626'],
-                        borderWidth: 2
+                        label: 'Trades',
+                        data: [0, 0, 0, 0, 0],
+                        backgroundColor: ['#667eea', '#f59e0b', '#10b981', '#8b5cf6', '#ec4899']
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'bottom' }
-                    }
+                    plugins: {legend: {display: true}},
+                    scales: {y: {beginAtZero: true}}
                 }
             });
         }
         
         function updateTable(trades) {
             const tbody = document.getElementById('trades-body');
-            tbody.innerHTML = trades.map(t => `
+            if (!trades || trades.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #999;">No trades yet - Scanning markets...</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = trades.map((t, i) => `
                 <tr>
-                    <td><strong>${t.id}</strong></td>
-                    <td>${t.market}</td>
-                    <td>$${t.entry.toFixed(3)}</td>
-                    <td>$${t.exit.toFixed(3)}</td>
-                    <td class="${t.is_win ? 'win' : 'loss'}">${t.is_win ? '+' : ''}$${t.pnl.toFixed(2)}</td>
-                    <td><span class="badge ${t.is_win ? 'win' : 'loss'}">${t.is_win ? '✅ WIN' : '❌ LOSS'}</span></td>
-                    <td>${new Date(t.entry_time).toLocaleString()}</td>
+                    <td>${i + 1}</td>
+                    <td><strong>${t.strategy}</strong></td>
+                    <td>${t.market_name.substring(0, 40)}...</td>
+                    <td>${t.side}</td>
+                    <td>$${t.entry_price.toFixed(4)}</td>
+                    <td><span class="badge ${t.status === 'OPEN' ? 'open' : t.status === 'CLOSED' && t.actual_profit > 0 ? 'win' : 'loss'}">${t.status}</span></td>
+                    <td>${new Date(t.timestamp).toLocaleTimeString()}</td>
                 </tr>
             `).join('');
         }
         
-        // Load on page load
+        // Load on page load and refresh every 30 seconds
         loadDashboard();
+        setInterval(loadDashboard, 30000);
     </script>
 </body>
 </html>
