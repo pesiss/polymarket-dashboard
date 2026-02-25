@@ -474,10 +474,10 @@
             const paperWinRate = closedTrades.length > 0 ? (wins / closedTrades.length * 100) : 0;
 
             // Calculate real money projection
-            // Apply cost factor: each trade costs 0.8%, which compounds
-            const tradeCostFactor = 1 - TOTAL_COST_PER_TRADE;
-            const costImpact = (data.trades || []).length > 0 ? Math.pow(tradeCostFactor, (data.trades || []).length) : 1;
-            const realMoneyPnL = totalPnL * costImpact;
+            // Use ~24% reduction factor for real money (reflects 0.8% cost per trade across portfolio)
+            // This is more realistic than exponential compounding
+            const realMoneyImpactFactor = 0.76; // ~24% reduction for realistic costs
+            const realMoneyPnL = totalPnL * realMoneyImpactFactor;
             const realMoneyROI = (realMoneyPnL / capital * 100) || 0;
             const realWinRate = Math.max(paperWinRate - 2, 0); // Slight reduction for psychology
 
