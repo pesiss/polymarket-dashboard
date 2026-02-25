@@ -467,7 +467,7 @@
 
             // Get closed trades for win rate
             const closedTrades = (data.trades || []).filter(t => t.status === 'CLOSED');
-            const wins = closedTrades.filter(t => t.actual_profit > 0).length;
+            const wins = closedTrades.filter(t => t.pnl > 0).length;
             const paperWinRate = closedTrades.length > 0 ? (wins / closedTrades.length * 100) : 0;
 
             // Calculate real money projection
