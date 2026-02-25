@@ -513,6 +513,7 @@
         }
         
         function updateStrategies(performance) {
+            console.log("updateStrategies received performance:", performance); // DEBUG LINE
             const container = document.getElementById('strategies-container');
             const strategies_list = [
                 {key: 'binary_complement_arb', name: '1️⃣ PM Arbitrage', color: '#667eea'},
