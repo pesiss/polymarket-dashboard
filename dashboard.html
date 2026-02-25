@@ -391,12 +391,16 @@
                 if (response.ok) {
                     data = await response.json();
                 } else {
-                    // Fallback to sample data
+                    // Fallback to sample data for entire dashboard
+                    console.warn("Failed to fetch live data, using sample data.");
                     data = generateSampleData();
                 }
                 
+                // Ensure data.performance is always defined
+                const performanceData = data.performance || generateSampleData().performance;
+
                 updateStats(data);
-                updateStrategies(data.performance);
+                updateStrategies(performanceData);
                 updateProjection(data);
                 updateCharts(data.trades);
                 updateTable(data.trades);
