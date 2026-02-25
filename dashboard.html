@@ -11,42 +11,42 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         header {
             text-align: center;
             color: white;
             margin-bottom: 30px;
         }
-        
+
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
         }
-        
+
         .subtitle {
             font-size: 1.1em;
             opacity: 0.9;
         }
-        
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
-        
+
         .stat-card {
             background: white;
             border-radius: 12px;
@@ -54,11 +54,11 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.2s;
         }
-        
+
         .stat-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .stat-label {
             color: #666;
             font-size: 0.9em;
@@ -66,35 +66,35 @@
             letter-spacing: 1px;
             margin-bottom: 10px;
         }
-        
+
         .stat-value {
             font-size: 2.2em;
             font-weight: bold;
             color: #667eea;
         }
-        
+
         .stat-value.positive {
             color: #10b981;
         }
-        
+
         .stat-value.negative {
             color: #ef4444;
         }
-        
+
         .strategies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
-        
+
         .strategy-card {
             background: white;
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
+
         .strategy-name {
             font-weight: 600;
             font-size: 1.1em;
@@ -102,30 +102,30 @@
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
         }
-        
+
         .strategy-stat {
             display: flex;
             justify-content: space-between;
             margin: 10px 0;
             font-size: 0.95em;
         }
-        
+
         .strategy-stat-label {
             color: #666;
         }
-        
+
         .strategy-stat-value {
             font-weight: 600;
             color: #667eea;
         }
-        
+
         .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
-        
+
         .chart-container {
             background: white;
             border-radius: 12px;
@@ -134,7 +134,7 @@
             position: relative;
             height: 400px;
         }
-        
+
         .trades-table {
             background: white;
             border-radius: 12px;
@@ -142,12 +142,12 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin-top: 30px;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         th {
             background: #667eea;
             color: white;
@@ -155,27 +155,27 @@
             text-align: left;
             font-weight: 600;
         }
-        
+
         td {
             padding: 12px 15px;
             border-bottom: 1px solid #f0f0f0;
             font-size: 0.95em;
         }
-        
+
         tr:hover {
             background: #f9f9f9;
         }
-        
+
         .win {
             color: #10b981;
             font-weight: 600;
         }
-        
+
         .loss {
             color: #ef4444;
             font-weight: 600;
         }
-        
+
         .badge {
             display: inline-block;
             padding: 4px 12px;
@@ -183,22 +183,22 @@
             font-size: 0.8em;
             font-weight: 600;
         }
-        
+
         .badge.win {
             background: #dbeafe;
             color: #10b981;
         }
-        
+
         .badge.loss {
             background: #fee2e2;
             color: #ef4444;
         }
-        
+
         .badge.open {
             background: #fef3c7;
             color: #f59e0b;
         }
-        
+
         .update-time {
             text-align: center;
             color: white;
@@ -206,7 +206,7 @@
             font-size: 0.9em;
             opacity: 0.8;
         }
-        
+
         footer {
             text-align: center;
             color: white;
@@ -221,7 +221,7 @@
             <h1>📊 Unified Paper Trading</h1>
             <p class="subtitle">All 9 Strategies Live | Consolidated Dashboard</p>
         </header>
-        
+
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Total P&L</div>
@@ -240,12 +240,12 @@
                 <div class="stat-value" id="total-trades">0</div>
             </div>
         </div>
-        
+
         <h2 style="color: white; margin-bottom: 20px; font-size: 1.5em;">📈 Strategy Performance</h2>
-        
+
         <div class="strategies-grid" id="strategies-container">
         </div>
-        
+
         <div class="charts-grid">
             <div class="chart-container">
                 <canvas id="pnlChart"></canvas>
@@ -254,9 +254,9 @@
                 <canvas id="strategiesChart"></canvas>
             </div>
         </div>
-        
+
         <h2 style="color: white; margin-top: 30px; margin-bottom: 20px; font-size: 1.5em;">💰 Real Money Projection</h2>
-        
+
         <div class="strategies-grid" id="projection-container" style="margin-bottom: 30px;">
             <div class="strategy-card">
                 <div class="strategy-name" style="border-bottom-color: #667eea;">
@@ -275,7 +275,7 @@
                     <span class="strategy-stat-value" id="paper-wr">0.0%</span>
                 </div>
             </div>
-            
+
             <div class="strategy-card">
                 <div class="strategy-name" style="border-bottom-color: #f59e0b;">
                     💵 Real Money Projection*
@@ -293,7 +293,7 @@
                     <span class="strategy-stat-value" id="real-wr">0.0%</span>
                 </div>
             </div>
-            
+
             <div class="strategy-card">
                 <div class="strategy-name" style="border-bottom-color: #ef4444;">
                     ⚠️ Cost Analysis
@@ -312,11 +312,11 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="chart-container" style="margin-bottom: 30px;">
             <canvas id="projectionChart"></canvas>
         </div>
-        
+
         <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
             <h3 style="color: #667eea; margin-bottom: 15px;">📈 Real Money Impact Analysis</h3>
             <p style="color: #666; margin-bottom: 10px;">
@@ -335,9 +335,9 @@
                 ✅ <strong>Recommendation:</strong> Start with $500-$1,000 real capital once paper win rate is validated at 55%+.
             </p>
         </div>
-        
+
         <h2 style="color: white; margin-top: 30px; margin-bottom: 20px; font-size: 1.5em;">🔄 Live Trades</h2>
-        
+
         <div class="trades-table">
             <table>
                 <thead>
@@ -356,29 +356,44 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="update-time">
             Last Updated: <span id="update-time">Loading...</span> UTC
             <br>
             Auto-refresh every 30 seconds
         </div>
-        
+
         <footer>
             <p>🚀 Powered by OpenClaw | 9 Strategies: Unified Portfolio across Polymarket, Aster DEX, Funding Rate & Whale Alert</p>
             <p>Paper Trading Only - No Real Capital At Risk</p>
         </footer>
     </div>
-    
+
     <script>
         let pnlChart = null;
         let strategiesChart = null;
         let projectionChart = null;
-        
+
         // Real money cost factors (in basis points = 0.01%)
         const SPREAD_COST = 0.005; // 0.5%
         const SLIPPAGE_COST = 0.003; // 0.3%
         const TOTAL_COST_PER_TRADE = SPREAD_COST + SLIPPAGE_COST; // 0.8%
-        
+
+        const strategies_list = [
+            {key: 'binary_complement_arb', name: '1️⃣ PM Arbitrage', color: '#667eea'},
+            {key: 'catalyst_momentum', name: '2️⃣ PM Momentum', color: '#f59e0b'},
+            {key: 'favorite_compounder', name: '3️⃣ PM Compounder', color: '#10b981'},
+            {key: 'whale_copy_trading', name: '4️⃣ PM Whale Copy', color: '#8b5cf6'},
+            {key: 'settlement_edge', name: '5️⃣ PM Settlement', color: '#ec4899'},
+            {key: 'mean_reversion_grid', name: '6️⃣ AD Grid Trading', color: '#0ea5e9'},
+            {key: 'dca_grid_bot', name: '7️⃣ AD DCA Bot', color: '#84cc16'},
+            {key: 'momentum_scalping', name: '8️⃣ AD Scalping', color: '#f97316'},
+            {key: 'liquidation_protection', name: '9️⃣ AD Liquidation', color: '#ef4444'},
+            {key: 'contrarian_counter-trend', name: '🔟 AD Contrarian', color: '#a855f7'},
+            {key: 'funding_rate_arb', name: '💲 FR Arbitrage', color: '#fde047'},
+            {key: 'whale_alert', name: '🐳 Whale Alert', color: '#3b82f6'}
+        ];
+
         // Load trades data
         async function loadDashboard() {
             try {
@@ -386,7 +401,7 @@
                 const response = await fetch('https://raw.githubusercontent.com/pesiss/polymarket-dashboard/main/all_trades.json', {
                     cache: 'no-store'
                 });
-                
+
                 let data;
                 if (response.ok) {
                     data = await response.json();
@@ -395,7 +410,7 @@
                     console.warn("Failed to fetch live data, using sample data.");
                     data = generateSampleData();
                 }
-                
+
                 // Ensure data.performance is always defined
                 const performanceData = data.performance || generateSampleData().performance;
 
@@ -404,14 +419,14 @@
                 updateProjection(data);
                 updateCharts(data.trades);
                 updateTable(data.trades);
-                
+
                 document.getElementById('update-time').textContent = new Date().toISOString().split('T')[1].split('.')[0];
             } catch (e) {
                 console.error("Error loading dashboard:", e);
                 document.getElementById('update-time').textContent = 'Error loading data';
             }
         }
-        
+
         function generateSampleData() {
             return {
                 paper_capital: 1000,
@@ -430,31 +445,31 @@
                 trades: []
             };
         }
-        
+
         function updateStats(data) {
             const totalPnL = data.total_pnl || 0;
             const capital = data.paper_capital || 1000;
             const roi = data.total_roi || 0;
             const totalTrades = data.trades.length;
-            
+
             document.getElementById('total-pnl').textContent = `${totalPnL > 0 ? '+' : ''}$${totalPnL.toFixed(2)}`;
             document.getElementById('total-pnl').className = `stat-value ${totalPnL > 0 ? 'positive' : totalPnL < 0 ? 'negative' : ''}`;
             document.getElementById('capital').textContent = `$${capital.toFixed(2)}`;
             document.getElementById('roi').textContent = `${roi > 0 ? '+' : ''}${roi.toFixed(2)}%`;
             document.getElementById('total-trades').textContent = totalTrades;
         }
-        
+
         function updateProjection(data) {
             // Calculate paper trading metrics
             const totalPnL = data.total_pnl || 0;
             const capital = data.paper_capital || 1000;
             const paperROI = (totalPnL / capital * 100) || 0;
-            
+
             // Get closed trades for win rate
             const closedTrades = (data.trades || []).filter(t => t.status === 'CLOSED');
             const wins = closedTrades.filter(t => t.actual_profit > 0).length;
             const paperWinRate = closedTrades.length > 0 ? (wins / closedTrades.length * 100) : 0;
-            
+
             // Calculate real money projection
             // Apply cost factor: each trade costs 0.8%, which compounds
             const tradeCostFactor = 1 - TOTAL_COST_PER_TRADE;
@@ -462,26 +477,26 @@
             const realMoneyPnL = totalPnL * costImpact;
             const realMoneyROI = (realMoneyPnL / capital * 100) || 0;
             const realWinRate = Math.max(paperWinRate - 2, 0); // Slight reduction for psychology
-            
+
             // Update display
             document.getElementById('paper-pnl').textContent = `${totalPnL > 0 ? '+' : ''}$${totalPnL.toFixed(2)}`;
             document.getElementById('paper-roi').textContent = `${paperROI > 0 ? '+' : ''}${paperROI.toFixed(2)}%`;
             document.getElementById('paper-wr').textContent = `${paperWinRate.toFixed(1)}%`;
-            
+
             document.getElementById('real-pnl').textContent = `${realMoneyPnL > 0 ? '+' : ''}$${realMoneyPnL.toFixed(2)}`;
             document.getElementById('real-roi').textContent = `${realMoneyROI > 0 ? '+' : ''}${realMoneyROI.toFixed(2)}%`;
             document.getElementById('real-wr').textContent = `${realWinRate.toFixed(1)}%`;
-            
+
             document.getElementById('total-cost').textContent = `${(TOTAL_COST_PER_TRADE * 100).toFixed(1)}%`;
-            
+
             // Update projection chart
             updateProjectionChart(totalPnL, realMoneyPnL, paperROI, realMoneyROI);
         }
-        
+
         function updateProjectionChart(paperPnL, realPnL, paperROI, realROI) {
             const projectionCtx = document.getElementById('projectionChart');
             if (projectionChart) projectionChart.destroy();
-            
+
             projectionChart = new Chart(projectionCtx, {
                 type: 'bar',
                 data: {
@@ -515,24 +530,10 @@
                 }
             });
         }
-        
+
         function updateStrategies(performance) {
             console.log("updateStrategies received performance:", performance); // DEBUG LINE
             const container = document.getElementById('strategies-container');
-            const strategies_list = [
-                {key: 'binary_complement_arb', name: '1️⃣ PM Arbitrage', color: '#667eea'},
-                {key: 'catalyst_momentum', name: '2️⃣ PM Momentum', color: '#f59e0b'},
-                {key: 'favorite_compounder', name: '3️⃣ PM Compounder', color: '#10b981'},
-                {key: 'whale_copy_trading', name: '4️⃣ PM Whale Copy', color: '#8b5cf6'},
-                {key: 'settlement_edge', name: '5️⃣ PM Settlement', color: '#ec4899'},
-                {key: 'mean_reversion_grid', name: '6️⃣ AD Grid Trading', color: '#0ea5e9'},
-                {key: 'dca_grid_bot', name: '7️⃣ AD DCA Bot', color: '#84cc16'},
-                {key: 'momentum_scalping', name: '8️⃣ AD Scalping', color: '#f97316'},
-                {key: 'liquidation_protection', name: '9️⃣ AD Liquidation', color: '#ef4444'},
-                {key: 'contrarian_counter-trend', name: '🔟 AD Contrarian', color: '#a855f7'},
-                {key: 'funding_rate_arb', name: '💲 FR Arbitrage', color: '#fde047'},
-                {key: 'whale_alert', name: '🐳 Whale Alert', color: '#3b82f6'}
-            ];
             
             container.innerHTML = strategies_list.map(s => {
                 const perf = performance[s.key] || {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0};
@@ -567,7 +568,7 @@
                 `;
             }).join('');
         }
-        
+
         function updateCharts(trades) {
             // P&L Chart
             const pnlData = [];
@@ -576,7 +577,7 @@
                 cumulative += t.notional_value || 0;
                 pnlData.push(cumulative);
             });
-            
+
             const pnlCtx = document.getElementById('pnlChart');
             if (pnlChart) pnlChart.destroy();
             pnlChart = new Chart(pnlCtx, {
@@ -600,7 +601,7 @@
                     scales: {y: {beginAtZero: true}}
                 }
             });
-            
+
             // Strategies comparison
             const strategiesCtx = document.getElementById('strategiesChart');
             if (strategiesChart) strategiesChart.destroy();
@@ -622,14 +623,14 @@
                 }
             });
         }
-        
+
         function updateTable(trades) {
             const tbody = document.getElementById('trades-body');
             if (!trades || trades.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #999;">No trades yet - Scanning markets...</td></tr>';
                 return;
             }
-            
+
             tbody.innerHTML = trades.map((t, i) => `
                 <tr>
                     <td>${i + 1}</td>
@@ -643,7 +644,7 @@
                 </tr>
             `).join('');
         }
-        
+
         // Load on page load and refresh every 30 seconds
         loadDashboard();
         setInterval(loadDashboard, 30000);
