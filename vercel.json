@@ -11,8 +11,8 @@
       "dest": "/dashboard.html"
     },
     {
-      "src": "/trades.json",
-      "dest": "/trades.json"
+      "src": "/all_trades.json",
+      "dest": "/all_trades.json"
     }
   ]
 }
