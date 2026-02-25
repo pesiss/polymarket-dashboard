@@ -380,18 +380,21 @@
         const TOTAL_COST_PER_TRADE = SPREAD_COST + SLIPPAGE_COST; // 0.8%
 
         const strategies_list = [
-            {key: 'binary_complement_arb', name: '1️⃣ PM Arbitrage', color: '#667eea'},
-            {key: 'catalyst_momentum', name: '2️⃣ PM Momentum', color: '#f59e0b'},
-            {key: 'favorite_compounder', name: '3️⃣ PM Compounder', color: '#10b981'},
-            {key: 'whale_copy_trading', name: '4️⃣ PM Whale Copy', color: '#8b5cf6'},
-            {key: 'settlement_edge', name: '5️⃣ PM Settlement', color: '#ec4899'},
-            {key: 'mean_reversion_grid', name: '6️⃣ AD Grid Trading', color: '#0ea5e9'},
-            {key: 'dca_grid_bot', name: '7️⃣ AD DCA Bot', color: '#84cc16'},
-            {key: 'momentum_scalping', name: '8️⃣ AD Scalping', color: '#f97316'},
-            {key: 'liquidation_protection', name: '9️⃣ AD Liquidation', color: '#ef4444'},
-            {key: 'contrarian_counter-trend', name: '🔟 AD Contrarian', color: '#a855f7'},
-            {key: 'funding_rate_arb', name: '💲 FR Arbitrage', color: '#fde047'},
-            {key: 'whale_alert', name: '🐳 Whale Alert', color: '#3b82f6'}
+            // POLYMARKET STRATEGIES
+            {key: 'binary_complement_arb', name: 'PM Arbitrage', color: '#667eea', platform: 'polymarket', displayName: 'Binary Complement Arb'},
+            {key: 'catalyst_momentum', name: 'PM Momentum', color: '#f59e0b', platform: 'polymarket', displayName: 'Catalyst Momentum'},
+            {key: 'favorite_compounder', name: 'PM Compounder', color: '#10b981', platform: 'polymarket', displayName: 'Favorite Compounder'},
+            {key: 'whale_copy_trading', name: 'PM Whale Copy', color: '#8b5cf6', platform: 'polymarket', displayName: 'Whale Copy Trading'},
+            {key: 'settlement_edge', name: 'PM Settlement', color: '#ec4899', platform: 'polymarket', displayName: 'Settlement Edge'},
+            // ASTER DEX STRATEGIES
+            {key: 'mean_reversion_grid', name: 'AD Grid Trading', color: '#0ea5e9', platform: 'aster', displayName: 'Mean Reversion Grid'},
+            {key: 'dca_grid_bot', name: 'AD DCA Bot', color: '#84cc16', platform: 'aster', displayName: 'DCA Grid Bot'},
+            {key: 'momentum_scalping', name: 'AD Scalping', color: '#f97316', platform: 'aster', displayName: 'Momentum Scalping'},
+            {key: 'liquidation_protection', name: 'AD Liquidation', color: '#ef4444', platform: 'aster', displayName: 'Liquidation Protection'},
+            {key: 'contrarian_counter-trend', name: 'AD Contrarian', color: '#a855f7', platform: 'aster', displayName: 'Contrarian Counter-Trend'},
+            // OTHER STRATEGIES
+            {key: 'funding_rate_arb', name: 'FR Arbitrage', color: '#fde047', platform: 'other', displayName: 'Funding Rate Arbitrage'},
+            {key: 'whale_alert', name: 'Whale Alert', color: '#3b82f6', platform: 'other', displayName: 'Whale Alert'}
         ];
 
         // Load trades data
@@ -532,41 +535,96 @@
         }
 
         function updateStrategies(performance) {
-            console.log("updateStrategies received performance:", performance); // DEBUG LINE
+            console.log("updateStrategies received performance:", performance);
             const container = document.getElementById('strategies-container');
             
-            container.innerHTML = strategies_list.map(s => {
+            // Group strategies by platform
+            const platforms = {
+                polymarket: [],
+                aster: [],
+                other: []
+            };
+            
+            // Organize and add performance data
+            strategies_list.forEach(s => {
                 const perf = performance[s.key] || {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0};
-                return `
-                    <div class="strategy-card">
-                        <div class="strategy-name" style="border-bottom-color: ${s.color};">
-                            ${s.name}
-                        </div>
-                        <div class="strategy-stat">
-                            <span class="strategy-stat-label">Trades</span>
-                            <span class="strategy-stat-value">${perf.trades}</span>
-                        </div>
-                        <div class="strategy-stat">
-                            <span class="strategy-stat-label">Wins</span>
-                            <span class="strategy-stat-value" style="color: #10b981;">${perf.wins}</span>
-                        </div>
-                        <div class="strategy-stat">
-                            <span class="strategy-stat-label">Losses</span>
-                            <span class="strategy-stat-value" style="color: #ef4444;">${perf.losses}</span>
-                        </div>
-                        <div class="strategy-stat">
-                            <span class="strategy-stat-label">Win Rate</span>
-                            <span class="strategy-stat-value">${perf.win_rate.toFixed(1)}%</span>
-                        </div>
-                        <div class="strategy-stat">
-                            <span class="strategy-stat-label">P&L</span>
-                            <span class="strategy-stat-value" style="color: ${perf.total_pnl > 0 ? '#10b981' : perf.total_pnl < 0 ? '#ef4444' : '#667eea'};">
-                                ${perf.total_pnl > 0 ? '+' : ''}$${perf.total_pnl.toFixed(2)}
-                            </span>
-                        </div>
+                platforms[s.platform].push({...s, perf});
+            });
+            
+            // Function to rank strategies within a platform by P&L
+            const rankStrategies = (strats) => {
+                return strats
+                    .sort((a, b) => b.perf.total_pnl - a.perf.total_pnl)
+                    .map((s, idx) => ({...s, rank: idx + 1}));
+            };
+            
+            // Rank each platform's strategies
+            platforms.polymarket = rankStrategies(platforms.polymarket);
+            platforms.aster = rankStrategies(platforms.aster);
+            platforms.other = rankStrategies(platforms.other);
+            
+            // Render HTML
+            let html = '';
+            
+            // POLYMARKET SECTION
+            if (platforms.polymarket.length > 0) {
+                html += '<div style="margin-bottom: 40px;"><h2 style="color: white; margin-bottom: 20px; font-size: 1.8em;">📊 Polymarket Strategies</h2>';
+                html += '<div class="strategies-grid">';
+                html += platforms.polymarket.map(s => renderStrategyCard(s)).join('');
+                html += '</div></div>';
+            }
+            
+            // ASTER DEX SECTION
+            if (platforms.aster.length > 0) {
+                html += '<div style="margin-bottom: 40px;"><h2 style="color: white; margin-bottom: 20px; font-size: 1.8em;">⚡ Aster DEX Strategies</h2>';
+                html += '<div class="strategies-grid">';
+                html += platforms.aster.map(s => renderStrategyCard(s)).join('');
+                html += '</div></div>';
+            }
+            
+            // OTHER SECTION
+            if (platforms.other.length > 0) {
+                html += '<div><h2 style="color: white; margin-bottom: 20px; font-size: 1.8em;">🔄 Other Strategies</h2>';
+                html += '<div class="strategies-grid">';
+                html += platforms.other.map(s => renderStrategyCard(s)).join('');
+                html += '</div></div>';
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        function renderStrategyCard(s) {
+            const rankMedal = s.rank === 1 ? '🥇' : s.rank === 2 ? '🥈' : s.rank === 3 ? '🥉' : `#${s.rank}`;
+            return `
+                <div class="strategy-card">
+                    <div class="strategy-name" style="border-bottom-color: ${s.color}; display: flex; justify-content: space-between; align-items: center;">
+                        <span>${s.displayName}</span>
+                        <span style="font-size: 1.3em;">${rankMedal}</span>
                     </div>
-                `;
-            }).join('');
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Trades</span>
+                        <span class="strategy-stat-value">${s.perf.trades}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Wins</span>
+                        <span class="strategy-stat-value" style="color: #10b981;">${s.perf.wins}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Losses</span>
+                        <span class="strategy-stat-value" style="color: #ef4444;">${s.perf.losses}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Win Rate</span>
+                        <span class="strategy-stat-value">${s.perf.win_rate.toFixed(1)}%</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">P&L</span>
+                        <span class="strategy-stat-value" style="color: ${s.perf.total_pnl > 0 ? '#10b981' : s.perf.total_pnl < 0 ? '#ef4444' : '#667eea'}; font-weight: bold;">
+                            ${s.perf.total_pnl > 0 ? '+' : ''}$${s.perf.total_pnl.toFixed(2)}
+                        </span>
+                    </div>
+                </div>
+            `;
         }
 
         function updateCharts(trades) {
