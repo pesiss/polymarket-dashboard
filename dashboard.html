@@ -446,7 +446,7 @@
         
         function updateProjection(data) {
             // Calculate paper trading metrics
-            const totalPnL = data.portfolio.total_pnl || 0;
+            const totalPnL = data.total_pnl || 0;
             const capital = data.paper_capital || 1000;
             const paperROI = (totalPnL / capital * 100) || 0;
             
