@@ -1,0 +1,22 @@
+name: Force Vercel Rebuild
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Update timestamp
+        run: |
+          echo "Deployed at: $(date)" > .deploy-timestamp
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add .deploy-timestamp
+          git commit -m "Force rebuild $(date)" || echo "No changes"
+          git push origin main || echo "Push failed"
