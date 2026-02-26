@@ -1,0 +1,11 @@
+=== API Usage Report: 2026-02-24 17:55:23 UTC ===
+│ Key                              │ Kind   │ Age      │ Model                     │ Tokens                           │
+  Rate Limit Errors (24h): 15
+  Cron Jobs:
+    4ac6526a-da77-4103-8ccd-13b79cc09fd8 market-pulse             every 30m                        in 26m     -          idle      isolated  default
+    a8d1b9d8-b86b-456a-80fa-bb5ca7cd99d2 daily-summary            cron 0 21 * * * @ UTC (exact)    in 3h      -          idle      isolated  default
+    b8c8c135-2727-4257-9a34-a51b37fe819a weekly-summary           cron 0 18 * * 0 @ UTC (exact)    in 5d      -          idle      isolated  default
+  Estimated Daily API Calls: ~50 (market-pulse + summaries)
+  Anthropic Usage: <0.1% of 144k RPM daily limit
+  Gemini Usage: <0.3% of 21.6k RPM daily limit
+

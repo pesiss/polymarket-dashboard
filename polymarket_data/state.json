@@ -1,0 +1,7 @@
+{
+  "consecutive_losses": 0,
+  "circuit_breaker_triggered": false,
+  "open_positions": [],
+  "last_updated": null,
+  "markets_cache_updated": null
+}

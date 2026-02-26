@@ -1,0 +1,97 @@
+# API Usage Tracking Log
+# Monitor costs and optimize model selection
+
+## BASELINE (Before Optimization)
+[2026-02-25 13:00-16:00] Session: Market Discovery + Paper Trading Setup
+  - Web-search queries: 40+ (free/cheap)
+  - Claude analyses: ~8 (high-value strategic work)
+  - Estimated cost: $0.40-0.60 (high, but all justified)
+
+## DAILY TRACKING (Post-Optimization)
+
+### 2026-02-25
+[14:00] Task: Verify cron job setup
+Model: None (shell script)
+Cost: $0.00
+Justification: Routine execution
+
+[16:00] Task: Document API optimization strategy  
+Model: Claude (thinking + drafting)
+Cost: $0.04
+Justification: Strategic framework for future cost reduction
+
+Daily Total: $0.04
+
+---
+
+## OPTIMIZATION METRICS
+
+Current Baseline: $2-3 / month
+Post-Optimization Target: $0.50 / month
+Reduction Goal: 80-90%
+
+Strategy:
+1. Use Gemini for routine tasks (80% of work)
+2. Use Claude ONLY for decisions that impact trading
+3. Cache all major analyses (reuse for 7-30 days)
+4. Batch similar questions together (3x cheaper)
+
+---
+
+## MODEL SELECTION DECISION TREE
+
+Question: Should I use Claude or Gemini/web-search?
+
+Is this strategic decision for trading?
+├─ YES → Use Claude (worth the cost)
+└─ NO → Is this routine monitoring/documentation?
+    ├─ YES → Use Gemini (cheap + fast)
+    └─ NO → Is this just gathering public data?
+        ├─ YES → Use web-search (free)
+        └─ NO → Use whatever is fastest/cheapest
+
+---
+
+## MONTHLY REVIEWS
+
+### February 2026
+Starting: baseline costs
+Ending: post-optimization setup
+Goal: Establish tracking system
+
+### March 2026
+Target: Fully optimized workflow
+Expected cost: $0.50 or less per month
+
+---
+
+## DECISION CACHE
+
+Store major analyses here for reuse (7-30 days):
+
+### HIGH VALUE (Use Claude)
+- Phase milestone reviews
+- Strategy edge validation  
+- Capital allocation decisions
+- Major optimization analyses
+
+### MEDIUM VALUE (Use Gemini)
+- Weekly status reviews
+- Trade performance summaries
+- Documentation updates
+- Data organization
+
+### LOW VALUE (Use web-search)
+- Public market data
+- Historical information
+- Factual verification
+- News gathering
+
+---
+
+## Notes
+- Only log CLAUDE usage (Gemini/web-search are negligible)
+- Each entry: Task, Model, Cost, Justification
+- Review weekly for optimization opportunities
+- Update monthly with trends
+
