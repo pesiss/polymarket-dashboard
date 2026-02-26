@@ -413,6 +413,7 @@
             {key: 'catalyst_momentum', name: 'PM Momentum', color: '#f59e0b', platform: 'polymarket', displayName: 'Catalyst Momentum', description: 'Rides volatility spikes from on-chain catalysts (whale buys, liquidations). Entry: on 2x volume spike. Exit: take profit at 15% or stop loss at -5%. Win Rate: 60-70%. Risk: Event-driven, execution risk.'},
             {key: 'favorite_compounder', name: 'PM Compounder', color: '#10b981', platform: 'polymarket', displayName: 'Favorite Compounder', description: 'Buys heavily-favored outcomes and holds long. Entry: YES/NO >85% probability. Exit: after 30+ days or at 5% stop loss. Win Rate: 85-95%. Risk: Low edge, but consistent across events.'},
             {key: 'whale_copy_trading', name: 'PM Whale Copy', color: '#8b5cf6', platform: 'polymarket', displayName: 'Whale Copy-Trading', description: 'Mirrors large whale transactions detected on-chain. Entry: within 2 blocks of whale activity. Exit: 20% profit or -8% stop loss. Win Rate: 70%. Risk: Depends on whale conviction & timing.'},
+            {key: 'whale_copy_trading_v2', name: 'PM Whale Copy v2', color: '#a78bfa', platform: 'polymarket', displayName: 'Whale Copy-Trading v2', description: 'Parallel test version of Whale Copy with tighter 6% SL. Mirrors same whale signals as v1. Entry: within 2 blocks of whale activity. Exit: 20% profit or -6% stop loss. Testing if tighter stops improve risk-adjusted returns.'},
             {key: 'settlement_edge', name: 'PM Settlement', color: '#ec4899', platform: 'polymarket', displayName: 'Settlement Edge', description: 'Exploits settlement week mispricing near resolution. Entry: when oracle outcomes diverge from market odds. Exit: 15% TP or -5% SL. Win Rate: 80% (highest accuracy). Risk: Limited window (2 weeks pre-settlement).'},
             // ASTER DEX STRATEGIES
             {key: 'mean_reversion_grid', name: 'AD Grid Trading', color: '#0ea5e9', platform: 'aster', displayName: 'Mean Reversion Grid', description: 'Places buy/sell orders around support/resistance levels. Entry: grid placed at ±3% from mid-price. Exit: TP at 4%, SL at 3%, hold 2 days max. Win Rate: 75%. Risk: Works in sideways markets, fails in strong trends.'},
@@ -431,8 +432,9 @@
             'binary_complement_arb': 300,
             'catalyst_momentum': 400,
             'favorite_compounder': 300,
-            'whale_copy_trading': 150,  // Shared allocation estimate
-            'settlement_edge': 150,     // Shared allocation estimate
+            'whale_copy_trading': 75,  // v1: 50% of original allocation
+            'whale_copy_trading_v2': 75,  // v2: 50% of original allocation (6% SL test)
+            'settlement_edge': 150,     // 4% SL optimized
             // Aster DEX strategies
             'mean_reversion_grid': 25,
             'dca_grid_bot': 20,
