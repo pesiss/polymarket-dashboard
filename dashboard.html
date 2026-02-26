@@ -207,6 +207,30 @@
             opacity: 0.8;
         }
 
+        .trades-details {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .trades-summary {
+            list-style: none; /* Remove default triangle/arrow */
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        /* Add custom arrow for summary */
+        .trades-summary::before {
+            content: '▶'; /* Right-pointing triangle */
+            color: white;
+            font-size: 0.8em;
+            margin-right: 10px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .trades-details[open] .trades-summary::before {
+            content: '▼'; /* Down-pointing triangle when open */
+        }
+
         footer {
             text-align: center;
             color: white;
@@ -336,26 +360,30 @@
             </p>
         </div>
 
-        <h2 style="color: white; margin-top: 30px; margin-bottom: 20px; font-size: 1.5em;">🔄 Live Trades</h2>
+        <details class="trades-details" open>
+            <summary class="trades-summary">
+                <h2 style="color: white; margin-top: 30px; margin-bottom: 20px; font-size: 1.5em; display: inline-block;">🔄 Live Trades</h2>
+            </summary>
 
-        <div class="trades-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Strategy</th>
-                        <th>Exchange</th>
-                        <th>Market</th>
-                        <th>Side</th>
-                        <th>Entry Price</th>
-                        <th>Status</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody id="trades-body">
-                </tbody>
-            </table>
-        </div>
+            <div class="trades-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Strategy</th>
+                            <th>Exchange</th>
+                            <th>Market</th>
+                            <th>Side</th>
+                            <th>Entry Price</th>
+                            <th>Status</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trades-body">
+                    </tbody>
+                </table>
+            </div>
+        </details>
 
         <div class="update-time">
             Last Updated: <span id="update-time">Loading...</span> UTC
@@ -418,7 +446,7 @@
                 const performanceData = data.strategies || generateSampleData().performance;
 
                 updateStats(data);
-                updateStrategies(performanceData);
+                updateStrategies(performanceData, data.trades);
                 updateProjection(data);
                 updateCharts(data.trades);
                 updateTable(data.trades);
@@ -534,9 +562,66 @@
             });
         }
 
-        function updateStrategies(performance) {
+        function updateStrategies(performance, trades) {
             console.log("updateStrategies received performance:", performance);
             const container = document.getElementById('strategies-container');
+            
+            // Calculate additional metrics from trades data
+            const strategyMetrics = {};
+            
+            // Initialize metrics for all strategies
+            strategies_list.forEach(s => {
+                strategyMetrics[s.key] = {
+                    totalNotional: 0,
+                    totalWinsValue: 0,
+                    totalLossesValue: 0,
+                    avgPositionSize: 0,
+                    avgWinAmount: 0,
+                    avgLossAmount: 0
+                };
+            });
+            
+            // Process trades to calculate metrics
+            if (trades && trades.length > 0) {
+                trades.forEach(t => {
+                    const strategyKey = Object.keys(strategies_list.find(s => s.displayName === t.strategy) || {});
+                    const strategy = strategies_list.find(s => s.displayName === t.strategy);
+                    if (strategy && t.notional_value) {
+                        const metrics = strategyMetrics[strategy.key];
+                        metrics.totalNotional += t.notional_value;
+                        
+                        // For closed trades, calculate win/loss amounts
+                        if (t.status === 'CLOSED' && t.pnl !== null && t.pnl !== undefined) {
+                            if (t.pnl > 0) {
+                                metrics.totalWinsValue += t.pnl;
+                            } else if (t.pnl < 0) {
+                                metrics.totalLossesValue += Math.abs(t.pnl);
+                            }
+                        }
+                    }
+                });
+                
+                // Calculate averages
+                strategies_list.forEach(s => {
+                    const metrics = strategyMetrics[s.key];
+                    const perf = performance[s.key] || {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0};
+                    
+                    // Average position size
+                    if (perf.trades > 0) {
+                        metrics.avgPositionSize = metrics.totalNotional / perf.trades;
+                    }
+                    
+                    // Average win amount
+                    if (perf.wins > 0) {
+                        metrics.avgWinAmount = metrics.totalWinsValue / perf.wins;
+                    }
+                    
+                    // Average loss amount
+                    if (perf.losses > 0) {
+                        metrics.avgLossAmount = metrics.totalLossesValue / perf.losses;
+                    }
+                });
+            }
             
             // Group strategies by platform
             const platforms = {
@@ -545,10 +630,11 @@
                 other: []
             };
             
-            // Organize and add performance data
+            // Organize and add performance data with calculated metrics
             strategies_list.forEach(s => {
                 const perf = performance[s.key] || {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0};
-                platforms[s.platform].push({...s, perf});
+                const metrics = strategyMetrics[s.key];
+                platforms[s.platform].push({...s, perf, metrics});
             });
             
             // Function to rank strategies within a platform by P&L
@@ -623,6 +709,22 @@
                         <span class="strategy-stat-label">P&L</span>
                         <span class="strategy-stat-value" style="color: ${s.perf.total_pnl > 0 ? '#10b981' : s.perf.total_pnl < 0 ? '#ef4444' : '#667eea'}; font-weight: bold;">
                             ${s.perf.total_pnl > 0 ? '+' : ''}$${s.perf.total_pnl.toFixed(2)}
+                        </span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Avg Position Size</span>
+                        <span class="strategy-stat-value">$${s.metrics.avgPositionSize.toFixed(2)}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Avg $ Won</span>
+                        <span class="strategy-stat-value" style="color: ${s.metrics.avgWinAmount > 0 ? '#10b981' : '#666'};">
+                            ${s.metrics.avgWinAmount > 0 ? '+' : ''}$${s.metrics.avgWinAmount.toFixed(2)}
+                        </span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Avg $ Lost</span>
+                        <span class="strategy-stat-value" style="color: ${s.metrics.avgLossAmount > 0 ? '#ef4444' : '#666'};">
+                            ${s.metrics.avgLossAmount > 0 ? '-' : ''}$${s.metrics.avgLossAmount.toFixed(2)}
                         </span>
                     </div>
                     <button onclick="toggleDescription('${descId}')" style="width: 100%; margin-top: 15px; padding: 10px; background: ${s.color}; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: opacity 0.2s;">
@@ -706,12 +808,25 @@
 
         function updateTable(trades) {
             const tbody = document.getElementById('trades-body');
+            const totalCols = 11; // Updated to match new column count
+
             if (!trades || trades.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #999;">No trades yet - Scanning markets...</td></tr>';
+                tbody.innerHTML = `<tr><td colspan="${totalCols}" style="text-align: center; color: #999;">No trades yet - Scanning markets...</td></tr>`;
                 return;
             }
 
-            tbody.innerHTML = trades.map((t, i) => `
+            tbody.innerHTML = trades.map((t, i) => {
+                const isClosed = t.status === 'CLOSED';
+                const isWin = isClosed && t.pnl > 0;
+                const isLoss = isClosed && t.pnl < 0;
+                const pnlClass = isWin ? 'win' : isLoss ? 'loss' : '';
+
+                const exitPriceDisplay = isClosed ? `$${t.exit_price ? t.exit_price.toFixed(4) : 'N/A'}` : 'N/A';
+                const pnlValueDisplay = isClosed ? `${t.pnl > 0 ? '+' : ''}$${t.pnl ? t.pnl.toFixed(2) : '0.00'}` : 'N/A';
+                const pnlPercentDisplay = isClosed ? `${t.pnl_percent > 0 ? '+' : ''}${t.pnl_percent ? t.pnl_percent.toFixed(2) : '0.00'}%` : 'N/A';
+
+
+                return `
                 <tr>
                     <td>${i + 1}</td>
                     <td><strong>${t.strategy}</strong></td>
@@ -719,10 +834,14 @@
                     <td>${t.market_name.substring(0, 40)}...</td>
                     <td>${t.side}</td>
                     <td>$${t.entry_price ? t.entry_price.toFixed(4) : 'N/A'}</td>
-                    <td><span class="badge ${t.status === 'OPEN' ? 'open' : t.status === 'CLOSED' && t.pnl > 0 ? 'win' : 'loss'}">${t.status}</span></td>
+                    <td>${exitPriceDisplay}</td>
+                    <td class="${pnlClass}">${pnlValueDisplay}</td>
+                    <td class="${pnlClass}">${pnlPercentDisplay}</td>
+                    <td><span class="badge ${t.status === 'OPEN' ? 'open' : isWin ? 'win' : 'loss'}">${t.status}</span></td>
                     <td>${new Date(t.timestamp).toLocaleTimeString()}</td>
                 </tr>
-            `).join('');
+            `;
+            }).join('');
         }
 
         // Load on page load and refresh every 30 seconds
