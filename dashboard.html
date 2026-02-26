@@ -721,7 +721,7 @@
                 const strategyTrades = {};
                 strategies_list.forEach(s => {
                     strategyTrades[s.key] = trades.filter(t => {
-                        const matchingStrategy = strategies_list.find(strat => strat.displayName === t.strategy);
+                        const matchingStrategy = strategies_list.find(strat => strat.key === t.strategy);
                         return matchingStrategy && matchingStrategy.key === s.key;
                     });
                 });
