@@ -248,16 +248,28 @@
 
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Total P&L</div>
-                <div class="stat-value positive" id="total-pnl">$0.00</div>
+                <div class="stat-label">Net P&L (After Fees)</div>
+                <div class="stat-value positive" id="net-pnl">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Gross P&L</div>
+                <div class="stat-value" id="gross-pnl">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Fees Paid</div>
+                <div class="stat-value" id="total-fees" style="color: #f59e0b;">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Fee Impact</div>
+                <div class="stat-value" id="fee-impact" style="color: #9ca3af;">0.00%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Capital</div>
                 <div class="stat-value" id="capital">$1,000.00</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">ROI</div>
-                <div class="stat-value" id="roi">0.00%</div>
+                <div class="stat-label">Net ROI</div>
+                <div class="stat-value" id="net-roi">0.00%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total Trades</div>
@@ -320,19 +332,19 @@
 
             <div class="strategy-card">
                 <div class="strategy-name" style="border-bottom-color: #ef4444;">
-                    ⚠️ Cost Analysis
+                    ⚠️ Fee Breakdown
                 </div>
                 <div class="strategy-stat">
-                    <span class="strategy-stat-label">Spread Cost</span>
-                    <span class="strategy-stat-value" style="color: #ef4444;">-0.5%</span>
+                    <span class="strategy-stat-label">Gas Fees</span>
+                    <span class="strategy-stat-value" style="color: #f59e0b;">$0.10/trade</span>
                 </div>
                 <div class="strategy-stat">
-                    <span class="strategy-stat-label">Slippage Cost</span>
-                    <span class="strategy-stat-value" style="color: #ef4444;">-0.3%</span>
+                    <span class="strategy-stat-label">Trading Fees</span>
+                    <span class="strategy-stat-value" style="color: #f59e0b;">0.01% of P&L</span>
                 </div>
                 <div class="strategy-stat">
-                    <span class="strategy-stat-label">Total Cost/Trade</span>
-                    <span class="strategy-stat-value" style="color: #ef4444;" id="total-cost">-0.8%</span>
+                    <span class="strategy-stat-label">Est. Fee Impact</span>
+                    <span class="strategy-stat-value" style="color: #9ca3af;" id="total-cost">~12%</span>
                 </div>
             </div>
         </div>
@@ -342,19 +354,19 @@
         </div>
 
         <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-            <h3 style="color: #667eea; margin-bottom: 15px;">📈 Real Money Impact Analysis</h3>
+            <h3 style="color: #667eea; margin-bottom: 15px;">📈 Fee Impact Analysis</h3>
             <p style="color: #666; margin-bottom: 10px;">
-                <strong>*Projection Assumptions:</strong>
+                <strong>*Fee Calculation Formula:</strong>
             </p>
             <ul style="color: #666; margin-left: 20px; line-height: 1.8;">
-                <li><strong>Spread Cost:</strong> -0.5% (bid-ask spread on fills)</li>
-                <li><strong>Slippage:</strong> -0.3% (price movement during execution)</li>
-                <li><strong>Win Rate Change:</strong> Same as paper (psychological impact minimal with proper discipline)</li>
-                <li><strong>Total Cost per Trade:</strong> ~0.8% (compounded across all trades)</li>
-                <li><strong>P&L Impact:</strong> ~24% reduction vs paper trading results</li>
+                <li><strong>Gas Fees:</strong> $0.10 per trade (round trip)</li>
+                <li><strong>Trading Fees:</strong> 0.01% of absolute P&L value</li>
+                <li><strong>Net P&L Formula:</strong> Gross P&L - (Gas Fees + Trading Fees)</li>
+                <li><strong>Real Money Adjustment:</strong> Additional ~12% for spread/slippage</li>
+                <li><strong>Total Fee Impact:</strong> ~12% reduction in profits</li>
             </ul>
             <p style="color: #666; margin-top: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
-                ✅ <strong>Bottom Line:</strong> If paper trading generates +$100 P&L, expect ~$76 in real money (after costs).
+                ✅ <strong>Bottom Line:</strong> If paper trading generates +$100 Gross P&L, expect ~$88 Net P&L (after fees), and ~$77 in real money.
                 <br>
                 ✅ <strong>Recommendation:</strong> Start with $500-$1,000 real capital once paper win rate is validated at 55%+.
             </p>
@@ -406,6 +418,10 @@
         const SPREAD_COST = 0.005; // 0.5%
         const SLIPPAGE_COST = 0.003; // 0.3%
         const TOTAL_COST_PER_TRADE = SPREAD_COST + SLIPPAGE_COST; // 0.8%
+
+        // Fee constants for NET PNL calculation
+        const GAS_PER_TRADE = 0.10; // $0.10 per trade (round trip)
+        const TRADING_FEE_PCT = 0.0001; // 0.01%
 
         const strategies_list = [
             // POLYMARKET STRATEGIES
@@ -499,53 +515,85 @@
         }
 
         function updateStats(data) {
-            const totalPnL = data.total_pnl || 0;
+            const grossPnL = data.total_pnl || 0;
             const capital = data.paper_capital || 1000;
-            const roi = data.total_roi || 0;
             const totalTrades = data.trades.length;
 
-            document.getElementById('total-pnl').textContent = `${totalPnL > 0 ? '+' : ''}$${totalPnL.toFixed(2)}`;
-            document.getElementById('total-pnl').className = `stat-value ${totalPnL > 0 ? 'positive' : totalPnL < 0 ? 'negative' : ''}`;
+            // Calculate fees
+            const gasFees = totalTrades * GAS_PER_TRADE;
+            const tradingFees = Math.abs(grossPnL) * TRADING_FEE_PCT;
+            const totalFees = gasFees + tradingFees;
+            const netPnL = grossPnL - totalFees;
+
+            // Calculate ROIs
+            const netROI = (netPnL / capital * 100) || 0;
+
+            // Update display
+            document.getElementById('net-pnl').textContent = `${netPnL > 0 ? '+' : ''}$${netPnL.toFixed(2)}`;
+            document.getElementById('net-pnl').className = `stat-value ${netPnL > 0 ? 'positive' : netPnL < 0 ? 'negative' : ''}`;
+
+            document.getElementById('gross-pnl').textContent = `${grossPnL > 0 ? '+' : ''}$${grossPnL.toFixed(2)}`;
+            document.getElementById('gross-pnl').className = `stat-value ${grossPnL > 0 ? 'positive' : grossPnL < 0 ? 'negative' : ''}`;
+
+            document.getElementById('total-fees').textContent = `$${totalFees.toFixed(2)}`;
+
+            const feeImpact = grossPnL !== 0 ? (totalFees / Math.abs(grossPnL) * 100) : 0;
+            document.getElementById('fee-impact').textContent = `${feeImpact.toFixed(2)}%`;
+
             document.getElementById('capital').textContent = `$${capital.toFixed(2)}`;
-            document.getElementById('roi').textContent = `${roi > 0 ? '+' : ''}${roi.toFixed(2)}%`;
+            document.getElementById('net-roi').textContent = `${netROI > 0 ? '+' : ''}${netROI.toFixed(2)}%`;
             document.getElementById('total-trades').textContent = totalTrades;
         }
 
         function updateProjection(data) {
-            // Calculate paper trading metrics
-            const totalPnL = data.total_pnl || 0;
             const capital = data.paper_capital || 1000;
-            const paperROI = (totalPnL / capital * 100) || 0;
+            const totalTrades = data.trades.length;
+
+            // Calculate paper trading metrics (GROSS)
+            const grossPnL = data.total_pnl || 0;
+            const grossROI = (grossPnL / capital * 100) || 0;
 
             // Get closed trades for win rate
             const closedTrades = (data.trades || []).filter(t => t.status === 'CLOSED');
             const wins = closedTrades.filter(t => t.pnl > 0).length;
             const paperWinRate = closedTrades.length > 0 ? (wins / closedTrades.length * 100) : 0;
 
-            // Calculate real money projection
-            // Use ~24% reduction factor for real money (reflects 0.8% cost per trade across portfolio)
-            // This is more realistic than exponential compounding
-            const realMoneyImpactFactor = 0.76; // ~24% reduction for realistic costs
-            const realMoneyPnL = totalPnL * realMoneyImpactFactor;
+            // Calculate fees
+            const gasFees = totalTrades * GAS_PER_TRADE;
+            const tradingFees = Math.abs(grossPnL) * TRADING_FEE_PCT;
+            const totalFees = gasFees + tradingFees;
+            const netPnL = grossPnL - totalFees;
+            const netROI = (netPnL / capital * 100) || 0;
+
+            // Calculate fee impact percentage
+            const feeImpactPct = grossPnL !== 0 ? (totalFees / Math.abs(grossPnL) * 100) : 0;
+
+            // Real money projection (after fees + additional real-world costs)
+            // Additional 12% reduction for spread/slippage beyond calculated fees
+            const realMoneyImpactFactor = 0.88; // ~12% additional reduction
+            const realMoneyPnL = netPnL * realMoneyImpactFactor;
             const realMoneyROI = (realMoneyPnL / capital * 100) || 0;
             const realWinRate = Math.max(paperWinRate - 2, 0); // Slight reduction for psychology
 
-            // Update display
-            document.getElementById('paper-pnl').textContent = `${totalPnL > 0 ? '+' : ''}$${totalPnL.toFixed(2)}`;
-            document.getElementById('paper-roi').textContent = `${paperROI > 0 ? '+' : ''}${paperROI.toFixed(2)}%`;
+            // Update display - Paper Trading shows GROSS
+            document.getElementById('paper-pnl').textContent = `${grossPnL > 0 ? '+' : ''}$${grossPnL.toFixed(2)}`;
+            document.getElementById('paper-roi').textContent = `${grossROI > 0 ? '+' : ''}${grossROI.toFixed(2)}%`;
             document.getElementById('paper-wr').textContent = `${paperWinRate.toFixed(1)}%`;
 
+            // Real money shows NET after all costs
             document.getElementById('real-pnl').textContent = `${realMoneyPnL > 0 ? '+' : ''}$${realMoneyPnL.toFixed(2)}`;
             document.getElementById('real-roi').textContent = `${realMoneyROI > 0 ? '+' : ''}${realMoneyROI.toFixed(2)}%`;
             document.getElementById('real-wr').textContent = `${realWinRate.toFixed(1)}%`;
 
-            document.getElementById('total-cost').textContent = `${(TOTAL_COST_PER_TRADE * 100).toFixed(1)}%`;
+            // Total cost includes gas + trading fees + real-world spread/slippage
+            const totalCostImpact = feeImpactPct + 12; // ~12% from spread/slippage
+            document.getElementById('total-cost').textContent = `-${totalCostImpact.toFixed(1)}%`;
 
-            // Update projection chart
-            updateProjectionChart(totalPnL, realMoneyPnL, paperROI, realMoneyROI);
+            // Update projection chart - show Gross vs Net
+            updateProjectionChart(grossPnL, netPnL, grossROI, netROI);
         }
 
-        function updateProjectionChart(paperPnL, realPnL, paperROI, realROI) {
+        function updateProjectionChart(grossPnL, netPnL, grossROI, netROI) {
             const projectionCtx = document.getElementById('projectionChart');
             if (projectionChart) projectionChart.destroy();
 
@@ -555,17 +603,17 @@
                     labels: ['P&L ($)', 'ROI (%)'],
                     datasets: [
                         {
-                            label: 'Paper Trading',
-                            data: [paperPnL, paperROI],
+                            label: 'Gross P&L (Before Fees)',
+                            data: [grossPnL, grossROI],
                             backgroundColor: '#667eea',
                             borderColor: '#667eea',
                             borderWidth: 2
                         },
                         {
-                            label: 'Real Money Projection',
-                            data: [realPnL, realROI],
-                            backgroundColor: '#f59e0b',
-                            borderColor: '#f59e0b',
+                            label: 'Net P&L (After Fees)',
+                            data: [netPnL, netROI],
+                            backgroundColor: '#10b981',
+                            borderColor: '#10b981',
                             borderWidth: 2
                         }
                     ]
@@ -783,7 +831,19 @@
 
             // Calculate Individual ROI: (strategy_total_pnl / strategy_allocated_capital) × 100
             const allocatedCapital = strategy_allocations[s.key] || 0;
-            const individualROI = allocatedCapital > 0 ? (s.perf.total_pnl / allocatedCapital * 100) : 0;
+
+            // Calculate fees for this strategy
+            const grossPnL = s.perf.total_pnl || 0;
+            const numTrades = s.perf.trades || 0;
+            const gasFees = numTrades * GAS_PER_TRADE;
+            const tradingFees = Math.abs(grossPnL) * TRADING_FEE_PCT;
+            const totalFees = gasFees + tradingFees;
+            const netPnL = grossPnL - totalFees;
+
+            // Calculate ROIs
+            const grossROI = allocatedCapital > 0 ? (grossPnL / allocatedCapital * 100) : 0;
+            const netROI = allocatedCapital > 0 ? (netPnL / allocatedCapital * 100) : 0;
+            const feeImpact = grossPnL !== 0 ? (totalFees / Math.abs(grossPnL) * 100) : 0;
 
             return `
                 <div class="strategy-card" id="${cardId}">
@@ -793,7 +853,7 @@
                     </div>
                     <div class="strategy-stat">
                         <span class="strategy-stat-label">Trades</span>
-                        <span class="strategy-stat-value">${s.perf.trades}</span>
+                        <span class="strategy-stat-value">${numTrades}</span>
                     </div>
                     <div class="strategy-stat">
                         <span class="strategy-stat-label">Wins</span>
@@ -807,16 +867,34 @@
                         <span class="strategy-stat-label">Win Rate</span>
                         <span class="strategy-stat-value">${s.perf.win_rate.toFixed(1)}%</span>
                     </div>
+                    <div class="strategy-stat" style="background: #f8fafc; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Gross P&L</span>
+                        <span class="strategy-stat-value" style="color: ${grossPnL > 0 ? '#10b981' : grossPnL < 0 ? '#ef4444' : '#667eea'};">
+                            ${grossPnL > 0 ? '+' : ''}$${grossPnL.toFixed(2)}
+                        </span>
+                    </div>
                     <div class="strategy-stat">
-                        <span class="strategy-stat-label">P&L</span>
-                        <span class="strategy-stat-value" style="color: ${s.perf.total_pnl > 0 ? '#10b981' : s.perf.total_pnl < 0 ? '#ef4444' : '#667eea'}; font-weight: bold;">
-                            ${s.perf.total_pnl > 0 ? '+' : ''}$${s.perf.total_pnl.toFixed(2)}
+                        <span class="strategy-stat-label">Fees</span>
+                        <span class="strategy-stat-value" style="color: #f59e0b;">
+                            $${totalFees.toFixed(2)}
+                        </span>
+                    </div>
+                    <div class="strategy-stat" style="background: #e0f2fe; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Net P&L</span>
+                        <span class="strategy-stat-value" style="color: ${netPnL > 0 ? '#10b981' : netPnL < 0 ? '#ef4444' : '#667eea'}; font-weight: bold; font-size: 1.15em;">
+                            ${netPnL > 0 ? '+' : ''}$${netPnL.toFixed(2)}
+                        </span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Fee Impact</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">
+                            ${feeImpact.toFixed(1)}%
                         </span>
                     </div>
                     <div class="strategy-stat" style="background: #f8fafc; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
-                        <span class="strategy-stat-label">Individual ROI</span>
-                        <span class="strategy-stat-value" style="color: ${individualROI > 0 ? '#10b981' : individualROI < 0 ? '#ef4444' : '#667eea'}; font-weight: bold; font-size: 1.1em;">
-                            ${individualROI > 0 ? '+' : ''}${individualROI.toFixed(2)}%
+                        <span class="strategy-stat-label">Net ROI</span>
+                        <span class="strategy-stat-value" style="color: ${netROI > 0 ? '#10b981' : netROI < 0 ? '#ef4444' : '#667eea'}; font-weight: bold; font-size: 1.1em;">
+                            ${netROI > 0 ? '+' : ''}${netROI.toFixed(2)}%
                         </span>
                     </div>
                     <div class="strategy-stat" style="font-size: 0.85em; opacity: 0.8;">
