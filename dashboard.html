@@ -425,6 +425,25 @@
             {key: 'whale_alert', name: 'Whale Alert', color: '#3b82f6', platform: 'other', displayName: 'Whale Alert', description: 'Fades/follows whale transfers detected on-chain. Entry: within 5 blocks of >$500k transfer. Exit: 2.5% TP or -0.8% SL, hold 2 hours max. Win Rate: 65%. Risk: Whales can be noise; timing is critical.'}
         ];
 
+        // Strategy allocated capital (from all_trades.json allocated section)
+        const strategy_allocations = {
+            // Polymarket strategies
+            'binary_complement_arb': 300,
+            'catalyst_momentum': 400,
+            'favorite_compounder': 300,
+            'whale_copy_trading': 150,  // Shared allocation estimate
+            'settlement_edge': 150,     // Shared allocation estimate
+            // Aster DEX strategies
+            'mean_reversion_grid': 25,
+            'dca_grid_bot': 20,
+            'momentum_scalping': 20,
+            'liquidation_protection': 20,
+            'contrarian_counter-trend': 15,
+            // Other strategies
+            'funding_rate_arb': 50,     // Minimal allocation estimate
+            'whale_alert': 30           // Minimal allocation estimate
+        };
+
         // Load trades data
         async function loadDashboard() {
             try {
@@ -577,19 +596,90 @@
                     totalLossesValue: 0,
                     avgPositionSize: 0,
                     avgWinAmount: 0,
-                    avgLossAmount: 0
+                    avgLossAmount: 0,
+                    totalHoldTime: 0,
+                    closedTradesCount: 0,
+                    concurrentPositions: [],
+                    avgPositionTime: 0,
+                    avgOpenPositions: 0
                 };
             });
             
             // Process trades to calculate metrics
             if (trades && trades.length > 0) {
+                // First pass: collect all trades by strategy for concurrent position analysis
+                const strategyTrades = {};
+                strategies_list.forEach(s => {
+                    strategyTrades[s.key] = trades.filter(t => {
+                        const matchingStrategy = strategies_list.find(strat => strat.displayName === t.strategy);
+                        return matchingStrategy && matchingStrategy.key === s.key;
+                    });
+                });
+
+                // Calculate concurrent positions for each strategy
+                strategies_list.forEach(s => {
+                    const stratTrades = strategyTrades[s.key] || [];
+                    if (stratTrades.length === 0) return;
+
+                    // Sort by timestamp
+                    stratTrades.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+                    // Track open positions over time
+                    const events = [];
+                    stratTrades.forEach(t => {
+                        events.push({time: new Date(t.timestamp), type: 'open', trade: t});
+                        if (t.closed_at) {
+                            events.push({time: new Date(t.closed_at), type: 'close', trade: t});
+                        }
+                    });
+                    events.sort((a, b) => a.time - b.time);
+
+                    // Calculate max concurrent and average
+                    let currentOpen = 0;
+                    let maxConcurrent = 0;
+                    let totalConcurrent = 0;
+                    let lastTime = events.length > 0 ? events[0].time : null;
+                    let timeIntervals = 0;
+
+                    events.forEach((event, idx) => {
+                        if (idx > 0 && lastTime) {
+                            const timeDiff = (event.time - lastTime) / (1000 * 60); // minutes
+                            if (timeDiff > 0) {
+                                totalConcurrent += currentOpen;
+                                timeIntervals++;
+                            }
+                        }
+                        if (event.type === 'open') {
+                            currentOpen++;
+                        } else {
+                            currentOpen = Math.max(0, currentOpen - 1);
+                        }
+                        maxConcurrent = Math.max(maxConcurrent, currentOpen);
+                        lastTime = event.time;
+                    });
+
+                    const metrics = strategyMetrics[s.key];
+                    metrics.avgOpenPositions = timeIntervals > 0 ? (totalConcurrent / timeIntervals).toFixed(1) : 0;
+                    metrics.maxConcurrent = maxConcurrent;
+                });
+
+                // Second pass: calculate individual trade metrics
                 trades.forEach(t => {
                     const strategyKey = Object.keys(strategies_list.find(s => s.displayName === t.strategy) || {});
                     const strategy = strategies_list.find(s => s.displayName === t.strategy);
                     if (strategy && t.notional_value) {
                         const metrics = strategyMetrics[strategy.key];
                         metrics.totalNotional += t.notional_value;
-                        
+
+                        // Calculate hold time for closed trades
+                        if (t.status === 'CLOSED' && t.closed_at && t.timestamp) {
+                            const openTime = new Date(t.timestamp);
+                            const closeTime = new Date(t.closed_at);
+                            const holdTimeHours = (closeTime - openTime) / (1000 * 60 * 60);
+                            metrics.totalHoldTime += holdTimeHours;
+                            metrics.closedTradesCount++;
+                        }
+
                         // For closed trades, calculate win/loss amounts
                         if (t.status === 'CLOSED' && t.pnl !== null && t.pnl !== undefined) {
                             if (t.pnl > 0) {
@@ -619,6 +709,11 @@
                     // Average loss amount
                     if (perf.losses > 0) {
                         metrics.avgLossAmount = metrics.totalLossesValue / perf.losses;
+                    }
+                    
+                    // Average position time (in hours)
+                    if (metrics.closedTradesCount > 0) {
+                        metrics.avgPositionTime = metrics.totalHoldTime / metrics.closedTradesCount;
                     }
                 });
             }
@@ -683,6 +778,11 @@
             const rankMedal = s.rank === 1 ? '🥇' : s.rank === 2 ? '🥈' : s.rank === 3 ? '🥉' : `#${s.rank}`;
             const cardId = `card-${s.key}`;
             const descId = `desc-${s.key}`;
+
+            // Calculate Individual ROI: (strategy_total_pnl / strategy_allocated_capital) × 100
+            const allocatedCapital = strategy_allocations[s.key] || 0;
+            const individualROI = allocatedCapital > 0 ? (s.perf.total_pnl / allocatedCapital * 100) : 0;
+
             return `
                 <div class="strategy-card" id="${cardId}">
                     <div class="strategy-name" style="border-bottom-color: ${s.color}; display: flex; justify-content: space-between; align-items: center;">
@@ -711,6 +811,16 @@
                             ${s.perf.total_pnl > 0 ? '+' : ''}$${s.perf.total_pnl.toFixed(2)}
                         </span>
                     </div>
+                    <div class="strategy-stat" style="background: #f8fafc; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Individual ROI</span>
+                        <span class="strategy-stat-value" style="color: ${individualROI > 0 ? '#10b981' : individualROI < 0 ? '#ef4444' : '#667eea'}; font-weight: bold; font-size: 1.1em;">
+                            ${individualROI > 0 ? '+' : ''}${individualROI.toFixed(2)}%
+                        </span>
+                    </div>
+                    <div class="strategy-stat" style="font-size: 0.85em; opacity: 0.8;">
+                        <span class="strategy-stat-label">Allocated Capital</span>
+                        <span class="strategy-stat-value">$${allocatedCapital}</span>
+                    </div>
                     <div class="strategy-stat">
                         <span class="strategy-stat-label">Avg Position Size</span>
                         <span class="strategy-stat-value">$${s.metrics.avgPositionSize.toFixed(2)}</span>
@@ -725,6 +835,18 @@
                         <span class="strategy-stat-label">Avg $ Lost</span>
                         <span class="strategy-stat-value" style="color: ${s.metrics.avgLossAmount > 0 ? '#ef4444' : '#666'};">
                             ${s.metrics.avgLossAmount > 0 ? '-' : ''}$${s.metrics.avgLossAmount.toFixed(2)}
+                        </span>
+                    </div>
+                    <div class="strategy-stat" style="background: #f0f9ff; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Avg Position Time</span>
+                        <span class="strategy-stat-value" style="font-weight: 600;">
+                            ${s.metrics.avgPositionTime ? s.metrics.avgPositionTime.toFixed(1) : '0.0'}h
+                        </span>
+                    </div>
+                    <div class="strategy-stat" style="background: #f0fdf4; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Avg Open Positions</span>
+                        <span class="strategy-stat-value" style="font-weight: 600; color: #059669;">
+                            ${s.metrics.avgOpenPositions || '0.0'}
                         </span>
                     </div>
                     <button onclick="toggleDescription('${descId}')" style="width: 100%; margin-top: 15px; padding: 10px; background: ${s.color}; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: opacity 0.2s;">
