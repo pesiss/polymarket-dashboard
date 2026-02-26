@@ -1,74 +1,115 @@
 {
   "paper_capital": 1300,
-  "total_pnl": -131.94196785231432,
+  "total_pnl": 687.56,
   "total_roi": -10.149382142485717,
-  "open_positions": 223,
-  "closed_positions": 292,
+  "open_positions": 251,
+  "closed_positions": 1783,
   "last_updated": "2026-02-26T20:05:03.161612+00:00",
+  "strategy_allocations": {
+    "settlement_edge": 185,
+    "whale_copy_trading": 75,
+    "whale_copy_trading_v2": 75,
+    "mean_reversion_grid": 10,
+    "contrarian_counter-trend": 5,
+    "momentum_scalping": 10,
+    "dca_grid_bot": 20,
+    "liquidation_protection": 20,
+    "oracle_lag_exploit": 100,
+    "liquidity_king": 200,
+    "funding_rate_arb": 50,
+    "whale_alert": 30,
+    "_reserved_capital": 1000,
+    "last_updated": "2026-02-26T20:30:00Z",
+    "reallocation_notes": "CAPITAL REALLOCATION - 2026-02-26: Settlement Edge +$35 (150\u2192185), Mean Reversion -$15 (25\u219210), Contrarian -$10 (15\u21925), Momentum -$10 (20\u219210). Total: $490 deployed, $1000 reserved."
+  },
   "strategies": {
-    "oracle_lag_exploit": {
-      "name": "Oracle Lag Exploit",
-      "trades": 0,
+    "Contrarian Counter-Trend": {
+      "trades": 125,
       "wins": 0,
-      "losses": 0,
-      "win_rate": 0,
-      "total_pnl": 0
-    },
-    "mean_reversion_grid": {
-      "name": "Mean Reversion Grid",
-      "trades": 91,
-      "wins": 0,
-      "losses": 91,
+      "losses": 123,
       "win_rate": 0.0,
-      "total_pnl": -71.40627474975993
+      "total_pnl": -53.81,
+      "max_drawdown": 0
     },
-    "dca_grid_bot": {
-      "name": "DCA Grid Bot",
-      "trades": 0,
+    "Liquidation Protection": {
+      "trades": 62,
       "wins": 0,
       "losses": 0,
       "win_rate": 0,
-      "total_pnl": 0
+      "total_pnl": 0,
+      "max_drawdown": 0
     },
-    "momentum_scalping": {
-      "name": "Momentum Scalping",
+    "Momentum Scalping": {
       "trades": 72,
       "wins": 0,
       "losses": 72,
       "win_rate": 0.0,
-      "total_pnl": -6.320881475515246
+      "total_pnl": -6.32,
+      "max_drawdown": 0
     },
-    "liquidation_protection": {
-      "name": "Liquidation Protection",
-      "trades": 0,
+    "DCA Grid Bot": {
+      "trades": 135,
       "wins": 0,
       "losses": 0,
       "win_rate": 0,
-      "total_pnl": 0
+      "total_pnl": 0,
+      "max_drawdown": 0
     },
-    "contrarian_counter-trend": {
-      "name": "Contrarian Counter-Trend",
-      "trades": 123,
+    "Mean Reversion Grid": {
+      "trades": 94,
       "wins": 0,
-      "losses": 123,
+      "losses": 91,
       "win_rate": 0.0,
-      "total_pnl": -53.814193378178885
+      "total_pnl": -71.41,
+      "max_drawdown": 0
     },
-    "funding_rate_arb": {
-      "name": "Funding Rate Arbitrage",
-      "trades": 0,
+    "Liquidity King": {
+      "trades": 504,
+      "wins": 151,
+      "losses": 343,
+      "win_rate": 30.57,
+      "total_pnl": -8.32,
+      "max_drawdown": 0
+    },
+    "Settlement Edge": {
+      "trades": 425,
+      "wins": 290,
+      "losses": 129,
+      "win_rate": 69.21,
+      "total_pnl": 194.32,
+      "max_drawdown": 0
+    },
+    "Whale Copy-Trading v2": {
+      "trades": 165,
+      "wins": 116,
+      "losses": 43,
+      "win_rate": 72.96,
+      "total_pnl": 140.95,
+      "max_drawdown": 0
+    },
+    "Whale Copy-Trading": {
+      "trades": 425,
+      "wins": 290,
+      "losses": 129,
+      "win_rate": 69.21,
+      "total_pnl": 491.28,
+      "max_drawdown": 0
+    },
+    "Whale Alert": {
+      "trades": 9,
+      "wins": 6,
+      "losses": 0,
+      "win_rate": 100.0,
+      "total_pnl": 0.87,
+      "max_drawdown": 0
+    },
+    "Funding Rate Arbitrage": {
+      "trades": 18,
       "wins": 0,
       "losses": 0,
-      "win_rate": 0.0,
-      "total_pnl": 0
-    },
-    "whale_alert": {
-      "name": "Whale Alert",
-      "trades": 6,
-      "wins": 2,
-      "losses": 4,
-      "win_rate": 33.33333333333333,
-      "total_pnl": -0.4006182488602608
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
     }
   },
   "trades": [
