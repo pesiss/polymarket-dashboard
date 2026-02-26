@@ -32876,5 +32876,9 @@
       "closed_at": "2026-02-25T07:10:01.263252+00:00",
       "source_exchange": "Polymarket"
     }
-  ]
+  ],
+  "meta": {
+    "last_deployed": "2026-02-26T20:49:10.892584Z",
+    "deployed_by": "Chik0ur fix script"
+  }
 }
