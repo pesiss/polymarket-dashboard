@@ -4,7 +4,7 @@
   "total_roi": -1.7785221368603277,
   "open_positions": 32,
   "closed_positions": 15,
-  "last_updated": "2026-02-26T02:30:02.135412+00:00",
+  "last_updated": "2026-02-26T03:00:01.669418+00:00",
   "strategies": {
     "mean_reversion_grid": {
       "name": "Mean Reversion Grid",
