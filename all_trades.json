@@ -1,10 +1,10 @@
 {
   "paper_capital": 1300,
-  "total_pnl": 456.65123358941895,
-  "total_roi": 35.12701796841684,
-  "open_positions": 39,
-  "closed_positions": 496,
-  "last_updated": "2026-02-26T03:17:27.488625+00:00",
+  "total_pnl": 457.67453358941896,
+  "total_roi": 35.20573335303222,
+  "open_positions": 38,
+  "closed_positions": 501,
+  "last_updated": "2026-02-26T03:30:02.125069+00:00",
   "strategies": {
     "binary_complement_arb": {
       "name": "Binary Complement Arb",
@@ -32,19 +32,19 @@
     },
     "whale_copy_trading": {
       "name": "Whale Copy Trading",
-      "trades": 240,
-      "wins": 167,
-      "losses": 73,
-      "win_rate": 69.58333333333333,
-      "total_pnl": 349.93429999999995
+      "trades": 242,
+      "wins": 168,
+      "losses": 74,
+      "win_rate": 69.42148760330579,
+      "total_pnl": 351.10009999999994
     },
     "settlement_edge": {
       "name": "Settlement Edge",
-      "trades": 241,
-      "wins": 167,
-      "losses": 74,
-      "win_rate": 69.29460580912863,
-      "total_pnl": 112.0525
+      "trades": 244,
+      "wins": 168,
+      "losses": 76,
+      "win_rate": 68.85245901639344,
+      "total_pnl": 111.91
     },
     "mean_reversion_grid": {
       "name": "Mean Reversion Grid",
@@ -105,8 +105,8 @@
   },
   "trades": [
     {
-      "trade_id": "SET_42EE123F",
-      "timestamp": "2026-02-26T03:15:01.345065+00:00",
+      "trade_id": "SET_EB870DA9",
+      "timestamp": "2026-02-26T03:25:01.844869+00:00",
       "strategy": "Settlement Edge",
       "market_name": "Will there be a crypto market crash >30% in 2026?",
       "side": "NO",
@@ -118,6 +118,70 @@
       "pnl": null,
       "pnl_percent": null,
       "closed_at": null,
+      "source_exchange": "Polymarket"
+    },
+    {
+      "trade_id": "WHA_D9CC45F1",
+      "timestamp": "2026-02-26T03:25:01.821211+00:00",
+      "strategy": "Whale Copy-Trading",
+      "market_name": "Theo4 \u2192 Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.67,
+      "position_size": 29,
+      "notional_value": 19.43,
+      "status": "OPEN",
+      "exit_price": null,
+      "pnl": null,
+      "pnl_percent": null,
+      "closed_at": null,
+      "source_exchange": "Polymarket"
+    },
+    {
+      "trade_id": "SET_C6866A6E",
+      "timestamp": "2026-02-26T03:20:01.567715+00:00",
+      "strategy": "Settlement Edge",
+      "market_name": "Will there be a crypto market crash >30% in 2026?",
+      "side": "NO",
+      "entry_price": 0.38,
+      "position_size": 25,
+      "notional_value": 9.5,
+      "status": "CLOSED",
+      "exit_price": 0.3591,
+      "pnl": -0.5225,
+      "pnl_percent": null,
+      "closed_at": "2026-02-26T03:25:01.800383+00:00",
+      "source_exchange": "Polymarket"
+    },
+    {
+      "trade_id": "WHA_D5B24949",
+      "timestamp": "2026-02-26T03:20:01.547042+00:00",
+      "strategy": "Whale Copy-Trading",
+      "market_name": "Theo4 \u2192 Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.67,
+      "position_size": 29,
+      "notional_value": 19.43,
+      "status": "CLOSED",
+      "exit_price": 0.7671500000000001,
+      "pnl": 2.81735,
+      "pnl_percent": null,
+      "closed_at": "2026-02-26T03:25:01.800383+00:00",
+      "source_exchange": "Polymarket"
+    },
+    {
+      "trade_id": "SET_42EE123F",
+      "timestamp": "2026-02-26T03:15:01.345065+00:00",
+      "strategy": "Settlement Edge",
+      "market_name": "Will there be a crypto market crash >30% in 2026?",
+      "side": "NO",
+      "entry_price": 0.38,
+      "position_size": 25,
+      "notional_value": 9.5,
+      "status": "CLOSED",
+      "exit_price": 0.3591,
+      "pnl": -0.5225,
+      "pnl_percent": null,
+      "closed_at": "2026-02-26T03:20:01.526719+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -177,11 +241,11 @@
       "entry_price": 0.38,
       "position_size": 25,
       "notional_value": 9.5,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
+      "status": "CLOSED",
+      "exit_price": 0.41609999999999997,
+      "pnl": 0.9025,
       "pnl_percent": null,
-      "closed_at": null,
+      "closed_at": "2026-02-26T03:20:01.526719+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -385,11 +449,11 @@
       "entry_price": 0.67,
       "position_size": 29,
       "notional_value": 19.43,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
+      "status": "CLOSED",
+      "exit_price": 0.6130500000000001,
+      "pnl": -1.65155,
       "pnl_percent": null,
-      "closed_at": null,
+      "closed_at": "2026-02-26T03:25:01.800383+00:00",
       "source_exchange": "Polymarket"
     },
     {
