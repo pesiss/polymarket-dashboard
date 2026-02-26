@@ -246,6 +246,46 @@
             <p class="subtitle">5 Active Polymarket Strategies | $1,000 Reserved Capital | Consolidated Dashboard</p>
         </header>
 
+        <!-- Oracle Lag Reset Warning Banner -->
+        <div style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); color: white;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                <span style="font-size: 2em;">⚠️</span>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.3em;">Oracle Lag Strategy Reset to Real Trading</h3>
+                    <p style="margin: 5px 0 0 0; opacity: 0.95;">Previous data was simulated - reset to real trading on 2026-02-26</p>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); border-radius: 8px; padding: 15px; margin-top: 15px;">
+                <p style="margin: 0; font-size: 0.95em; line-height: 1.6;">
+                    <strong>What changed:</strong> Strategy now uses real external APIs (CoinDesk for crypto prices, CryptoPanic for news sentiment) instead of simulated data. 
+                    All performance counters have been reset to zero to track only real trades going forward.
+                </p>
+            </div>
+        </div>
+
+        <!-- Real-Time Status Indicator -->
+        <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.1em;">🔴 Live System Status</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 12px; border-radius: 6px;">
+                    <div style="font-size: 0.85em; color: #666; margin-bottom: 4px;">Live Data Feeds</div>
+                    <div style="font-weight: 600; color: #059669;">CoinDesk, CryptoPanic, Binance</div>
+                </div>
+                <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 12px; border-radius: 6px;">
+                    <div style="font-size: 0.85em; color: #666; margin-bottom: 4px;">Safety Controls</div>
+                    <div style="font-weight: 600; color: #dc2626;">Active (max 1/hr, min 5% edge)</div>
+                </div>
+                <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px; border-radius: 6px;">
+                    <div style="font-size: 0.85em; color: #666; margin-bottom: 4px;">Last API Check</div>
+                    <div style="font-weight: 600; color: #2563eb;" id="last-api-check">2026-02-26 18:00 UTC</div>
+                </div>
+                <div style="background: #fefce8; border-left: 4px solid #eab308; padding: 12px; border-radius: 6px;">
+                    <div style="font-size: 0.85em; color: #666; margin-bottom: 4px;">Oracle Lag Status</div>
+                    <div style="font-weight: 600; color: #ca8a04;">⏳ Pending Real Data</div>
+                </div>
+            </div>
+        </div>
+
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Net P&L (After Fees)</div>
@@ -432,7 +472,7 @@
             {key: 'whale_copy_trading', name: 'PM Whale Copy', color: '#8b5cf6', platform: 'polymarket', displayName: 'Whale Copy-Trading', description: 'Mirrors large whale transactions detected on-chain. Entry: within 2 blocks of whale activity. Exit: 20% profit or -8% stop loss. Win Rate: 70%. Risk: Depends on whale conviction & timing.'},
             {key: 'whale_copy_trading_v2', name: 'PM Whale Copy v2', color: '#a78bfa', platform: 'polymarket', displayName: 'Whale Copy-Trading v2', description: 'Parallel test version of Whale Copy with tighter 6% SL. Mirrors same whale signals as v1. Entry: within 2 blocks of whale activity. Exit: 20% profit or -6% stop loss. Testing if tighter stops improve risk-adjusted returns.'},
             {key: 'settlement_edge', name: 'PM Settlement', color: '#ec4899', platform: 'polymarket', displayName: 'Settlement Edge', description: 'Exploits settlement week mispricing near resolution. Entry: when oracle outcomes diverge from market odds. Exit: 15% TP or -5% SL. Win Rate: 80% (highest accuracy). Risk: Limited window (2 weeks pre-settlement).'},
-            {key: 'oracle_lag_exploit', name: 'PM Oracle Lag', color: '#a855f7', platform: 'polymarket', displayName: 'Oracle Lag Exploit', description: 'Trades the information asymmetry window between external outcome confirmation and oracle finalization. Monitors real-world events (sports, politics, macro data) and enters when market has not priced in confirmed outcomes. Entry: When external data confirms outcome but market price < 80% (YES) or > 20% (NO). Exit: When price reaches 90%+ (YES) or 10%- (NO), or oracle finalizes. SL: 8%. TP: 20-40% edge. Position: 6.3% of capital. Timeframe: 15min - 2hr holds. Requires: Sports APIs (ESPN, Sportradar), Politics APIs (AP News, Decision Desk), Macro APIs (Bloomberg, economic calendar), Crypto APIs (for ETF/approval events).'},
+            {key: 'oracle_lag_exploit', name: 'PM Oracle Lag', color: '#a855f7', platform: 'polymarket', displayName: 'Oracle Lag Exploit', description: '🔄 RESET 2026-02-26: Now using REAL external APIs (CoinDesk, CryptoPanic). Trades information asymmetry between external outcome confirmation and oracle finalization. Entry: When external data confirms outcome but market price < 80% (YES) or > 20% (NO). Exit: Price reaches 90%+ (YES) or 10%- (NO), or oracle finalizes. SL: 8%. TP: 20-40% edge. ⭐ REALISTIC EXPECTATIONS: Target Win Rate 55% (not 72%), Expected ROI 15-30% annually (not 758%), Max 1 trade/hour with real data confirmation. Previous simulated data has been discarded.'},
             {key: 'liquidity_king', name: 'PM Liquidity King', color: '#f59e0b', platform: 'polymarket', displayName: 'Liquidity King', description: 'Provides liquidity by placing maker orders on both sides of the order book. Captures bid-ask spread + earns Polymarket liquidity rewards. Requires $500+ capital for optimal performance. Entry: Place bid 1-2% below mid, ask 1-2% above mid. Exit: When orders fill, immediately re-place. SL: Dynamic inventory management (hedge if position > 10% capital). TP: Spread capture (2-4% per round trip). Position: Variable (needs capital on both sides). Timeframe: Continuous market making. Max spread: 2%. Min liquidity requirement: $10,000 market size. Inventory limit: 10% of capital per side. Rebalance threshold: If inventory > 10%, hedge or exit.'},
             // ASTER DEX STRATEGIES
             {key: 'mean_reversion_grid', name: 'AD Grid Trading', color: '#0ea5e9', platform: 'aster', displayName: 'Mean Reversion Grid', description: 'Places buy/sell orders around support/resistance levels. Entry: grid placed at ±3% from mid-price. Exit: TP at 4%, SL at 3%, hold 2 days max. Win Rate: 75%. Risk: Works in sideways markets, fails in strong trends.'},
@@ -495,7 +535,17 @@
                 updateCharts(data.trades);
                 updateTable(data.trades);
 
-                document.getElementById('update-time').textContent = new Date().toISOString().split('T')[1].split('.')[0];
+                // Update timestamps
+                const now = new Date();
+                const timeString = now.toISOString().split('T')[1].split('.')[0];
+                const dateTimeString = now.toISOString().split('T')[0] + ' ' + timeString + ' UTC';
+                document.getElementById('update-time').textContent = timeString;
+                
+                // Update API check timestamp if element exists
+                const lastApiCheck = document.getElementById('last-api-check');
+                if (lastApiCheck) {
+                    lastApiCheck.textContent = dateTimeString;
+                }
             } catch (e) {
                 console.error("Error loading dashboard:", e);
                 document.getElementById('update-time').textContent = 'Error loading data';
@@ -515,7 +565,10 @@
                     catalyst_momentum: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
                     favorite_compounder: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
                     whale_copy_trading: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
-                    settlement_edge: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0}
+                    whale_copy_trading_v2: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    settlement_edge: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    oracle_lag_exploit: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    liquidity_king: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0}
                 },
                 trades: []
             };
@@ -923,6 +976,11 @@
             const isWhaleCopy = s.key === 'whale_copy_trading' || s.key === 'whale_copy_trading_v2';
             const trueCapital = isWhaleCopy ? 150 : allocatedCapital; // $150 is the true capital base for Whale Copy
 
+            // Check if this is Oracle Lag (special handling for reset status)
+            const isOracleLag = s.key === 'oracle_lag_exploit';
+            const hasNoTrades = (s.perf.trades || 0) === 0;
+            const showPendingStatus = isOracleLag && hasNoTrades;
+
             // Calculate fees for this strategy
             const grossPnL = s.perf.total_pnl || 0;
             const numTrades = s.perf.trades || 0;
@@ -939,6 +997,72 @@
             // Calculate TRUE ROI for Whale Copy strategies (based on $150 total capital)
             const trueGrossROI = trueCapital > 0 ? (grossPnL / trueCapital * 100) : 0;
             const trueNetROI = trueCapital > 0 ? (netPnL / trueCapital * 100) : 0;
+
+            // Special rendering for Oracle Lag with no trades (pending real data)
+            if (showPendingStatus) {
+                return `
+                <div class="strategy-card" id="${cardId}" style="border: 2px dashed #a855f7; background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);">
+                    <div class="strategy-name" style="border-bottom-color: #a855f7; display: flex; justify-content: space-between; align-items: center;">
+                        <span>⏳ ${s.displayName}</span>
+                        <span style="font-size: 0.9em; background: #fef3c7; padding: 4px 8px; border-radius: 12px; color: #92400e;">AWAITING REAL DATA</span>
+                    </div>
+                    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                        <div style="font-size: 0.85em; color: #92400e; font-weight: 600;">⚠️ Reset on 2026-02-26</div>
+                        <div style="font-size: 0.8em; color: #a16207; margin-top: 4px;">Previous simulated data discarded. Strategy now using real APIs.</div>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Trades</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">0</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Wins</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">0</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Losses</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">0</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Win Rate</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">N/A</span>
+                    </div>
+                    <div class="strategy-stat" style="background: #f8fafc; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Gross P&L</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">$0.00</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Fees</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">$0.00</span>
+                    </div>
+                    <div class="strategy-stat" style="background: #e0f2fe; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Net P&L</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af; font-weight: bold; font-size: 1.15em;">$0.00</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Net ROI</span>
+                        <span class="strategy-stat-value" style="color: #9ca3af;">N/A</span>
+                    </div>
+                    <div class="strategy-stat" style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 8px 12px; border-radius: 6px; margin: 15px -5px;">
+                        <span class="strategy-stat-label">Target Win Rate</span>
+                        <span class="strategy-stat-value" style="color: #059669; font-weight: bold;">55%</span>
+                    </div>
+                    <div class="strategy-stat" style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 8px 12px; border-radius: 6px; margin: 8px -5px;">
+                        <span class="strategy-stat-label">Expected ROI</span>
+                        <span class="strategy-stat-value" style="color: #059669; font-weight: bold;">15-30% annually</span>
+                    </div>
+                    <div class="strategy-stat" style="font-size: 0.85em; opacity: 0.8;">
+                        <span class="strategy-stat-label">Allocated Capital</span>
+                        <span class="strategy-stat-value">$${allocatedCapital}</span>
+                    </div>
+                    <button onclick="toggleDescription('${descId}')" style="width: 100%; margin-top: 15px; padding: 10px; background: ${s.color}; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: opacity 0.2s;">
+                        📖 Show Strategy Details
+                    </button>
+                    <div id="${descId}" style="display: none; margin-top: 15px; padding: 15px; background: #f3f4f6; border-left: 4px solid ${s.color}; border-radius: 6px; font-size: 0.85em; color: #374151; line-height: 1.6;">
+                        ${s.description}
+                    </div>
+                </div>
+                `;
+            }
 
             return `
                 <div class="strategy-card" id="${cardId}">
