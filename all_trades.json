@@ -1,74 +1,142 @@
 {
   "paper_capital": 1300,
-  "total_pnl": -135.33048365728337,
+  "total_pnl": 684.17,
   "total_roi": -10.410037204406413,
-  "open_positions": 227,
-  "closed_positions": 300,
+  "open_positions": 255,
+  "closed_positions": 1791,
   "last_updated": "2026-02-26T20:35:01.145825+00:00",
   "strategies": {
-    "oracle_lag_exploit": {
-      "name": "Oracle Lag Exploit",
-      "trades": 0,
+    "Contrarian Counter-Trend": {
+      "trades": 130,
+      "wins": 0,
+      "losses": 128,
+      "win_rate": 0.0,
+      "total_pnl": -57.0,
+      "avg_position_size": 29.65,
+      "avg_position_time": 0,
+      "avg_win": 0,
+      "avg_loss": 0.45,
+      "max_drawdown": 0
+    },
+    "DCA Grid Bot": {
+      "trades": 138,
       "wins": 0,
       "losses": 0,
       "win_rate": 0,
-      "total_pnl": 0
+      "total_pnl": 0,
+      "avg_position_size": 33.1,
+      "avg_position_time": 0,
+      "avg_win": 0,
+      "avg_loss": 0,
+      "max_drawdown": 0
     },
-    "mean_reversion_grid": {
-      "name": "Mean Reversion Grid",
-      "trades": 94,
+    "Liquidation Protection": {
+      "trades": 64,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "avg_position_size": 6.49,
+      "avg_position_time": 0,
+      "avg_win": 0,
+      "avg_loss": 0,
+      "max_drawdown": 0
+    },
+    "Mean Reversion Grid": {
+      "trades": 96,
       "wins": 0,
       "losses": 94,
       "win_rate": 0.0,
-      "total_pnl": -71.61247518795435
+      "total_pnl": -71.61,
+      "avg_position_size": 38.63,
+      "avg_position_time": 0,
+      "avg_win": 0,
+      "avg_loss": 0.76,
+      "max_drawdown": 0
     },
-    "dca_grid_bot": {
-      "name": "DCA Grid Bot",
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "win_rate": 0,
-      "total_pnl": 0
-    },
-    "momentum_scalping": {
-      "name": "Momentum Scalping",
+    "Momentum Scalping": {
       "trades": 72,
       "wins": 0,
       "losses": 72,
       "win_rate": 0.0,
-      "total_pnl": -6.320881475515246
+      "total_pnl": -6.32,
+      "avg_position_size": 17.56,
+      "avg_position_time": 0,
+      "avg_win": 0,
+      "avg_loss": 0.09,
+      "max_drawdown": 0
     },
-    "liquidation_protection": {
-      "name": "Liquidation Protection",
-      "trades": 0,
+    "Liquidity King": {
+      "trades": 504,
+      "wins": 151,
+      "losses": 343,
+      "win_rate": 30.57,
+      "total_pnl": -8.32,
+      "avg_position_size": 72.5,
+      "avg_position_time": 0.2,
+      "avg_win": 1.81,
+      "avg_loss": 0.82,
+      "max_drawdown": 0
+    },
+    "Settlement Edge": {
+      "trades": 425,
+      "wins": 290,
+      "losses": 129,
+      "win_rate": 69.21,
+      "total_pnl": 194.32,
+      "avg_position_size": 9.5,
+      "avg_position_time": 0.41,
+      "avg_win": 0.9,
+      "avg_loss": 0.52,
+      "max_drawdown": 0
+    },
+    "Whale Copy-Trading v2": {
+      "trades": 165,
+      "wins": 116,
+      "losses": 43,
+      "win_rate": 72.96,
+      "total_pnl": 140.95,
+      "avg_position_size": 10.05,
+      "avg_position_time": 0.42,
+      "avg_win": 1.46,
+      "avg_loss": 0.65,
+      "max_drawdown": 0
+    },
+    "Whale Copy-Trading": {
+      "trades": 425,
+      "wins": 290,
+      "losses": 129,
+      "win_rate": 69.21,
+      "total_pnl": 491.28,
+      "avg_position_size": 15.79,
+      "avg_position_time": 0.4,
+      "avg_win": 2.3,
+      "avg_loss": 1.35,
+      "max_drawdown": 0
+    },
+    "Whale Alert": {
+      "trades": 9,
+      "wins": 6,
+      "losses": 0,
+      "win_rate": 100.0,
+      "total_pnl": 0.87,
+      "avg_position_size": 0,
+      "avg_position_time": 0,
+      "avg_win": 0.15,
+      "avg_loss": 0,
+      "max_drawdown": 0
+    },
+    "Funding Rate Arbitrage": {
+      "trades": 18,
       "wins": 0,
       "losses": 0,
       "win_rate": 0,
-      "total_pnl": 0
-    },
-    "contrarian_counter-trend": {
-      "name": "Contrarian Counter-Trend",
-      "trades": 128,
-      "wins": 0,
-      "losses": 128,
-      "win_rate": 0.0,
-      "total_pnl": -56.99650874495349
-    },
-    "funding_rate_arb": {
-      "name": "Funding Rate Arbitrage",
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "win_rate": 0.0,
-      "total_pnl": 0
-    },
-    "whale_alert": {
-      "name": "Whale Alert",
-      "trades": 6,
-      "wins": 2,
-      "losses": 4,
-      "win_rate": 33.33333333333333,
-      "total_pnl": -0.4006182488602608
+      "total_pnl": 0,
+      "avg_position_size": 15.0,
+      "avg_position_time": 0,
+      "avg_win": 0,
+      "avg_loss": 0,
+      "max_drawdown": 0
     }
   },
   "trades": [
