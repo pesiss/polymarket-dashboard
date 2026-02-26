@@ -1,77 +1,165 @@
 {
   "paper_capital": 1300,
-  "total_pnl": -118.54339702570037,
-  "total_roi": -9.118722848130798,
-  "open_positions": 205,
-  "closed_positions": 263,
-  "last_updated": "2026-02-26T18:35:01.174315+00:00",
+  "total_pnl": 700.92,
+  "total_roi": -9.122527963457845,
+  "open_positions": 235,
+  "closed_positions": 1756,
+  "last_updated": "2026-02-26T18:43:33.981037+00:00",
   "strategies": {
-    "oracle_lag_exploit": {
-      "name": "Oracle Lag Exploit",
-      "trades": 122,
-      "wins": 87,
-      "losses": 35,
-      "win_rate": 71.31147540983606,
-      "total_pnl": 831.9024
+    "Liquidation Protection": {
+      "trades": 55,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
     },
-    "mean_reversion_grid": {
-      "name": "Mean Reversion Grid",
-      "trades": 84,
+    "Momentum Scalping": {
+      "trades": 66,
+      "wins": 0,
+      "losses": 64,
+      "win_rate": 0.0,
+      "total_pnl": -5.63,
+      "max_drawdown": 0
+    },
+    "DCA Grid Bot": {
+      "trades": 123,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0,
+      "total_pnl": 0,
+      "max_drawdown": 0
+    },
+    "Mean Reversion Grid": {
+      "trades": 89,
       "wins": 0,
       "losses": 84,
       "win_rate": 0.0,
-      "total_pnl": -63.664664499026195
+      "total_pnl": -63.66,
+      "max_drawdown": 0
     },
-    "dca_grid_bot": {
-      "name": "DCA Grid Bot",
-      "trades": 0,
+    "Contrarian Counter-Trend": {
+      "trades": 112,
+      "wins": 0,
+      "losses": 111,
+      "win_rate": 0.0,
+      "total_pnl": -48.89,
+      "max_drawdown": 0
+    },
+    "Liquidity King": {
+      "trades": 504,
+      "wins": 151,
+      "losses": 343,
+      "win_rate": 30.5668016194332,
+      "total_pnl": -8.32,
+      "max_drawdown": 0
+    },
+    "Settlement Edge": {
+      "trades": 425,
+      "wins": 290,
+      "losses": 129,
+      "win_rate": 69.21241050119332,
+      "total_pnl": 194.32,
+      "max_drawdown": 0
+    },
+    "Whale Copy-Trading v2": {
+      "trades": 165,
+      "wins": 116,
+      "losses": 43,
+      "win_rate": 72.95597484276729,
+      "total_pnl": 140.95,
+      "max_drawdown": 0
+    },
+    "Whale Copy-Trading": {
+      "trades": 425,
+      "wins": 290,
+      "losses": 129,
+      "win_rate": 69.21241050119332,
+      "total_pnl": 491.28,
+      "max_drawdown": 0
+    },
+    "Whale Alert": {
+      "trades": 9,
+      "wins": 6,
+      "losses": 0,
+      "win_rate": 100.0,
+      "total_pnl": 0.87,
+      "max_drawdown": 0
+    },
+    "Funding Rate Arbitrage": {
+      "trades": 18,
       "wins": 0,
       "losses": 0,
       "win_rate": 0,
-      "total_pnl": 0
-    },
-    "momentum_scalping": {
-      "name": "Momentum Scalping",
-      "trades": 63,
-      "wins": 0,
-      "losses": 63,
-      "win_rate": 0.0,
-      "total_pnl": -5.624454374296723
-    },
-    "liquidation_protection": {
-      "name": "Liquidation Protection",
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "win_rate": 0,
-      "total_pnl": 0
-    },
-    "contrarian_counter-trend": {
-      "name": "Contrarian Counter-Trend",
-      "trades": 110,
-      "wins": 0,
-      "losses": 110,
-      "win_rate": 0.0,
-      "total_pnl": -48.853659903517205
-    },
-    "funding_rate_arb": {
-      "name": "Funding Rate Arbitrage",
-      "trades": 0,
-      "wins": 0,
-      "losses": 0,
-      "win_rate": 0.0,
-      "total_pnl": 0
-    },
-    "whale_alert": {
-      "name": "Whale Alert",
-      "trades": 6,
-      "wins": 2,
-      "losses": 4,
-      "win_rate": 33.33333333333333,
-      "total_pnl": -0.4006182488602608
+      "total_pnl": 0,
+      "max_drawdown": 0
     }
   },
   "trades": [
+    {
+      "trade_id": "LIQ_18920F29",
+      "timestamp": "2026-02-26T18:40:01.584182+00:00",
+      "strategy": "Liquidation Protection",
+      "market_name": "BTCUSDT",
+      "side": "LONG",
+      "entry_price": 64327.13508037047,
+      "position_size": 0.0001,
+      "notional_value": 6.432713508037048,
+      "status": "OPEN",
+      "exit_price": null,
+      "pnl": null,
+      "pnl_percent": null,
+      "closed_at": null,
+      "source_exchange": "Aster DEX"
+    },
+    {
+      "trade_id": "MOM_FACB32E2",
+      "timestamp": "2026-02-26T18:40:01.562140+00:00",
+      "strategy": "Momentum Scalping",
+      "market_name": "ETHUSDT",
+      "side": "LONG",
+      "entry_price": 3529.1649880673126,
+      "position_size": 0.0005,
+      "notional_value": 1.7645824940336563,
+      "status": "OPEN",
+      "exit_price": null,
+      "pnl": null,
+      "pnl_percent": null,
+      "closed_at": null,
+      "source_exchange": "Aster DEX"
+    },
+    {
+      "trade_id": "DCA_A726AE1B",
+      "timestamp": "2026-02-26T18:40:01.550161+00:00",
+      "strategy": "DCA Grid Bot",
+      "market_name": "BTCUSDT",
+      "side": "LONG",
+      "entry_price": 64951.2998402977,
+      "position_size": 0.0008,
+      "notional_value": 51.96103987223817,
+      "status": "OPEN",
+      "exit_price": null,
+      "pnl": null,
+      "pnl_percent": null,
+      "closed_at": null,
+      "source_exchange": "Aster DEX"
+    },
+    {
+      "trade_id": "MEA_A3634490",
+      "timestamp": "2026-02-26T18:40:01.537633+00:00",
+      "strategy": "Mean Reversion Grid",
+      "market_name": "BTCUSDT",
+      "side": "LONG",
+      "entry_price": 63268.57695921403,
+      "position_size": 0.001,
+      "notional_value": 63.26857695921403,
+      "status": "OPEN",
+      "exit_price": null,
+      "pnl": null,
+      "pnl_percent": null,
+      "closed_at": null,
+      "source_exchange": "Aster DEX"
+    },
     {
       "trade_id": "CON_0223E3BD",
       "timestamp": "2026-02-26T18:35:01.108012+00:00",
@@ -81,10 +169,10 @@
       "entry_price": 3400.2718148179983,
       "position_size": 0.0008,
       "notional_value": 2.7202174518543987,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
-      "pnl_percent": null,
+      "status": "CLOSED",
+      "exit_price": 3349.2677375957282,
+      "pnl": -0.04080326177781598,
+      "pnl_percent": -1.5,
       "closed_at": null,
       "source_exchange": "Aster DEX"
     },
@@ -97,10 +185,10 @@
       "entry_price": 3465.294989522725,
       "position_size": 0.0005,
       "notional_value": 1.7326474947613624,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
-      "pnl_percent": null,
+      "status": "CLOSED",
+      "exit_price": 3447.968514575111,
+      "pnl": -0.008663237473806812,
+      "pnl_percent": -0.5,
       "closed_at": null,
       "source_exchange": "Aster DEX"
     },
@@ -241,22 +329,6 @@
       "entry_price": 0.6599499999999999,
       "position_size": 100,
       "notional_value": 65.99499999999999,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
-      "pnl_percent": null,
-      "closed_at": null,
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_CCF13144",
-      "timestamp": "2026-02-26T18:20:01.482756+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
       "status": "OPEN",
       "exit_price": null,
       "pnl": null,
@@ -441,22 +513,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_41BD37DE",
-      "timestamp": "2026-02-26T18:15:01.679595+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
-      "pnl_percent": null,
-      "closed_at": null,
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_186F3B43",
       "timestamp": "2026-02-26T18:15:01.607005+00:00",
       "strategy": "Settlement Edge",
@@ -617,22 +673,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_05D5A58C",
-      "timestamp": "2026-02-26T18:10:01.877246+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T18:15:01.398713+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_DBCAECC6",
       "timestamp": "2026-02-26T18:10:01.803520+00:00",
       "strategy": "Settlement Edge",
@@ -774,22 +814,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T18:10:01.626363+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_3BA26EE8",
-      "timestamp": "2026-02-26T18:05:01.738322+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
-      "pnl_percent": null,
-      "closed_at": null,
       "source_exchange": "Polymarket"
     },
     {
@@ -969,22 +993,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_23853FEB",
-      "timestamp": "2026-02-26T18:00:01.831992+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T18:05:01.470831+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_0E93D2B8",
       "timestamp": "2026-02-26T18:00:01.764592+00:00",
       "strategy": "Settlement Edge",
@@ -1129,22 +1137,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_3B24F900",
-      "timestamp": "2026-02-26T17:55:01.883717+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T18:00:01.487228+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_159455B6",
       "timestamp": "2026-02-26T17:55:01.818668+00:00",
       "strategy": "Settlement Edge",
@@ -1270,22 +1262,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T18:05:01.470831+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_9084C849",
-      "timestamp": "2026-02-26T17:50:02.167257+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T18:20:01.189843+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -1430,22 +1406,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T18:00:01.487228+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_9BE64ADD",
-      "timestamp": "2026-02-26T17:45:01.502091+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "OPEN",
-      "exit_price": null,
-      "pnl": null,
-      "pnl_percent": null,
-      "closed_at": null,
       "source_exchange": "Polymarket"
     },
     {
@@ -1625,22 +1585,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_B8D15544",
-      "timestamp": "2026-02-26T17:40:01.841017+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:45:01.255454+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_F1A4925E",
       "timestamp": "2026-02-26T17:40:01.776200+00:00",
       "strategy": "Settlement Edge",
@@ -1782,22 +1726,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T17:45:01.255454+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_572DFFB3",
-      "timestamp": "2026-02-26T17:35:01.575643+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T18:15:01.398713+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -1945,22 +1873,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_FCA71149",
-      "timestamp": "2026-02-26T17:30:01.959868+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:40:01.593758+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_C45A1074",
       "timestamp": "2026-02-26T17:30:01.891253+00:00",
       "strategy": "Settlement Edge",
@@ -2070,22 +1982,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T17:40:01.593758+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_46FBC4D5",
-      "timestamp": "2026-02-26T17:25:02.287252+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:50:01.941650+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -2265,22 +2161,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_04E2F231",
-      "timestamp": "2026-02-26T17:20:01.548820+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:35:01.376218+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_169B0F01",
       "timestamp": "2026-02-26T17:20:01.485818+00:00",
       "strategy": "Settlement Edge",
@@ -2406,22 +2286,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T17:20:01.345109+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_71933B9F",
-      "timestamp": "2026-02-26T17:15:01.876972+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:25:02.001319+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -2553,22 +2417,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_1B119D16",
-      "timestamp": "2026-02-26T17:10:02.195896+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:45:01.255454+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_640BE3BA",
       "timestamp": "2026-02-26T17:10:02.148819+00:00",
       "strategy": "Settlement Edge",
@@ -2697,22 +2545,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_20C63F24",
-      "timestamp": "2026-02-26T17:05:02.058255+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:40:01.593758+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_660F4D31",
       "timestamp": "2026-02-26T17:05:02.003844+00:00",
       "strategy": "Settlement Edge",
@@ -2838,22 +2670,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T17:15:01.650418+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_3672FF2F",
-      "timestamp": "2026-02-26T17:00:02.163694+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:20:01.345109+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -2998,22 +2814,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T17:10:01.960419+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_8C951AF2",
-      "timestamp": "2026-02-26T16:55:01.425227+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:50:01.941650+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -3177,22 +2977,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_F3B576E5",
-      "timestamp": "2026-02-26T16:50:01.713961+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:00:01.849127+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_5D95736E",
       "timestamp": "2026-02-26T16:50:01.649356+00:00",
       "strategy": "Settlement Edge",
@@ -3334,22 +3118,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T17:00:01.849127+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_A78D9233",
-      "timestamp": "2026-02-26T16:45:01.980491+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:50:01.454686+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -3513,22 +3281,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_A9762576",
-      "timestamp": "2026-02-26T16:40:02.319381+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:40:01.593758+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_30C0E74F",
       "timestamp": "2026-02-26T16:40:02.259095+00:00",
       "strategy": "Settlement Edge",
@@ -3673,22 +3425,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_A3D1045A",
-      "timestamp": "2026-02-26T16:35:02.112163+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:40:02.099197+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_1D417534",
       "timestamp": "2026-02-26T16:35:02.051221+00:00",
       "strategy": "Settlement Edge",
@@ -3796,22 +3532,6 @@
       "status": "CLOSED",
       "exit_price": 0.6764487499999998,
       "pnl": 1.6498749999999995,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:35:01.817326+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_D5A1673D",
-      "timestamp": "2026-02-26T16:30:02.238975+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T16:35:01.817326+00:00",
       "source_exchange": "Polymarket"
@@ -3940,22 +3660,6 @@
       "status": "CLOSED",
       "exit_price": 0.6533505,
       "pnl": -0.6599499999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:40:02.099197+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_85286EF4",
-      "timestamp": "2026-02-26T16:25:01.892175+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T16:40:02.099197+00:00",
       "source_exchange": "Polymarket"
@@ -4121,22 +3825,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_EB9E153F",
-      "timestamp": "2026-02-26T16:20:01.682032+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:50:01.454686+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_05C58D72",
       "timestamp": "2026-02-26T16:20:01.642623+00:00",
       "strategy": "Settlement Edge",
@@ -4294,22 +3982,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T16:20:01.443039+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_DAB57E2B",
-      "timestamp": "2026-02-26T16:15:01.959937+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:35:01.376218+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -4473,22 +4145,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_D8EAE38E",
-      "timestamp": "2026-02-26T16:10:02.170068+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T17:20:01.345109+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_F1346443",
       "timestamp": "2026-02-26T16:10:02.109555+00:00",
       "strategy": "Settlement Edge",
@@ -4646,22 +4302,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T16:10:01.797136+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_D8E9EBC9",
-      "timestamp": "2026-02-26T16:05:02.438324+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:20:01.443039+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -4841,22 +4481,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_13A09E5B",
-      "timestamp": "2026-02-26T16:00:04.568024+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:05:02.199335+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_E3EF51C7",
       "timestamp": "2026-02-26T16:00:04.492865+00:00",
       "strategy": "Settlement Edge",
@@ -5001,22 +4625,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_553566D2",
-      "timestamp": "2026-02-26T15:55:01.710608+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:15:01.712468+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_8B677755",
       "timestamp": "2026-02-26T15:55:01.642642+00:00",
       "strategy": "Settlement Edge",
@@ -5142,22 +4750,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T16:05:02.199335+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_284E1F20",
-      "timestamp": "2026-02-26T15:50:02.011893+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:15:01.712468+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -5302,22 +4894,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T16:00:04.243534+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_3B0F3346",
-      "timestamp": "2026-02-26T15:45:02.252461+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:05:02.199335+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -5481,22 +5057,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_7C9100D8",
-      "timestamp": "2026-02-26T15:40:01.418819+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:00:04.243534+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_9735173A",
       "timestamp": "2026-02-26T15:40:01.366667+00:00",
       "strategy": "Settlement Edge",
@@ -5638,22 +5198,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T15:50:01.678387+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_920A4FF8",
-      "timestamp": "2026-02-26T15:35:02.153501+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:20:01.443039+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -5817,22 +5361,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_A7AAEDF2",
-      "timestamp": "2026-02-26T15:30:01.601108+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:40:01.214643+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_7A8AD770",
       "timestamp": "2026-02-26T15:30:01.514641+00:00",
       "strategy": "Settlement Edge",
@@ -5958,22 +5486,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T15:35:01.957341+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_4D709C25",
-      "timestamp": "2026-02-26T15:25:02.084117+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:05:02.199335+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -6105,22 +5617,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_72074B0F",
-      "timestamp": "2026-02-26T15:20:02.452725+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:25:01.887456+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_E4101B00",
       "timestamp": "2026-02-26T15:20:02.411193+00:00",
       "strategy": "Settlement Edge",
@@ -6249,22 +5745,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_AFE34974",
-      "timestamp": "2026-02-26T15:15:01.565929+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:25:01.887456+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_D7F1DCA7",
       "timestamp": "2026-02-26T15:15:01.524127+00:00",
       "strategy": "Settlement Edge",
@@ -6390,22 +5870,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T15:25:01.887456+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_21DCBE9A",
-      "timestamp": "2026-02-26T15:10:01.830250+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:55:01.448093+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -6585,22 +6049,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_8B5C8FCE",
-      "timestamp": "2026-02-26T15:05:01.668713+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:15:01.350021+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_CCC67CA8",
       "timestamp": "2026-02-26T15:05:01.624544+00:00",
       "strategy": "Settlement Edge",
@@ -6758,22 +6206,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T15:15:01.350021+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_CAC752A1",
-      "timestamp": "2026-02-26T15:00:01.851622+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:05:01.409432+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -6937,22 +6369,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_5595F5CB",
-      "timestamp": "2026-02-26T14:55:02.048287+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T16:30:01.527282+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_4C04561A",
       "timestamp": "2026-02-26T14:55:01.992890+00:00",
       "strategy": "Settlement Edge",
@@ -7062,22 +6478,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T14:55:01.815901+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_26BC3231",
-      "timestamp": "2026-02-26T14:50:01.453416+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:10:01.660069+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -7206,22 +6606,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T14:55:01.815901+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_9D3C86AB",
-      "timestamp": "2026-02-26T14:45:01.897139+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:35:01.957341+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -7401,22 +6785,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_458F9162",
-      "timestamp": "2026-02-26T14:40:01.291287+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:55:01.815901+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_6FF390DE",
       "timestamp": "2026-02-26T14:40:01.260479+00:00",
       "strategy": "Settlement Edge",
@@ -7561,22 +6929,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_87F469EA",
-      "timestamp": "2026-02-26T14:35:02.148463+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:40:01.144803+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_908180E9",
       "timestamp": "2026-02-26T14:35:02.104416+00:00",
       "strategy": "Settlement Edge",
@@ -7702,22 +7054,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T14:45:01.673607+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_A02702E1",
-      "timestamp": "2026-02-26T14:30:02.499090+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:20:02.191227+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -7881,22 +7217,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_756DF36C",
-      "timestamp": "2026-02-26T14:25:01.475697+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:35:01.929422+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_D64B16CD",
       "timestamp": "2026-02-26T14:25:01.438489+00:00",
       "strategy": "Settlement Edge",
@@ -8038,22 +7358,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T14:35:01.929422+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_0AF04C3D",
-      "timestamp": "2026-02-26T14:20:01.954398+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:55:01.815901+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -8217,22 +7521,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_9C40C131",
-      "timestamp": "2026-02-26T14:15:01.983944+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:25:01.330585+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_548E1EC9",
       "timestamp": "2026-02-26T14:15:01.944709+00:00",
       "strategy": "Settlement Edge",
@@ -8374,22 +7662,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T14:25:01.330585+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_4AD24D32",
-      "timestamp": "2026-02-26T14:10:01.497762+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:15:01.825952+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -8553,22 +7825,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_4C9E198E",
-      "timestamp": "2026-02-26T14:05:02.421176+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:15:01.350021+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_006E4175",
       "timestamp": "2026-02-26T14:05:02.369391+00:00",
       "strategy": "Settlement Edge",
@@ -8729,22 +7985,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_E820BEEA",
-      "timestamp": "2026-02-26T14:00:02.526281+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T15:30:01.326965+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_093D8653",
       "timestamp": "2026-02-26T14:00:02.467405+00:00",
       "strategy": "Settlement Edge",
@@ -8886,22 +8126,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T14:10:01.340746+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_273128ED",
-      "timestamp": "2026-02-26T13:55:01.704100+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:05:02.111702+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -9049,22 +8273,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_9ACAB68D",
-      "timestamp": "2026-02-26T13:50:02.071791+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:10:01.340746+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_FD2EF7EA",
       "timestamp": "2026-02-26T13:50:02.029357+00:00",
       "strategy": "Settlement Edge",
@@ -9190,22 +8398,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T13:50:01.871964+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_CF060821",
-      "timestamp": "2026-02-26T13:45:01.521490+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:15:01.825952+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -9364,22 +8556,6 @@
       "status": "CLOSED",
       "exit_price": 0.6764487499999998,
       "pnl": 1.6498749999999995,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:45:01.296050+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_08567812",
-      "timestamp": "2026-02-26T13:40:01.871848+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T13:45:01.296050+00:00",
       "source_exchange": "Polymarket"
@@ -9545,22 +8721,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_18CC4179",
-      "timestamp": "2026-02-26T13:35:01.780915+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:45:01.296050+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_75200C23",
       "timestamp": "2026-02-26T13:35:01.745421+00:00",
       "strategy": "Settlement Edge",
@@ -9721,22 +8881,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_45DC11B2",
-      "timestamp": "2026-02-26T13:30:02.166275+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:35:01.624699+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_F0AAEC66",
       "timestamp": "2026-02-26T13:30:02.031236+00:00",
       "strategy": "Settlement Edge",
@@ -9860,22 +9004,6 @@
       "status": "CLOSED",
       "exit_price": 0.6533505,
       "pnl": -0.6599499999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:40:01.670837+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_56CAADD5",
-      "timestamp": "2026-02-26T13:25:01.821764+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
       "pnl_percent": null,
       "closed_at": "2026-02-26T13:40:01.670837+00:00",
       "source_exchange": "Polymarket"
@@ -10073,22 +9201,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_374FEBFD",
-      "timestamp": "2026-02-26T13:20:01.481024+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:00:02.204296+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_1657116E",
       "timestamp": "2026-02-26T13:20:01.435848+00:00",
       "strategy": "Settlement Edge",
@@ -10246,22 +9358,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T13:25:01.614001+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_C3231882",
-      "timestamp": "2026-02-26T13:15:01.971487+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:30:01.538663+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -10441,22 +9537,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_07B90139",
-      "timestamp": "2026-02-26T13:10:02.344235+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:20:01.643001+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_7982B86D",
       "timestamp": "2026-02-26T13:10:02.294060+00:00",
       "strategy": "Settlement Edge",
@@ -10598,22 +9678,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T13:20:01.335557+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_C6F9BF78",
-      "timestamp": "2026-02-26T13:05:02.090034+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T14:15:01.825952+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -10793,22 +9857,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_2CC8F66A",
-      "timestamp": "2026-02-26T13:00:02.398083+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:05:01.902196+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_02986F45",
       "timestamp": "2026-02-26T13:00:02.352639+00:00",
       "strategy": "Settlement Edge",
@@ -10948,22 +9996,6 @@
       "status": "CLOSED",
       "exit_price": 0.6533505,
       "pnl": -0.6599499999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:10:02.131857+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_6A76EA94",
-      "timestamp": "2026-02-26T12:55:01.598405+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T13:10:02.131857+00:00",
       "source_exchange": "Polymarket"
@@ -11113,22 +10145,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_991715C1",
-      "timestamp": "2026-02-26T12:50:02.056725+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:00:02.102053+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_DFED7512",
       "timestamp": "2026-02-26T12:50:02.013291+00:00",
       "strategy": "Settlement Edge",
@@ -11270,22 +10286,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T13:00:02.102053+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_7156985A",
-      "timestamp": "2026-02-26T12:45:01.364516+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:50:01.803223+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -11444,22 +10444,6 @@
       "status": "CLOSED",
       "exit_price": 0.6533505,
       "pnl": -0.6599499999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:55:01.430791+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_A65B8762",
-      "timestamp": "2026-02-26T12:40:01.846105+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T12:55:01.430791+00:00",
       "source_exchange": "Polymarket"
@@ -11625,22 +10609,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_56467A30",
-      "timestamp": "2026-02-26T12:35:01.742635+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:50:01.803223+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_13F4872B",
       "timestamp": "2026-02-26T12:35:01.697050+00:00",
       "strategy": "Settlement Edge",
@@ -11798,22 +10766,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T12:35:01.552231+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_B1A53749",
-      "timestamp": "2026-02-26T12:30:01.988682+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:45:01.175500+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -11977,22 +10929,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_28B0DEF1",
-      "timestamp": "2026-02-26T12:25:02.025545+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T13:10:02.131857+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_4DC16AA0",
       "timestamp": "2026-02-26T12:25:01.981884+00:00",
       "strategy": "Settlement Edge",
@@ -12116,22 +11052,6 @@
       "status": "CLOSED",
       "exit_price": 0.6764487499999998,
       "pnl": 1.6498749999999995,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:25:01.876704+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_A95C9B76",
-      "timestamp": "2026-02-26T12:20:01.476688+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T12:25:01.876704+00:00",
       "source_exchange": "Polymarket"
@@ -12278,22 +11198,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T12:30:01.505992+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_3C33DD8D",
-      "timestamp": "2026-02-26T12:15:01.571531+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:40:01.637521+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -12457,22 +11361,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_78AB4968",
-      "timestamp": "2026-02-26T12:10:01.998721+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:40:01.637521+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_35CE1768",
       "timestamp": "2026-02-26T12:10:01.956320+00:00",
       "strategy": "Settlement Edge",
@@ -12598,22 +11486,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T12:20:01.266611+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_2D007767",
-      "timestamp": "2026-02-26T12:05:01.892653+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:10:01.817034+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -12761,22 +11633,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_CA451AC0",
-      "timestamp": "2026-02-26T12:00:02.122215+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:20:01.266611+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_8CB9C083",
       "timestamp": "2026-02-26T12:00:02.082023+00:00",
       "strategy": "Settlement Edge",
@@ -12918,22 +11774,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T12:10:01.817034+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_E80C9CF8",
-      "timestamp": "2026-02-26T11:55:01.464845+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:15:01.361518+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -13092,22 +11932,6 @@
       "status": "CLOSED",
       "exit_price": 0.6764487499999998,
       "pnl": 1.6498749999999995,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:55:01.275224+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_9BDF7261",
-      "timestamp": "2026-02-26T11:50:01.856092+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T11:55:01.275224+00:00",
       "source_exchange": "Polymarket"
@@ -13289,22 +12113,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_4229E982",
-      "timestamp": "2026-02-26T11:45:02.145189+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:55:01.275224+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_C0B453F0",
       "timestamp": "2026-02-26T11:45:02.100892+00:00",
       "strategy": "Settlement Edge",
@@ -13481,22 +12289,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_B0631889",
-      "timestamp": "2026-02-26T11:40:01.636347+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:50:01.674932+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_AACBB5CD",
       "timestamp": "2026-02-26T11:40:01.608621+00:00",
       "strategy": "Settlement Edge",
@@ -13638,22 +12430,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T11:45:01.964076+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_F296D1EF",
-      "timestamp": "2026-02-26T11:35:01.531564+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:40:01.487579+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -13817,22 +12593,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_EFB95819",
-      "timestamp": "2026-02-26T11:30:02.118360+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:50:01.674932+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_C01FED6C",
       "timestamp": "2026-02-26T11:30:02.015406+00:00",
       "strategy": "Settlement Edge",
@@ -13974,22 +12734,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T11:40:01.487579+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_AB7723CE",
-      "timestamp": "2026-02-26T11:25:02.074235+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:45:01.964076+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -14153,22 +12897,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_04A028C2",
-      "timestamp": "2026-02-26T11:20:01.761523+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:40:01.487579+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_ADB29595",
       "timestamp": "2026-02-26T11:20:01.738642+00:00",
       "strategy": "Settlement Edge",
@@ -14329,22 +13057,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_84885EDC",
-      "timestamp": "2026-02-26T11:15:01.362508+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:20:01.657808+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_CB62E24E",
       "timestamp": "2026-02-26T11:15:01.336333+00:00",
       "strategy": "Settlement Edge",
@@ -14486,22 +13198,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T11:15:01.244458+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_96D6A7D3",
-      "timestamp": "2026-02-26T11:10:01.968622+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:30:01.505992+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -14665,22 +13361,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_36D866D8",
-      "timestamp": "2026-02-26T11:05:01.847334+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T12:05:01.703220+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_527DD5EF",
       "timestamp": "2026-02-26T11:05:01.793491+00:00",
       "strategy": "Settlement Edge",
@@ -14838,22 +13518,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T11:15:01.244458+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_BC3693D9",
-      "timestamp": "2026-02-26T11:00:02.233690+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:45:01.964076+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -15033,22 +13697,6 @@
       "source_exchange": "Aster DEX"
     },
     {
-      "trade_id": "ORA_C868C386",
-      "timestamp": "2026-02-26T10:55:01.461111+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:00:01.931335+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "DCA_36FD656F",
       "timestamp": "2026-02-26T10:55:01.444304+00:00",
       "strategy": "DCA Grid Bot",
@@ -15174,22 +13822,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T11:05:01.622389+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_A7C3E51A",
-      "timestamp": "2026-02-26T10:50:01.932340+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:00:01.931335+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -15337,22 +13969,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_38BB296F",
-      "timestamp": "2026-02-26T10:45:01.415900+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:50:01.724454+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_96B3DC87",
       "timestamp": "2026-02-26T10:45:01.393324+00:00",
       "strategy": "Settlement Edge",
@@ -15497,22 +14113,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_EBF61FDA",
-      "timestamp": "2026-02-26T10:40:02.073666+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:00:01.931335+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_944F4BC5",
       "timestamp": "2026-02-26T10:40:02.040225+00:00",
       "strategy": "Settlement Edge",
@@ -15638,22 +14238,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T10:45:01.324133+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_397AF4D5",
-      "timestamp": "2026-02-26T10:35:02.004713+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T11:05:01.622389+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -15833,22 +14417,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_B85D9E85",
-      "timestamp": "2026-02-26T10:30:02.305216+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:45:01.324133+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_6F34189F",
       "timestamp": "2026-02-26T10:30:02.251104+00:00",
       "strategy": "Settlement Edge",
@@ -15990,22 +14558,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T10:40:01.960424+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_4DBEE34D",
-      "timestamp": "2026-02-26T10:25:02.102199+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:45:01.324133+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -16153,22 +14705,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_5D2BF23B",
-      "timestamp": "2026-02-26T10:20:01.648787+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:30:01.991619+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_8BD792AC",
       "timestamp": "2026-02-26T10:20:01.603209+00:00",
       "strategy": "Settlement Edge",
@@ -16276,22 +14812,6 @@
       "status": "CLOSED",
       "exit_price": 0.6764487499999998,
       "pnl": 1.6498749999999995,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:25:01.963248+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_C6FE686D",
-      "timestamp": "2026-02-26T10:15:02.175541+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T10:25:01.963248+00:00",
       "source_exchange": "Polymarket"
@@ -16422,22 +14942,6 @@
       "pnl": -1.6498749999999998,
       "pnl_percent": null,
       "closed_at": "2026-02-26T10:20:01.470451+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_F92EBF04",
-      "timestamp": "2026-02-26T10:10:01.669554+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:30:01.991619+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -16617,22 +15121,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_54C7CE0D",
-      "timestamp": "2026-02-26T10:05:01.684069+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:45:01.324133+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_6375F79E",
       "timestamp": "2026-02-26T10:05:01.642318+00:00",
       "strategy": "Settlement Edge",
@@ -16788,22 +15276,6 @@
       "status": "CLOSED",
       "exit_price": 0.6764487499999998,
       "pnl": 1.6498749999999995,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:10:01.527322+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_9FD3EE70",
-      "timestamp": "2026-02-26T10:00:01.965952+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
       "pnl_percent": null,
       "closed_at": "2026-02-26T10:10:01.527322+00:00",
       "source_exchange": "Polymarket"
@@ -16985,22 +15457,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_5B4CD783",
-      "timestamp": "2026-02-26T09:55:01.364804+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:25:01.963248+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_F8999FC8",
       "timestamp": "2026-02-26T09:55:01.336444+00:00",
       "strategy": "Settlement Edge",
@@ -17145,22 +15601,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_F7A3FCDB",
-      "timestamp": "2026-02-26T09:50:01.922735+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:25:01.963248+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_68973C12",
       "timestamp": "2026-02-26T09:50:01.892910+00:00",
       "strategy": "Settlement Edge",
@@ -17286,22 +15726,6 @@
       "pnl": -1.6498749999999998,
       "pnl_percent": null,
       "closed_at": "2026-02-26T09:55:01.268844+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_7E80E470",
-      "timestamp": "2026-02-26T09:45:01.443958+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:00:01.750611+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -17481,22 +15905,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_A2A25F65",
-      "timestamp": "2026-02-26T09:40:01.921258+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:55:01.268844+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_C2072713",
       "timestamp": "2026-02-26T09:40:01.888091+00:00",
       "strategy": "Settlement Edge",
@@ -17622,22 +16030,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T09:50:01.790635+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_C20EDF45",
-      "timestamp": "2026-02-26T09:35:01.880458+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:45:01.324133+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -17801,22 +16193,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_74D6592C",
-      "timestamp": "2026-02-26T09:30:02.172245+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:50:01.790635+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_1271164F",
       "timestamp": "2026-02-26T09:30:02.070389+00:00",
       "strategy": "Settlement Edge",
@@ -17974,22 +16350,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T09:35:01.711764+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_FC1DAE7C",
-      "timestamp": "2026-02-26T09:25:02.176004+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:55:01.268844+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -18153,22 +16513,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_62D22EC0",
-      "timestamp": "2026-02-26T09:20:01.937284+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T10:00:01.750611+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_4FC0B3B4",
       "timestamp": "2026-02-26T09:20:01.904174+00:00",
       "strategy": "Settlement Edge",
@@ -18329,22 +16673,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_9DCC8883",
-      "timestamp": "2026-02-26T09:15:01.498926+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:35:01.711764+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_0C27D00C",
       "timestamp": "2026-02-26T09:15:01.474933+00:00",
       "strategy": "Settlement Edge",
@@ -18486,22 +16814,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T09:20:01.800599+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_43C33BA0",
-      "timestamp": "2026-02-26T09:10:02.109930+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:15:01.373913+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -18665,22 +16977,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_DB372C12",
-      "timestamp": "2026-02-26T09:05:01.878454+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:40:01.793568+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_4F471281",
       "timestamp": "2026-02-26T09:05:01.849877+00:00",
       "strategy": "Settlement Edge",
@@ -18841,22 +17137,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_DE529E50",
-      "timestamp": "2026-02-26T09:00:02.446067+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:25:02.052602+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_3A0BA504",
       "timestamp": "2026-02-26T09:00:02.388651+00:00",
       "strategy": "Settlement Edge",
@@ -18985,22 +17265,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_78760FA2",
-      "timestamp": "2026-02-26T08:55:01.863502+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:15:01.373913+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_BFB123A4",
       "timestamp": "2026-02-26T08:55:01.835010+00:00",
       "strategy": "Settlement Edge",
@@ -19126,22 +17390,6 @@
       "pnl": -1.6498749999999998,
       "pnl_percent": null,
       "closed_at": "2026-02-26T09:00:02.207640+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_0048CE9D",
-      "timestamp": "2026-02-26T08:50:01.497877+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:55:01.755545+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -19321,22 +17569,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_C858E224",
-      "timestamp": "2026-02-26T08:45:01.165451+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:20:01.800599+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_E7810E7A",
       "timestamp": "2026-02-26T08:45:01.144589+00:00",
       "strategy": "Settlement Edge",
@@ -19492,22 +17724,6 @@
       "status": "CLOSED",
       "exit_price": 0.6764487499999998,
       "pnl": 1.6498749999999995,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:45:01.087354+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_32DDB924",
-      "timestamp": "2026-02-26T08:40:01.829210+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T08:45:01.087354+00:00",
       "source_exchange": "Polymarket"
@@ -19673,22 +17889,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_537BB968",
-      "timestamp": "2026-02-26T08:35:01.809286+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:55:01.755545+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_2145D87D",
       "timestamp": "2026-02-26T08:35:01.777269+00:00",
       "strategy": "Settlement Edge",
@@ -19798,22 +17998,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T08:45:01.087354+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_179133AF",
-      "timestamp": "2026-02-26T08:30:02.318313+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:55:01.755545+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -19942,22 +18126,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T08:35:01.684299+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_BDE2C59E",
-      "timestamp": "2026-02-26T08:25:01.701609+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T09:10:01.978853+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -20121,22 +18289,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_F499CB69",
-      "timestamp": "2026-02-26T08:20:01.304197+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:25:01.585585+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_80471F1F",
       "timestamp": "2026-02-26T08:20:01.276239+00:00",
       "strategy": "Settlement Edge",
@@ -20276,22 +18428,6 @@
       "status": "CLOSED",
       "exit_price": 0.6533505,
       "pnl": -0.6599499999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:30:02.027724+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_A565F81E",
-      "timestamp": "2026-02-26T08:15:01.674936+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T08:30:02.027724+00:00",
       "source_exchange": "Polymarket"
@@ -20457,22 +18593,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_C80E54FB",
-      "timestamp": "2026-02-26T08:10:01.376192+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:15:01.603973+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_64572FD3",
       "timestamp": "2026-02-26T08:10:01.353041+00:00",
       "strategy": "Settlement Edge",
@@ -20598,22 +18718,6 @@
       "pnl": -0.6599499999999999,
       "pnl_percent": null,
       "closed_at": "2026-02-26T08:20:01.192020+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_6EE1EF5E",
-      "timestamp": "2026-02-26T08:05:01.410267+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:10:01.280724+00:00",
       "source_exchange": "Polymarket"
     },
     {
@@ -20809,22 +18913,6 @@
       "source_exchange": "Polymarket"
     },
     {
-      "trade_id": "ORA_AD209B2B",
-      "timestamp": "2026-02-26T08:00:01.947518+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.6588,
-      "pnl": -3.8556000000000004,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:50:01.385586+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
       "trade_id": "SET_E6462D5C",
       "timestamp": "2026-02-26T08:00:01.919753+00:00",
       "strategy": "Settlement Edge",
@@ -20966,22 +19054,6 @@
       "pnl": 1.6498749999999995,
       "pnl_percent": null,
       "closed_at": "2026-02-26T08:05:01.260705+00:00",
-      "source_exchange": "Polymarket"
-    },
-    {
-      "trade_id": "ORA_2DB2677C",
-      "timestamp": "2026-02-26T07:55:01.418561+00:00",
-      "strategy": "Oracle Lag Exploit",
-      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
-      "side": "YES",
-      "entry_price": 0.72,
-      "position_size": 63,
-      "notional_value": 45.36,
-      "status": "CLOSED",
-      "exit_price": 0.8964000000000001,
-      "pnl": 11.113199999999999,
-      "pnl_percent": null,
-      "closed_at": "2026-02-26T08:10:01.280724+00:00",
       "source_exchange": "Polymarket"
     },
     {
