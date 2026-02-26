@@ -493,20 +493,23 @@
             // This means TRUE ROI should be calculated on $150, not $75 per strategy
             'whale_copy_trading': 75,  // v1: 50% of $150 original allocation
             'whale_copy_trading_v2': 75,  // v2: 50% of $150 original allocation (6% SL test)
-            'settlement_edge': 150,     // 4% SL optimized
+            'settlement_edge': 185,     // 3.5% SL optimized (was $150, increased to $185 on 2026-02-26)
             'oracle_lag_exploit': 100,  // Test allocation for data feed-dependent strategy
             'liquidity_king': 200,      // Needs more capital for market making on both sides
             // Reserved capital (not actively deployed)
             '_reserved_capital': 1000,   // Preserved for future strategy deployment
             // Aster DEX strategies
-            'mean_reversion_grid': 25,
+            'mean_reversion_grid': 10,   // Reduced from $25 to $10 on 2026-02-26
             'dca_grid_bot': 20,
-            'momentum_scalping': 20,
+            'momentum_scalping': 10,     // Reduced from $20 to $10 on 2026-02-26
             'liquidation_protection': 20,
-            'contrarian_counter-trend': 15,
+            'contrarian_counter-trend': 5,  // Reduced from $15 to $5 on 2026-02-26
             // Other strategies
             'funding_rate_arb': 50,     // Minimal allocation estimate
-            'whale_alert': 30           // Minimal allocation estimate
+            'whale_alert': 30,          // Minimal allocation estimate
+            // Metadata
+            '_last_reallocation': '2026-02-26',
+            '_reallocation_notes': 'Settlement Edge +$35 (150→185), Mean Reversion -$15 (25→10), Contrarian -$10 (15→5), Momentum -$10 (20→10)'
         };
 
         // Load trades data
@@ -1279,3 +1282,4 @@
     </script>
 </body>
 </html>
+<!-- Deployed: 2026-02-26-20:41:55 UTC -->
