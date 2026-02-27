@@ -221,6 +221,21 @@
         
         // Load immediately and refresh every 60 seconds
         loadData();
+        
+        // Aggressive Cache Buster: Reload if data is too old
+        setInterval(async () => {
+            const response = await fetch('data.json?t=' + Date.now());
+            const data = await response.json();
+            const lastUpdatedTime = new Date(data.last_updated).getTime();
+            const currentTime = new Date().getTime();
+            const differenceInMinutes = (currentTime - lastUpdatedTime) / (1000 * 60);
+
+            // If data is older than 5 minutes, force a hard refresh
+            if (differenceInMinutes > 5) {
+                console.warn("Data is stale, forcing hard refresh to bypass Vercel cache.");
+                window.location.reload(true); // true for hard refresh
+            }
+        }, 30000); // Check every 30 seconds for stale data
         setInterval(loadData, 60000);
     </script>
 </body>
