@@ -992,3 +992,37 @@ To https://github.com/pesiss/polymarket-dashboard.git
    8f2198b..7680d6d  main -> main
 ✅ Consolidation + Push SUCCESS at 2026-02-27 01:05:01 UTC
 
+[2026-02-27 01:35:01 UTC] Starting consolidation...
+2026-02-27 01:35:01,377 - INFO - Loading Polymarket trades...
+2026-02-27 01:35:01,415 - INFO - Loading Aster DEX trades...
+2026-02-27 01:35:01,422 - WARNING - JSON decode error on /home/pesiss/.openclaw/agents/aster-dex/aster_trades.json (attempt 1/3): Expecting property name enclosed in double quotes: line 2252 column 7 (char 65484)
+2026-02-27 01:35:03,429 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 01:35:03,430 - INFO - Loading Whale Alert trades...
+2026-02-27 01:35:03,431 - INFO - Consolidated 2232 trades from 4 sources
+2026-02-27 01:35:03,433 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 01:35:03,507 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 01:35:03,508 - INFO - Consolidation complete: PNL=$652.37, ROI=50.2%, Trades=2232
+Result: P&L: $652.37 | ROI: 50.2% | Closed: 1902
+[main bfa7523] Auto: Consolidate trades [2026-02-27 01:35:01 UTC] - P&L: $652.37 | ROI: 50.2% | Closed: 1902
+ 1 file changed, 738 insertions(+), 146 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   4aa7de2..bfa7523  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 01:35:01 UTC
+
+[2026-02-27 02:05:01 UTC] Starting consolidation...
+2026-02-27 02:05:01,553 - INFO - Loading Polymarket trades...
+2026-02-27 02:05:01,575 - WARNING - JSON decode error on /home/pesiss/.openclaw/agents/polymarket/trades.json (attempt 1/3): Expecting value: line 15486 column 22 (char 490836)
+2026-02-27 02:05:03,594 - INFO - Loading Aster DEX trades...
+2026-02-27 02:05:03,605 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 02:05:03,606 - INFO - Loading Whale Alert trades...
+2026-02-27 02:05:03,607 - INFO - Consolidated 2305 trades from 4 sources
+2026-02-27 02:05:03,609 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 02:05:03,667 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 02:05:03,667 - INFO - Consolidation complete: PNL=$696.93, ROI=53.6%, Trades=2305
+Result: P&L: $696.93 | ROI: 53.6% | Closed: 1980
+[main a12c617] Auto: Consolidate trades [2026-02-27 02:05:01 UTC] - P&L: $696.93 | ROI: 53.6% | Closed: 1980
+ 1 file changed, 1355 insertions(+), 187 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   bfa7523..a12c617  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 02:05:01 UTC
+
