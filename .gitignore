@@ -1,0 +1,7 @@
+
+# Secrets - NEVER commit
+.env
+*.secret
+*.key
+openclaw.json.backup*
+*.bak
