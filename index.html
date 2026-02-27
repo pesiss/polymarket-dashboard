@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Polymarket Dashboard - Clean</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .header h1 { color: #333; font-size: 28px; margin-bottom: 8px; }
+        .header p { color: #666; font-size: 14px; }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+        }
+        .metric-value.positive { color: #22c55e; }
+        .metric-value.negative { color: #ef4444; }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        .strategies {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .strategies h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        tr:hover { background: #f8f9fa; }
+        .positive { color: #22c55e; }
+        .negative { color: #ef4444; }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .status.good { background: #dcfce7; color: #166534; }
+        .status.bad { background: #fee2e2; color: #991b1b; }
+        .status.warn { background: #fef3c7; color: #92400e; }
+        .refresh-note {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Polymarket Dashboard</h1>
+            <p>Real-time trading performance | <span id="last-updated">Loading...</span></p>
+        </div>
+        
+        <div class="metrics" id="metrics">
+            <div class="metric-card">
+                <div class="metric-value" id="total-pnl">Loading...</div>
+                <div class="metric-label">Total PNL</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="total-trades">Loading...</div>
+                <div class="metric-label">Total Trades</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="closed-positions">Loading...</div>
+                <div class="metric-label">Closed Positions</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="overall-roi">Loading...</div>
+                <div class="metric-label">Overall ROI</div>
+            </div>
+        </div>
+        
+        <div class="strategies">
+            <h2>Strategy Performance</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Trades</th>
+                        <th>Win Rate</th>
+                        <th>PNL</th>
+                        <th>Avg Position</th>
+                        <th>Avg Hold</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="strategy-table">
+                    <tr><td colspan="7">Loading...</td></tr>
+                </tbody>
+            </table>
+            <p class="refresh-note">Auto-refreshes every 60 seconds | Data from all_trades.json</p>
+        </div>
+    </div>
+
+    <script>
+        async function loadData() {
+            try {
+                // Cache-busting with timestamp
+                const response = await fetch('data.json?t=' + Date.now());
+                const data = await response.json();
+                
+                // Update header timestamp
+                document.getElementById('last-updated').textContent = 
+                    new Date().toLocaleString();
+                
+                // Update main metrics
+                const totalPNL = data.total_pnl || 0;
+                const totalTrades = data.trades ? data.trades.length : 0;
+                const closedPos = data.closed_positions || 0;
+                const openPos = data.open_positions || 0;
+                const paperCapital = data.paper_capital || 1300;
+                const roi = ((totalPNL / paperCapital) * 100).toFixed(1);
+                
+                document.getElementById('total-pnl').textContent = '$' + totalPNL.toFixed(2);
+                document.getElementById('total-pnl').className = 'metric-value ' + (totalPNL >= 0 ? 'positive' : 'negative');
+                document.getElementById('total-trades').textContent = totalTrades;
+                document.getElementById('closed-positions').textContent = closedPos;
+                document.getElementById('overall-roi').textContent = roi + '%';
+                document.getElementById('overall-roi').className = 'metric-value ' + (roi >= 0 ? 'positive' : 'negative');
+                
+                // Update strategy table
+                const strategies = data.strategies || {};
+                const tableBody = document.getElementById('strategy-table');
+                
+                // Sort by PNL (highest first)
+                const sortedStrategies = Object.entries(strategies)
+                    .sort((a, b) => b[1].total_pnl - a[1].total_pnl);
+                
+                tableBody.innerHTML = sortedStrategies.map(([name, perf]) => {
+                    const winRate = perf.win_rate || 0;
+                    const pnl = perf.total_pnl || 0;
+                    const trades = perf.trades || 0;
+                    const avgSize = perf.avg_position_size || 0;
+                    const avgHold = perf.avg_position_time || 0;
+                    
+                    let statusClass = 'warn';
+                    let statusText = 'MODERATE';
+                    if (winRate >= 65 && pnl > 0) {
+                        statusClass = 'good';
+                        statusText = 'PERFORMER';
+                    } else if (pnl < 0 || winRate < 50) {
+                        statusClass = 'bad';
+                        statusText = 'LOSING';
+                    }
+                    
+                    return `<tr>
+                        <td><strong>${name.replace(/_/g, ' ').toUpperCase()}</strong></td>
+                        <td>${trades}</td>
+                        <td>${winRate.toFixed(1)}%</td>
+                        <td class="${pnl >= 0 ? 'positive' : 'negative'}">$${pnl.toFixed(2)}</td>
+                        <td>$${avgSize.toFixed(2)}</td>
+                        <td>${avgHold.toFixed(1)}h</td>
+                        <td><span class="status ${statusClass}">${statusText}</span></td>
+                    </tr>`;
+                }).join('');
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('strategy-table').innerHTML = 
+                    `<tr><td colspan="7" style="color:red">Error loading data: ${error.message}</td></tr>`;
+            }
+        }
+        
+        // Load immediately and refresh every 60 seconds
+        loadData();
+        setInterval(loadData, 60000);
+    </script>
+</body>
+</html>
