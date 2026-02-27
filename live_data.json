@@ -1,20 +1,51 @@
 {
   "paper_capital": 1000,
-  "reserved_capital": 1000,
-  "reserved_capital_note": "Reserved for future strategy deployment",
-  "allocated": {
-    "whale_copy_trading": 75,
-    "whale_copy_trading_v2": 75,
-    "settlement_edge": 150,
-    "oracle_lag_exploit": 100
-  },
-  "portfolio": {
-    "total_value": 1000,
-    "cash_available": 1000,
-    "open_positions": 22,
-    "closed_positions": 1225,
-    "total_pnl": 1281.3316499999999,
-    "total_roi": 128.133165
+  "total_pnl": 1292.0028499999999,
+  "total_roi": 129.20028499999998,
+  "open_positions": 21,
+  "closed_positions": 1230,
+  "last_updated": "2026-02-27T06:10:00.000000",
+  "strategies": {
+    "Whale Copy-Trading": {
+      "name": "Whale Copy-Trading",
+      "trades": 478,
+      "wins": 290,
+      "losses": 188,
+      "total_pnl": 491.28084999999936,
+      "avg_position_size": 45.0,
+      "avg_position_time": 20.0,
+      "win_rate": 60.66945606694561
+    },
+    "Settlement Edge": {
+      "name": "Settlement Edge",
+      "trades": 481,
+      "wins": 290,
+      "losses": 191,
+      "total_pnl": 194.32250000000084,
+      "avg_position_size": 45.0,
+      "avg_position_time": 20.0,
+      "win_rate": 60.2910602910603
+    },
+    "Whale Copy-Trading v2": {
+      "name": "Whale Copy-Trading v2",
+      "trades": 217,
+      "wins": 116,
+      "losses": 101,
+      "total_pnl": 140.95124999999987,
+      "avg_position_size": 45.0,
+      "avg_position_time": 20.0,
+      "win_rate": 53.45622119815668
+    },
+    "Oracle Lag Exploit": {
+      "name": "Oracle Lag Exploit",
+      "trades": 54,
+      "wins": 0,
+      "losses": 54,
+      "total_pnl": 0,
+      "avg_position_size": 45.0,
+      "avg_position_time": 20.0,
+      "win_rate": 0.0
+    }
   },
   "trades": [
     {
@@ -24129,10 +24160,10 @@
       "position_size": 15,
       "notional_value": 10.05,
       "expected_profit": null,
-      "status": "OPEN",
-      "exit_price": null,
-      "actual_profit": null,
-      "resolved_at": null,
+      "status": "CLOSED",
+      "exit_price": 0.7671500000000001,
+      "actual_profit": 1.45725,
+      "resolved_at": "2026-02-27T06:10:01.998118+00:00",
       "sl_pct": 0.06,
       "tp_pct": 0.2,
       "max_hold_days": 2
@@ -24262,10 +24293,10 @@
       "position_size": 15,
       "notional_value": 10.05,
       "expected_profit": null,
-      "status": "OPEN",
-      "exit_price": null,
-      "actual_profit": null,
-      "resolved_at": null,
+      "status": "CLOSED",
+      "exit_price": 0.6130500000000001,
+      "actual_profit": -0.8542500000000002,
+      "resolved_at": "2026-02-27T06:10:01.998118+00:00",
       "sl_pct": 0.08,
       "tp_pct": 0.2,
       "max_hold_days": 2
@@ -24300,10 +24331,10 @@
       "position_size": 25,
       "notional_value": 9.5,
       "expected_profit": null,
-      "status": "OPEN",
-      "exit_price": null,
-      "actual_profit": null,
-      "resolved_at": null,
+      "status": "CLOSED",
+      "exit_price": 0.3591,
+      "actual_profit": -0.5225,
+      "resolved_at": "2026-02-27T06:10:01.998118+00:00",
       "sl_pct": 0.035,
       "tp_pct": 0.15,
       "max_hold_days": 15
@@ -24623,10 +24654,10 @@
       "position_size": 63,
       "notional_value": 45.36,
       "expected_profit": null,
-      "status": "OPEN",
-      "exit_price": null,
-      "actual_profit": null,
-      "resolved_at": null,
+      "status": "CLOSED",
+      "exit_price": 0.8964000000000001,
+      "actual_profit": 11.113199999999999,
+      "resolved_at": "2026-02-27T06:10:01.998118+00:00",
       "sl_pct": 0.08,
       "tp_pct": 0.3,
       "max_hold_days": 0.1
@@ -24680,10 +24711,10 @@
       "position_size": 25,
       "notional_value": 9.5,
       "expected_profit": null,
-      "status": "OPEN",
-      "exit_price": null,
-      "actual_profit": null,
-      "resolved_at": null,
+      "status": "CLOSED",
+      "exit_price": 0.3591,
+      "actual_profit": -0.5225,
+      "resolved_at": "2026-02-27T06:10:01.998118+00:00",
       "sl_pct": 0.035,
       "tp_pct": 0.15,
       "max_hold_days": 15
@@ -24706,48 +24737,82 @@
       "sl_pct": 0.08,
       "tp_pct": 0.3,
       "max_hold_days": 0.1
+    },
+    {
+      "trade_id": "WHA_B10FAD5F",
+      "timestamp": "2026-02-27T06:10:02.052917+00:00",
+      "strategy": "Whale Copy-Trading",
+      "market_id": "market_1",
+      "market_name": "Theo4 \u2192 Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.67,
+      "position_size": 15,
+      "notional_value": 10.05,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null,
+      "sl_pct": 0.08,
+      "tp_pct": 0.2,
+      "max_hold_days": 2
+    },
+    {
+      "trade_id": "WHA_A1275461",
+      "timestamp": "2026-02-27T06:10:02.107208+00:00",
+      "strategy": "Whale Copy-Trading v2",
+      "market_id": "market_1",
+      "market_name": "Theo4 \u2192 Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.67,
+      "position_size": 15,
+      "notional_value": 10.05,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null,
+      "sl_pct": 0.06,
+      "tp_pct": 0.2,
+      "max_hold_days": 2
+    },
+    {
+      "trade_id": "SET_329655DC",
+      "timestamp": "2026-02-27T06:10:02.160804+00:00",
+      "strategy": "Settlement Edge",
+      "market_id": "market_5",
+      "market_name": "Will there be a crypto market crash >30% in 2026?",
+      "side": "NO",
+      "entry_price": 0.38,
+      "position_size": 25,
+      "notional_value": 9.5,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null,
+      "sl_pct": 0.035,
+      "tp_pct": 0.15,
+      "max_hold_days": 15
+    },
+    {
+      "trade_id": "ORA_184B5C83",
+      "timestamp": "2026-02-27T06:10:02.214049+00:00",
+      "strategy": "Oracle Lag Exploit",
+      "market_id": "market_1",
+      "market_name": "[LAG] Will Bitcoin exceed $100,000 by end of 2026?",
+      "side": "YES",
+      "entry_price": 0.72,
+      "position_size": 63,
+      "notional_value": 45.36,
+      "expected_profit": null,
+      "status": "OPEN",
+      "exit_price": null,
+      "actual_profit": null,
+      "resolved_at": null,
+      "sl_pct": 0.08,
+      "tp_pct": 0.3,
+      "max_hold_days": 0.1
     }
-  ],
-  "performance": {
-    "whale_copy_trading": {
-      "trades": 477,
-      "wins": 327,
-      "losses": 150,
-      "win_rate": 68.55345911949685,
-      "total_pnl": 527.2598499999999,
-      "max_drawdown": 0
-    },
-    "whale_copy_trading_v2": {
-      "trades": 216,
-      "wins": 155,
-      "losses": 61,
-      "win_rate": 71.75925925925925,
-      "total_pnl": 186.0255,
-      "max_drawdown": 0
-    },
-    "settlement_edge": {
-      "trades": 479,
-      "wins": 329,
-      "losses": 150,
-      "win_rate": 68.6847599164927,
-      "total_pnl": 218.54749999999999,
-      "max_drawdown": 0
-    },
-    "oracle_lag_exploit": {
-      "trades": 53,
-      "wins": 37,
-      "losses": 16,
-      "win_rate": 69.81132075471697,
-      "total_pnl": 349.49879999999996,
-      "max_drawdown": 0
-    }
-  },
-  "last_updated": "2026-02-27T06:05:01.389711+00:00",
-  "status": "LIVE",
-  "active_strategies": 4,
-  "removed_strategies": [
-    "binary_complement_arb",
-    "catalyst_momentum",
-    "favorite_compounder"
   ]
 }
