@@ -17,7 +17,7 @@ MAX_RETRIES = 3
 RETRY_DELAY = 2  # seconds
 MIN_EXPECTED_TRADES = {
     "polymarket": 400,  # Polymarket should have 400+ trades
-    "aster": 50,
+    "aster": 50,  # Aster DEX should have 50+ trades
     "funding": 5,
     "whale": 5
 }
@@ -29,7 +29,7 @@ OUTPUT_FILE = "/home/pesiss/.openclaw/workspace/all_trades.json"
 SOURCE_FILES = {
     "polymarket": "/home/pesiss/.openclaw/agents/polymarket/trades.json",
     "aster": "/home/pesiss/.openclaw/agents/aster-dex/aster_trades.json",
-    "funding": "/home/pesiss/.openclaw/agents/arbitrage/funding_trades.json",
+    "funding": "/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json",
     "whale": "/home/pesiss/.openclaw/agents/whale-alert/whale_trades.json"
 }
 
