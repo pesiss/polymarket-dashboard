@@ -1,1 +1,347 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n    <meta http-equiv=\"Expires\" content=\"0\">\n    <title>Polymarket Dashboard - Advanced</title>\n    <style>\n        * { box-sizing: border-box; margin: 0; padding: 0; }\n        body { \n            font-family: -apple-system, BlinkMacMacSystemFont, \'Segoe UI\', Roboto, sans-serif;\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            min-height: 100vh;\n            padding: 20px;\n            color: #333;\n        }\n        .container { max-width: 1200px; margin: 0 auto; }\n        .header {\n            background: rgba(255,255,255,0.95);\n            border-radius: 16px;\n            padding: 24px;\n            margin-bottom: 20px;\n            box-shadow: 0 10px 40px rgba(0,0,0,0.1);\n        }\n        .header h1 { color: #333; font-size: 28px; margin-bottom: 8px; }\n        .header p { color: #666; font-size: 14px; }\n        .metrics-grid {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n            gap: 16px;\n            margin-bottom: 20px;\n        }\n        .metric-card {\n            background: rgba(255,255,255,0.95);\n            border-radius: 12px;\n            padding: 20px;\n            text-align: center;\n            box-shadow: 0 4px 12px rgba(0,0,0,0.1);\n        }\n        .metric-value {\n            font-size: 28px;\n            font-weight: bold;\n            color: #333;\n        }\n        .metric-value.positive { color: #22c55e; }\n        .metric-value.negative { color: #ef4444; }\n        .metric-label {\n            font-size: 11px;\n            color: #666;\n            text-transform: uppercase;\n            margin-top: 4px;\n        }\n        .section-title {\n            color: #fff;\n            font-size: 22px;\n            margin: 30px 0 15px 0;\n            text-align: center;\n            text-shadow: 0 2px 4px rgba(0,0,0,0.2);\n        }\n        .strategies-section, .chart-section {\n            background: rgba(255,255,255,0.95);\n            border-radius: 16px;\n            padding: 24px;\n            margin-bottom: 20px;\n            box-shadow: 0 10px 40px rgba(0,0,0,0.1);\n        }\n        .strategies-section h2, .chart-section h2 {\n            color: #333;\n            font-size: 20px;\n            margin-bottom: 16px;\n        }\n        table {\n            width: 100%;\n            border-collapse: collapse;\n            margin-bottom: 20px;\n        }\n        th, td {\n            padding: 12px;\n            text-align: left;\n            border-bottom: 1px solid #eee;\n            font-size: 13px;\n        }\n        th {\n            background: #f8f9fa;\n            font-weight: 600;\n            color: #333;\n            font-size: 12px;\n            text-transform: uppercase;\n        }\n        tr:hover { background: #f8f9fa; }\n        .positive { color: #22c55e; }\n        .negative { color: #ef4444; }\n        .status {\n            display: inline-block;\n            padding: 4px 8px;\n            border-radius: 4px;\n            font-size: 10px;\n            font-weight: 600;\n        }\n        .status.good { background: #dcfce7; color: #166534; }\n        .status.bad { background: #fee2e2; color: #991b1b; }\n        .status.warn { background: #fef3c7; color: #92400e; }\n        .refresh-note {\n            text-align: center;\n            color: #ccc;\n            font-size: 12px;\n            margin-top: 16px;\n        }\n        canvas {\n            width: 100%;\n            height: 300px;\n            border: 1px solid #eee;\n            background: #fff;\n            border-radius: 8px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>📊 Polymarket Dashboard - Advanced</h1>\n            <p>Real-time trading performance & Compounding Simulation | <span id=\"last-updated\">Loading...</span></p>\n            <div style=\"margin-top: 12px; padding: 8px 12px; background: #dcfce7; border-radius: 6px; font-size: 12px; color: #166534;\">\n                <strong>✅ FOCUSED ON WINNERS:</strong> Whale Copy v1/v2 • Settlement Edge (Oracle Lag DISABLED)\n            </div>\n        </div>\n        \n        <h2 class=\"section-title\">📈 Actual Performance (Active Strategies)</h2>\n        <div class=\"metrics-grid\" id=\"actual-metrics\">\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"actual-total-pnl\">Loading...</div>\n                <div class=\"metric-label\">Total PNL</div>\n            </div>\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"actual-closed-trades\">Loading...</div>\n                <div class=\"metric-label\">Closed Trades</div>\n            </div>\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"actual-open-positions\">Loading...</div>\n                <div class=\"metric-label\">Open Positions</div>\n            </div>\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"actual-overall-roi\">Loading...</div>\n                <div class=\"metric-label\">Overall ROI</div>\n            </div>\n        </div>\n\n        <h2 class=\"section-title\">💰 Simulated Compounding Performance</h2>\n        <div class=\"metrics-grid\" id=\"compounding-metrics\">\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"compounding-total-pnl\">Loading...</div>\n                <div class=\"metric-label\">Compounding PNL</div>\n            </div>\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"compounding-closed-trades\">Loading...</div>\n                <div class=\"metric-label\">Compounding Trades</div>\n            </div>\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"compounding-overall-roi\">Loading...</div>\n                <div class=\"metric-label\">Compounding ROI</div>\n            </div>\n            <div class=\"metric-card\">\n                <div class=\"metric-value\" id=\"compounding-cap-multiplier\">Loading...</div>\n                <div class=\"metric-label\">Max Multiplier</div>\n            </div>\n        </div>\n\n        <div class=\"strategies-section\">\n            <h2>Strategy Breakdown (Active Only)</h2>\n            <table>\n                <thead>\n                    <tr>\n                        <th>Strategy</th>\n                        <th>Trades</th>\n                        <th>Win Rate</th>\n                        <th>PNL</th>\n                        <th>Status</th>\n                    </tr>\n                </thead>\n                <tbody id=\"strategy-table\">\n                    <tr><td colspan=\"5\">Loading...</td></tr>\n                </tbody>\n            </table>\n        </div>\n\n        <h2 class=\"section-title\">📈 PNL Comparison Over Time</h2>\n        <div class=\"chart-section\">\n            <canvas id=\"pnlChart\"></canvas>\n            <p class=\"refresh-note\">Actual PNL (Blue) vs. Compounding PNL (Green)</p>\n        </div>\n\n    </div>\n\n    <script>\n        async function loadData() {\n            try {\n                const response = await fetch(\'live_data.json?t=\' + Date.now());\n                const data = await response.json();\n                \n                document.getElementById(\'last-updated\').textContent = \n                    new Date().toLocaleString();\n                \n                // --- Actual Metrics ---\n                const actual = data.actual || {};\n                const actualTotalPNL = actual.total_pnl || 0;\n                const actualClosedTrades = actual.closed_trades || 0;\n                const actualOpenPositions = actual.open_positions || 0;\n                const actualOverallROI = actual.total_roi || 0;\n\n                document.getElementById(\'actual-total-pnl\').textContent = \'$\' + actualTotalPNL.toFixed(2);\n                document.getElementById(\'actual-total-pnl\').className = \'metric-value \' + (actualTotalPNL >= 0 ? \'positive\' : \'negative\');\n                document.getElementById(\'actual-closed-trades\').textContent = actualClosedTrades;\n                document.getElementById(\'actual-open-positions\').textContent = actualOpenPositions;\n                document.getElementById(\'actual-overall-roi\').textContent = actualOverallROI.toFixed(1) + \'%\';\n                document.getElementById(\'actual-overall-roi\').className = \'metric-value \' + (actualOverallROI >= 0 ? \'positive\' : \'negative\');\n                \n                // --- Compounding Metrics ---\n                const compounding = data.compounding || {};\n                const compoundingTotalPNL = compounding.total_pnl || 0;\n                const compoundingClosedTrades = compounding.closed_trades || 0;\n                const compoundingOverallROI = compounding.total_roi || 0;\n                const compoundingCapMultiplier = data.compounding_cap_multiplier || 3.0;\n\n                document.getElementById(\'compounding-total-pnl\').textContent = \'$\' + compoundingTotalPNL.toFixed(2);\n                document.getElementById(\'compounding-total-pnl\').className = \'metric-value \' + (compoundingTotalPNL >= 0 ? \'positive\' : \'negative\');\n                document.getElementById(\'compounding-closed-trades\').textContent = compoundingClosedTrades;\n                document.getElementById(\'compounding-overall-roi\').textContent = compoundingOverallROI.toFixed(1) + \'%\';\n                document.getElementById(\'compounding-overall-roi\').className = \'metric-value \' + (compoundingOverallROI >= 0 ? \'positive\' : \'negative\');\n                document.getElementById(\'compounding-cap-multiplier\').textContent = compoundingCapMultiplier + \'x\';\n                \n                // --- Strategy Table ---\n                const strategies = actual.strategies || {};\n                const tableBody = document.getElementById(\'strategy-table\');\n                \n                const sortedStrategies = Object.entries(strategies)\n                    .sort((a, b) => b[1].total_pnl - a[1].total_pnl);\n                \n                tableBody.innerHTML = sortedStrategies.map(([name, perf]) => {\n                    const winRate = perf.win_rate || 0;\n                    const pnl = perf.total_pnl || 0;\n                    const trades = perf.trades || 0;\n                    \n                    let statusClass = \'warn\';\n                    let statusText = \'MODERATE\';\n                    if (winRate >= 60 && pnl > 0) { // Adjusted threshold for general profitability\n                        statusClass = \'good\';\n                        statusText = \'PROFITING\';\n                    } else if (pnl < 0 || winRate < 40) {\n                        statusClass = \'bad\';\n                        statusText = \'LOSING\';\n                    }\n                    \n                    return `<tr>\n                        <td><strong>${name.replace(/_/g, \' \').toUpperCase()}</strong></td>\n                        <td>${trades}</td>\n                        <td>${winRate.toFixed(1)}%</td>\n                        <td class=\"${pnl >= 0 ? \'positive\' : \'negative\'}\">$${pnl.toFixed(2)}</td>\n                        <td><span class=\"status ${statusClass}\">${statusText}</span></td>\n                    </tr>`;\n                }).join(\'\');\n\n                // --- PNL Comparison Chart ---\n                const chartCanvas = document.getElementById(\'pnlChart\');\n                const ctx = chartCanvas.getContext(\'2d\');\n                \n                const actualHistory = actual.pnl_history || [];\n                const compoundingHistory = compounding.pnl_history || [];\n\n                // Ensure both histories have the same number of points for comparison\n                const maxLength = Math.max(actualHistory.length, compoundingHistory.length);\n                \n                // Extract labels (timestamps) and PNL values\n                const labels = Array.from({length: maxLength}, (_, i) => \`Trade ${i + 1}\`);\n                const actualPNLValues = actualHistory.map(item => item.pnl);\n                const compoundingPNLValues = compoundingHistory.map(item => item.pnl);\n\n                // Determine min/max PNL for scaling\n                const allPNLValues = [...actualPNLValues, ...compoundingPNLValues];\n                const minPNL = Math.min(0, ...allPNLValues) * 1.1; // 10% buffer\n                const maxPNL = Math.max(0, ...allPNLValues) * 1.1; // 10% buffer\n                const pnlRange = maxPNL - minPNL;\n\n                // Clear previous drawing\n                ctx.clearRect(0, 0, chartCanvas.width, chartCanvas.height);\n                \n                // Draw axes\n                ctx.strokeStyle = \'#ccc\';\n                ctx.lineWidth = 1;\n                ctx.beginPath();\n                ctx.moveTo(0, chartCanvas.height / 2); // X-axis (approx zero line)\n                ctx.lineTo(chartCanvas.width, chartCanvas.height / 2);\n                ctx.stroke();\n\n                // Function to draw a line\n                function drawLine(pnlHistory, color) {\n                    if (pnlHistory.length === 0) return;\n                    ctx.beginPath();\n                    ctx.strokeStyle = color;\n                    ctx.lineWidth = 2;\n                    const xStep = chartCanvas.width / (maxLength - 1);\n                    \n                    pnlHistory.forEach((item, index) => {\n                        const x = index * xStep;\n                        const y = chartCanvas.height - ((item.pnl - minPNL) / pnlRange * chartCanvas.height);\n                        if (index === 0) {\n                            ctx.moveTo(x, y);\n                        } else {\n                            ctx.lineTo(x, y);\n                        }\n                    });\n                    ctx.stroke();\n                }\n\n                drawLine(actualHistory, \'blue\'); // Actual PNL\n                drawLine(compoundingHistory, \'green\'); // Compounding PNL\n\n            } catch (error) {\n                console.error(\'Error loading data:\', error);\n                document.getElementById(\'strategy-table\').innerHTML = \n                    `<tr><td colspan=\"5\" style=\"color:red\">Error loading data: ${error.message}</td></tr>`;\n                document.getElementById(\'actual-total-pnl\').textContent = \'ERROR\';\n                document.getElementById(\'compounding-total-pnl\').textContent = \'ERROR\';\n            }\n        }\n        \n        // Load immediately and refresh every 60 seconds\n        loadData();\n        setInterval(loadData, 60000);\n\n        // Aggressive Cache Buster: Reload if data is too old\n        setInterval(async () => {\n            const response = await fetch(\'live_data.json?t=\' + Date.now());\n            const data = await response.json();\n            const lastUpdatedTime = new Date(data.timestamp).getTime(); // Use new timestamp key\n            const currentTime = new Date().getTime();\n            const differenceInMinutes = (currentTime - lastUpdatedTime) / (1000 * 60);\n\n            if (differenceInMinutes > 5) {\n                console.warn(\"Data is stale, forcing hard refresh to bypass Vercel cache.\");\n                window.location.reload(true);\n            }\n        }, 30000); // Check every 30 seconds for stale data\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Polymarket Dashboard - Advanced</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .header h1 { color: #333; font-size: 28px; margin-bottom: 8px; }
+        .header p { color: #666; font-size: 14px; }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .metric-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+        .metric-value.positive { color: #22c55e; }
+        .metric-value.negative { color: #ef4444; }
+        .metric-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        .section-title {
+            color: #fff;
+            font-size: 22px;
+            margin: 30px 0 15px 0;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .strategies-section, .chart-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .strategies-section h2, .chart-section h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        tr:hover { background: #f8f9fa; }
+        .positive { color: #22c55e; }
+        .negative { color: #ef4444; }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .status.good { background: #dcfce7; color: #166534; }
+        .status.bad { background: #fee2e2; color: #991b1b; }
+        .status.warn { background: #fef3c7; color: #92400e; }
+        .refresh-note {
+            text-align: center;
+            color: #ccc;
+            font-size: 12px;
+            margin-top: 16px;
+        }
+        canvas {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #eee;
+            background: #fff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Polymarket Dashboard - Advanced</h1>
+            <p>Real-time trading performance & Compounding Simulation | <span id="last-updated">Loading...</span></p>
+            <div style="margin-top: 12px; padding: 8px 12px; background: #dcfce7; border-radius: 6px; font-size: 12px; color: #166534;">
+                <strong>✅ FOCUSED ON WINNERS:</strong> Whale Copy v1/v2 • Settlement Edge (Oracle Lag DISABLED)
+            </div>
+        </div>
+        
+        <h2 class="section-title">📈 Actual Performance (Active Strategies)</h2>
+        <div class="metrics-grid" id="actual-metrics">
+            <div class="metric-card">
+                <div class="metric-value" id="actual-total-pnl">Loading...</div>
+                <div class="metric-label">Total PNL</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="actual-closed-trades">Loading...</div>
+                <div class="metric-label">Closed Trades</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="actual-open-positions">Loading...</div>
+                <div class="metric-label">Open Positions</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="actual-overall-roi">Loading...</div>
+                <div class="metric-label">Overall ROI</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">💰 Simulated Compounding Performance</h2>
+        <div class="metrics-grid" id="compounding-metrics">
+            <div class="metric-card">
+                <div class="metric-value" id="compounding-total-pnl">Loading...</div>
+                <div class="metric-label">Compounding PNL</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="compounding-closed-trades">Loading...</div>
+                <div class="metric-label">Compounding Trades</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="compounding-overall-roi">Loading...</div>
+                <div class="metric-label">Compounding ROI</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="compounding-cap-multiplier">Loading...</div>
+                <div class="metric-label">Max Multiplier</div>
+            </div>
+        </div>
+
+        <div class="strategies-section">
+            <h2>Strategy Breakdown (Active Only)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Trades</th>
+                        <th>Win Rate</th>
+                        <th>PNL</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="strategy-table">
+                    <tr><td colspan="5">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">📈 PNL Comparison Over Time</h2>
+        <div class="chart-section">
+            <canvas id="pnlChart"></canvas>
+            <p class="refresh-note">Actual PNL (Blue) vs. Compounding PNL (Green)</p>
+        </div>
+
+    </div>
+
+    <script>
+        async function loadData() {
+            try {
+                const response = await fetch('live_data.json?t=' + Date.now());
+                const data = await response.json();
+                
+                document.getElementById('last-updated').textContent = 
+                    new Date().toLocaleString();
+                
+                // --- Actual Metrics ---
+                const actual = data.actual || {};
+                const actualTotalPNL = actual.total_pnl || 0;
+                const actualClosedTrades = actual.closed_trades || 0;
+                const actualOpenPositions = actual.open_positions || 0;
+                const actualOverallROI = actual.total_roi || 0;
+
+                document.getElementById('actual-total-pnl').textContent = '$' + actualTotalPNL.toFixed(2);
+                document.getElementById('actual-total-pnl').className = 'metric-value ' + (actualTotalPNL >= 0 ? 'positive' : 'negative');
+                document.getElementById('actual-closed-trades').textContent = actualClosedTrades;
+                document.getElementById('actual-open-positions').textContent = actualOpenPositions;
+                document.getElementById('actual-overall-roi').textContent = actualOverallROI.toFixed(1) + '%';
+                document.getElementById('actual-overall-roi').className = 'metric-value ' + (actualOverallROI >= 0 ? 'positive' : 'negative');
+                
+                // --- Compounding Metrics ---
+                const compounding = data.compounding || {};
+                const compoundingTotalPNL = compounding.total_pnl || 0;
+                const compoundingClosedTrades = compounding.closed_trades || 0;
+                const compoundingOverallROI = compounding.total_roi || 0;
+                const compoundingCapMultiplier = data.compounding_cap_multiplier || 3.0;
+
+                document.getElementById('compounding-total-pnl').textContent = '$' + compoundingTotalPNL.toFixed(2);
+                document.getElementById('compounding-total-pnl').className = 'metric-value ' + (compoundingTotalPNL >= 0 ? 'positive' : 'negative');
+                document.getElementById('compounding-closed-trades').textContent = compoundingClosedTrades;
+                document.getElementById('compounding-overall-roi').textContent = compoundingOverallROI.toFixed(1) + '%';
+                document.getElementById('compounding-overall-roi').className = 'metric-value ' + (compoundingOverallROI >= 0 ? 'positive' : 'negative');
+                document.getElementById('compounding-cap-multiplier').textContent = compoundingCapMultiplier + 'x';
+                
+                // --- Strategy Table ---
+                const strategies = actual.strategies || {};
+                const tableBody = document.getElementById('strategy-table');
+                
+                const sortedStrategies = Object.entries(strategies)
+                    .sort((a, b) => b[1].total_pnl - a[1].total_pnl);
+                
+                tableBody.innerHTML = sortedStrategies.map(([name, perf]) => {
+                    const winRate = perf.win_rate || 0;
+                    const pnl = perf.total_pnl || 0;
+                    const trades = perf.trades || 0;
+                    
+                    let statusClass = 'warn';
+                    let statusText = 'MODERATE';
+                    if (winRate >= 60 && pnl > 0) { // Adjusted threshold for general profitability
+                        statusClass = 'good';
+                        statusText = 'PROFITING';
+                    } else if (pnl < 0 || winRate < 40) {
+                        statusClass = 'bad';
+                        statusText = 'LOSING';
+                    }
+                    
+                    return `<tr>
+                        <td><strong>${name.replace(/_/g, ' ').toUpperCase()}</strong></td>
+                        <td>${trades}</td>
+                        <td>${winRate.toFixed(1)}%</td>
+                        <td class="${pnl >= 0 ? 'positive' : 'negative'}">$${pnl.toFixed(2)}</td>
+                        <td><span class="status ${statusClass}">${statusText}</span></td>
+                    </tr>`;
+                }).join('');
+
+                // --- PNL Comparison Chart ---
+                const chartCanvas = document.getElementById('pnlChart');
+                const ctx = chartCanvas.getContext('2d');
+                
+                const actualHistory = actual.pnl_history || [];
+                const compoundingHistory = compounding.pnl_history || [];
+
+                // Ensure both histories have the same number of points for comparison
+                const maxLength = Math.max(actualHistory.length, compoundingHistory.length);
+                
+                // Extract labels (timestamps) and PNL values
+                const labels = Array.from({length: maxLength}, (_, i) => `Trade ${i + 1}`);
+                const actualPNLValues = actualHistory.map(item => item.pnl);
+                const compoundingPNLValues = compoundingHistory.map(item => item.pnl);
+
+                // Determine min/max PNL for scaling
+                const allPNLValues = [...actualPNLValues, ...compoundingPNLValues];
+                const minPNL = Math.min(0, ...allPNLValues) * 1.1; // 10% buffer
+                const maxPNL = Math.max(0, ...allPNLValues) * 1.1; // 10% buffer
+                const pnlRange = maxPNL - minPNL; 
+
+                // Clear previous drawing
+                ctx.clearRect(0, 0, chartCanvas.width, chartCanvas.height); 
+                
+                // Draw axes
+                ctx.strokeStyle = '#ccc';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(0, chartCanvas.height - (0 - minPNL) / pnlRange * chartCanvas.height); // Y-axis at zero PNL
+                ctx.lineTo(chartCanvas.width, chartCanvas.height - (0 - minPNL) / pnlRange * chartCanvas.height);
+                ctx.stroke();
+
+                // Function to draw a line
+                function drawLine(pnlHistory, color) {
+                    if (pnlHistory.length === 0) return;
+                    ctx.beginPath();
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = 2;
+                    const xStep = chartCanvas.width / (maxLength - 1);
+                    
+                    pnlHistory.forEach((item, index) => {
+                        const x = index * xStep;
+                        const y = chartCanvas.height - ((item.pnl - minPNL) / pnlRange * chartCanvas.height);
+                        if (index === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    });
+                    ctx.stroke();
+                }
+
+                drawLine(actualHistory, 'blue'); // Actual PNL
+                drawLine(compoundingHistory, 'green'); // Compounding PNL
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('strategy-table').innerHTML = 
+                    `<tr><td colspan="5" style="color:red">Error loading data: ${error.message}</td></tr>`;
+                document.getElementById('actual-total-pnl').textContent = 'ERROR';
+                document.getElementById('compounding-total-pnl').textContent = 'ERROR';
+            }
+        }
+        
+        // Load immediately and refresh every 60 seconds
+        loadData();
+        setInterval(loadData, 60000);
+
+        // Aggressive Cache Buster: Reload if data is too old
+        setInterval(async () => {
+            const response = await fetch('live_data.json?t=' + Date.now());
+            const data = await response.json();
+            const lastUpdatedTime = new Date(data.timestamp).getTime();
+            const currentTime = new Date().getTime();
+            const differenceInMinutes = (currentTime - lastUpdatedTime) / (1000 * 60);
+
+            if (differenceInMinutes > 5) {
+                console.warn("Data is stale, forcing hard refresh to bypass Vercel cache.");
+                window.location.reload(true);
+            }
+        }, 30000); // Check every 30 seconds for stale data
+    </script>
+</body>
+</html>
