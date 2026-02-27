@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Paper Trading - All 9 Strategies Live</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-value.positive {
+            color: #10b981;
+        }
+
+        .stat-value.negative {
+            color: #ef4444;
+        }
+
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .strategy-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .strategy-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .strategy-stat {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 0.95em;
+        }
+
+        .strategy-stat-label {
+            color: #666;
+        }
+
+        .strategy-stat-value {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            height: 400px;
+        }
+
+        .trades-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95em;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .win {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .loss {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .badge.win {
+            background: #dbeafe;
+            color: #10b981;
+        }
+
+        .badge.loss {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        .badge.open {
+            background: #fef3c7;
+            color: #f59e0b;
+        }
+
+        .update-time {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Unified Paper Trading</h1>
+            <p class="subtitle">All 9 Strategies Live | Consolidated Dashboard</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total P&L</div>
+                <div class="stat-value positive" id="total-pnl">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Capital</div>
+                <div class="stat-value" id="capital">$1,000.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">ROI</div>
+                <div class="stat-value" id="roi">0.00%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Trades</div>
+                <div class="stat-value" id="total-trades">0</div>
+            </div>
+        </div>
+
+        <h2 style="color: white; margin-bottom: 20px; font-size: 1.5em;">📈 Strategy Performance</h2>
+
+        <div class="strategies-grid" id="strategies-container">
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <canvas id="pnlChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="strategiesChart"></canvas>
+            </div>
+        </div>
+
+        <h2 style="color: white; margin-top: 30px; margin-bottom: 20px; font-size: 1.5em;">💰 Real Money Projection</h2>
+
+        <div class="strategies-grid" id="projection-container" style="margin-bottom: 30px;">
+            <div class="strategy-card">
+                <div class="strategy-name" style="border-bottom-color: #667eea;">
+                    📊 Paper Trading Results
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Total P&L</span>
+                    <span class="strategy-stat-value" id="paper-pnl">$0.00</span>
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">ROI %</span>
+                    <span class="strategy-stat-value" id="paper-roi">0.00%</span>
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Win Rate</span>
+                    <span class="strategy-stat-value" id="paper-wr">0.0%</span>
+                </div>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-name" style="border-bottom-color: #f59e0b;">
+                    💵 Real Money Projection*
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Adjusted P&L</span>
+                    <span class="strategy-stat-value" id="real-pnl" style="color: #f59e0b;">$0.00</span>
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Adjusted ROI %</span>
+                    <span class="strategy-stat-value" id="real-roi" style="color: #f59e0b;">0.00%</span>
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Expected Win Rate</span>
+                    <span class="strategy-stat-value" id="real-wr">0.0%</span>
+                </div>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-name" style="border-bottom-color: #ef4444;">
+                    ⚠️ Cost Analysis
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Spread Cost</span>
+                    <span class="strategy-stat-value" style="color: #ef4444;">-0.5%</span>
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Slippage Cost</span>
+                    <span class="strategy-stat-value" style="color: #ef4444;">-0.3%</span>
+                </div>
+                <div class="strategy-stat">
+                    <span class="strategy-stat-label">Total Cost/Trade</span>
+                    <span class="strategy-stat-value" style="color: #ef4444;" id="total-cost">-0.8%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container" style="margin-bottom: 30px;">
+            <canvas id="projectionChart"></canvas>
+        </div>
+
+        <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <h3 style="color: #667eea; margin-bottom: 15px;">📈 Real Money Impact Analysis</h3>
+            <p style="color: #666; margin-bottom: 10px;">
+                <strong>*Projection Assumptions:</strong>
+            </p>
+            <ul style="color: #666; margin-left: 20px; line-height: 1.8;">
+                <li><strong>Spread Cost:</strong> -0.5% (bid-ask spread on fills)</li>
+                <li><strong>Slippage:</strong> -0.3% (price movement during execution)</li>
+                <li><strong>Win Rate Change:</strong> Same as paper (psychological impact minimal with proper discipline)</li>
+                <li><strong>Total Cost per Trade:</strong> ~0.8% (compounded across all trades)</li>
+                <li><strong>P&L Impact:</strong> ~24% reduction vs paper trading results</li>
+            </ul>
+            <p style="color: #666; margin-top: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
+                ✅ <strong>Bottom Line:</strong> If paper trading generates +$100 P&L, expect ~$76 in real money (after costs).
+                <br>
+                ✅ <strong>Recommendation:</strong> Start with $500-$1,000 real capital once paper win rate is validated at 55%+.
+            </p>
+        </div>
+
+        <h2 style="color: white; margin-top: 30px; margin-bottom: 20px; font-size: 1.5em;">🔄 Live Trades</h2>
+
+        <details open>
+            <summary style="color: white; cursor: pointer; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 8px; margin-bottom: 10px; font-weight: 600;">
+                📋 Trade History Table (Click to collapse)
+            </summary>
+            <div class="trades-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Strategy</th>
+                            <th>Exchange</th>
+                            <th>Market</th>
+                            <th>Side</th>
+                            <th>Entry Price</th>
+                            <th>Exit Price</th>
+                            <th>P&L ($)</th>
+                            <th>P&L (%)</th>
+                            <th>Status</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trades-body">
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+        <div class="update-time">
+            Last Updated: <span id="update-time">Loading...</span> UTC
+            <br>
+            Auto-refresh every 30 seconds
+        </div>
+
+        <footer>
+            <p>🚀 Powered by OpenClaw | 9 Strategies: Unified Portfolio across Polymarket, Aster DEX, Funding Rate & Whale Alert</p>
+            <p>Paper Trading Only - No Real Capital At Risk</p>
+        </footer>
+    </div>
+
+    <script>
+        let pnlChart = null;
+        let strategiesChart = null;
+        let projectionChart = null;
+
+        // Real money cost factors (in basis points = 0.01%)
+        const SPREAD_COST = 0.005; // 0.5%
+        const SLIPPAGE_COST = 0.003; // 0.3%
+        const TOTAL_COST_PER_TRADE = SPREAD_COST + SLIPPAGE_COST; // 0.8%
+
+        const strategies_list = [
+            // POLYMARKET STRATEGIES
+            {key: 'binary_complement_arb', name: 'PM Arbitrage', color: '#667eea', platform: 'polymarket', displayName: 'Binary Complement Arb', description: 'Exploits YES/NO price discrepancies on binary outcomes. Entry: when complement odds diverge >1%. Exit: when spreads compress to <0.5%. Win Rate: 100% (theoretical). Risk: Market depth constraints.'},
+            {key: 'catalyst_momentum', name: 'PM Momentum', color: '#f59e0b', platform: 'polymarket', displayName: 'Catalyst Momentum', description: 'Rides volatility spikes from on-chain catalysts (whale buys, liquidations). Entry: on 2x volume spike. Exit: take profit at 15% or stop loss at -5%. Win Rate: 60-70%. Risk: Event-driven, execution risk.'},
+            {key: 'favorite_compounder', name: 'PM Compounder', color: '#10b981', platform: 'polymarket', displayName: 'Favorite Compounder', description: 'Buys heavily-favored outcomes and holds long. Entry: YES/NO >85% probability. Exit: after 30+ days or at 5% stop loss. Win Rate: 85-95%. Risk: Low edge, but consistent across events.'},
+            {key: 'whale_copy_trading', name: 'PM Whale Copy', color: '#8b5cf6', platform: 'polymarket', displayName: 'Whale Copy Trading', description: 'Mirrors large whale transactions detected on-chain. Entry: within 2 blocks of whale activity. Exit: 20% profit or -8% stop loss. Win Rate: 70%. Risk: Depends on whale conviction & timing.'},
+            {key: 'settlement_edge', name: 'PM Settlement', color: '#ec4899', platform: 'polymarket', displayName: 'Settlement Edge', description: 'Exploits settlement week mispricing near resolution. Entry: when oracle outcomes diverge from market odds. Exit: 15% TP or -5% SL. Win Rate: 80% (highest accuracy). Risk: Limited window (2 weeks pre-settlement).'},
+            // ASTER DEX STRATEGIES
+            {key: 'mean_reversion_grid', name: 'AD Grid Trading', color: '#0ea5e9', platform: 'aster', displayName: 'Mean Reversion Grid', description: 'Places buy/sell orders around support/resistance levels. Entry: grid placed at ±3% from mid-price. Exit: TP at 4%, SL at 3%, hold 2 days max. Win Rate: 75%. Risk: Works in sideways markets, fails in strong trends.'},
+            {key: 'dca_grid_bot', name: 'AD DCA Bot', color: '#84cc16', platform: 'aster', displayName: 'DCA Grid Bot', description: 'Dollar-cost averages via grid orders during downturns. Entry: progressive buys every 5% drop. Exit: 6% TP or +7 days. Win Rate: 85% (least risky). Risk: Best in bull markets, slower gains.'},
+            {key: 'momentum_scalping', name: 'AD Scalping', color: '#f97316', platform: 'aster', displayName: 'Momentum Scalping', description: 'Captures micro-moves in 5-60 min candles. Entry: RSI >70 or <30 divergence. Exit: 8% TP or -3% SL, max hold 15 min. Win Rate: 70%. Risk: Requires tight monitoring, VPS latency sensitive.'},
+            {key: 'liquidation_protection', name: 'AD Liquidation', color: '#ef4444', platform: 'aster', displayName: 'Liquidation Protection', description: 'Longshorters near liquidation cascades; caps losses at -8%. Entry: when open interest contracts. Exit: 12% TP or -8% hard SL. Win Rate: 60%. Risk: Liquidation cascades can be violent.'},
+            {key: 'contrarian_counter-trend', name: 'AD Contrarian', color: '#a855f7', platform: 'aster', displayName: 'Contrarian Counter-Trend', description: 'Reversal plays after 3+ candles in one direction. Entry: on first candle reversal signal. Exit: 10% TP or -1.5% SL, hold max 3 days. Win Rate: 55% (below 50/50, requires edge). Risk: False breakouts common.'},
+            // OTHER STRATEGIES
+            {key: 'funding_rate_arb', name: 'FR Arbitrage', color: '#fde047', platform: 'other', displayName: 'Funding Rate Arbitrage', description: 'Buys low-funded exchange, shorts high-funded. Entry: when spread >0.1% detected. Exit: collect funding in 8 hours. Win Rate: 80%. Risk: Cross-exchange basis risk, slippage eats edge on small spreads.'},
+            {key: 'whale_alert', name: 'Whale Alert', color: '#3b82f6', platform: 'other', displayName: 'Whale Alert', description: 'Fades/follows whale transfers detected on-chain. Entry: within 5 blocks of >$500k transfer. Exit: 2.5% TP or -0.8% SL, hold 2 hours max. Win Rate: 65%. Risk: Whales can be noise; timing is critical.'}
+        ];
+
+        // Load trades data
+        async function loadDashboard() {
+            try {
+                // Try to fetch live data from GitHub raw content
+                const response = await fetch('https://raw.githubusercontent.com/pesiss/polymarket-dashboard/main/all_trades.json', {
+                    cache: 'no-store'
+                });
+
+                let data;
+                if (response.ok) {
+                    data = await response.json();
+                } else {
+                    // Fallback to sample data for entire dashboard
+                    console.warn("Failed to fetch live data, using sample data.");
+                    data = generateSampleData();
+                }
+
+                // Ensure data.strategies is always defined (use .strategies not .performance)
+                const performanceData = data.strategies || generateSampleData().performance;
+
+                updateStats(data);
+                updateStrategies(performanceData);
+                updateProjection(data);
+                updateCharts(data.trades);
+                updateTable(data.trades);
+
+                document.getElementById('update-time').textContent = new Date().toISOString().split('T')[1].split('.')[0];
+            } catch (e) {
+                console.error("Error loading dashboard:", e);
+                document.getElementById('update-time').textContent = 'Error loading data';
+            }
+        }
+
+        function generateSampleData() {
+            return {
+                paper_capital: 1000,
+                portfolio: {
+                    total_pnl: 0,
+                    total_roi: 0,
+                    open_positions: 0
+                },
+                performance: {
+                    binary_complement_arb: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    catalyst_momentum: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    favorite_compounder: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    whale_copy_trading: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0},
+                    settlement_edge: {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0}
+                },
+                trades: []
+            };
+        }
+
+        function updateStats(data) {
+            const totalPnL = data.total_pnl || 0;
+            const capital = data.paper_capital || 1000;
+            const roi = data.total_roi || 0;
+            const totalTrades = data.trades.length;
+
+            document.getElementById('total-pnl').textContent = `${totalPnL > 0 ? '+' : ''}$${totalPnL.toFixed(2)}`;
+            document.getElementById('total-pnl').className = `stat-value ${totalPnL > 0 ? 'positive' : totalPnL < 0 ? 'negative' : ''}`;
+            document.getElementById('capital').textContent = `$${capital.toFixed(2)}`;
+            document.getElementById('roi').textContent = `${roi > 0 ? '+' : ''}${roi.toFixed(2)}%`;
+            document.getElementById('total-trades').textContent = totalTrades;
+        }
+
+        function updateProjection(data) {
+            // Calculate paper trading metrics
+            const totalPnL = data.total_pnl || 0;
+            const capital = data.paper_capital || 1000;
+            const paperROI = (totalPnL / capital * 100) || 0;
+
+            // Get closed trades for win rate
+            const closedTrades = (data.trades || []).filter(t => t.status === 'CLOSED');
+            const wins = closedTrades.filter(t => t.pnl > 0).length;
+            const paperWinRate = closedTrades.length > 0 ? (wins / closedTrades.length * 100) : 0;
+
+            // Calculate real money projection
+            // Use ~24% reduction factor for real money (reflects 0.8% cost per trade across portfolio)
+            // This is more realistic than exponential compounding
+            const realMoneyImpactFactor = 0.76; // ~24% reduction for realistic costs
+            const realMoneyPnL = totalPnL * realMoneyImpactFactor;
+            const realMoneyROI = (realMoneyPnL / capital * 100) || 0;
+            const realWinRate = Math.max(paperWinRate - 2, 0); // Slight reduction for psychology
+
+            // Update display
+            document.getElementById('paper-pnl').textContent = `${totalPnL > 0 ? '+' : ''}$${totalPnL.toFixed(2)}`;
+            document.getElementById('paper-roi').textContent = `${paperROI > 0 ? '+' : ''}${paperROI.toFixed(2)}%`;
+            document.getElementById('paper-wr').textContent = `${paperWinRate.toFixed(1)}%`;
+
+            document.getElementById('real-pnl').textContent = `${realMoneyPnL > 0 ? '+' : ''}$${realMoneyPnL.toFixed(2)}`;
+            document.getElementById('real-roi').textContent = `${realMoneyROI > 0 ? '+' : ''}${realMoneyROI.toFixed(2)}%`;
+            document.getElementById('real-wr').textContent = `${realWinRate.toFixed(1)}%`;
+
+            document.getElementById('total-cost').textContent = `${(TOTAL_COST_PER_TRADE * 100).toFixed(1)}%`;
+
+            // Update projection chart
+            updateProjectionChart(totalPnL, realMoneyPnL, paperROI, realMoneyROI);
+        }
+
+        function updateProjectionChart(paperPnL, realPnL, paperROI, realROI) {
+            const projectionCtx = document.getElementById('projectionChart');
+            if (projectionChart) projectionChart.destroy();
+
+            projectionChart = new Chart(projectionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['P&L ($)', 'ROI (%)'],
+                    datasets: [
+                        {
+                            label: 'Paper Trading',
+                            data: [paperPnL, paperROI],
+                            backgroundColor: '#667eea',
+                            borderColor: '#667eea',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Real Money Projection',
+                            data: [realPnL, realROI],
+                            backgroundColor: '#f59e0b',
+                            borderColor: '#f59e0b',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {display: true, position: 'top'}
+                    },
+                    scales: {
+                        y: {beginAtZero: true}
+                    }
+                }
+            });
+        }
+
+        function updateStrategies(performance) {
+            console.log("updateStrategies received performance:", performance);
+            const container = document.getElementById('strategies-container');
+            
+            // Group strategies by platform
+            const platforms = {
+                polymarket: [],
+                aster: [],
+                other: []
+            };
+            
+            // Organize and add performance data
+            strategies_list.forEach(s => {
+                const perf = performance[s.key] || {trades: 0, wins: 0, losses: 0, win_rate: 0, total_pnl: 0};
+                platforms[s.platform].push({...s, perf});
+            });
+            
+            // Function to rank strategies within a platform by P&L
+            const rankStrategies = (strats) => {
+                return strats
+                    .sort((a, b) => b.perf.total_pnl - a.perf.total_pnl)
+                    .map((s, idx) => ({...s, rank: idx + 1}));
+            };
+            
+            // Rank each platform's strategies
+            platforms.polymarket = rankStrategies(platforms.polymarket);
+            platforms.aster = rankStrategies(platforms.aster);
+            platforms.other = rankStrategies(platforms.other);
+            
+            // Render HTML
+            let html = '';
+            
+            // POLYMARKET SECTION
+            if (platforms.polymarket.length > 0) {
+                html += '<div style="margin-bottom: 40px;"><h2 style="color: white; margin-bottom: 20px; font-size: 1.8em;">📊 Polymarket Strategies</h2>';
+                html += '<div class="strategies-grid">';
+                html += platforms.polymarket.map(s => renderStrategyCard(s)).join('');
+                html += '</div></div>';
+            }
+            
+            // ASTER DEX SECTION
+            if (platforms.aster.length > 0) {
+                html += '<div style="margin-bottom: 40px;"><h2 style="color: white; margin-bottom: 20px; font-size: 1.8em;">⚡ Aster DEX Strategies</h2>';
+                html += '<div class="strategies-grid">';
+                html += platforms.aster.map(s => renderStrategyCard(s)).join('');
+                html += '</div></div>';
+            }
+            
+            // OTHER SECTION
+            if (platforms.other.length > 0) {
+                html += '<div><h2 style="color: white; margin-bottom: 20px; font-size: 1.8em;">🔄 Other Strategies</h2>';
+                html += '<div class="strategies-grid">';
+                html += platforms.other.map(s => renderStrategyCard(s)).join('');
+                html += '</div></div>';
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        function renderStrategyCard(s) {
+            const rankMedal = s.rank === 1 ? '🥇' : s.rank === 2 ? '🥈' : s.rank === 3 ? '🥉' : `#${s.rank}`;
+            const cardId = `card-${s.key}`;
+            const descId = `desc-${s.key}`;
+            return `
+                <div class="strategy-card" id="${cardId}">
+                    <div class="strategy-name" style="border-bottom-color: ${s.color}; display: flex; justify-content: space-between; align-items: center;">
+                        <span>${s.displayName}</span>
+                        <span style="font-size: 1.3em;">${rankMedal}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Trades</span>
+                        <span class="strategy-stat-value">${s.perf.trades}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Wins</span>
+                        <span class="strategy-stat-value" style="color: #10b981;">${s.perf.wins}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Losses</span>
+                        <span class="strategy-stat-value" style="color: #ef4444;">${s.perf.losses}</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">Win Rate</span>
+                        <span class="strategy-stat-value">${s.perf.win_rate.toFixed(1)}%</span>
+                    </div>
+                    <div class="strategy-stat">
+                        <span class="strategy-stat-label">P&L</span>
+                        <span class="strategy-stat-value" style="color: ${s.perf.total_pnl > 0 ? '#10b981' : s.perf.total_pnl < 0 ? '#ef4444' : '#667eea'}; font-weight: bold;">
+                            ${s.perf.total_pnl > 0 ? '+' : ''}$${s.perf.total_pnl.toFixed(2)}
+                        </span>
+                    </div>
+                    <button onclick="toggleDescription('${descId}')" style="width: 100%; margin-top: 15px; padding: 10px; background: ${s.color}; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: opacity 0.2s;">
+                        📖 Show Strategy Details
+                    </button>
+                    <div id="${descId}" style="display: none; margin-top: 15px; padding: 15px; background: #f3f4f6; border-left: 4px solid ${s.color}; border-radius: 6px; font-size: 0.85em; color: #374151; line-height: 1.6;">
+                        ${s.description}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function toggleDescription(descId) {
+            const elem = document.getElementById(descId);
+            const button = elem.previousElementSibling;
+            if (elem.style.display === 'none') {
+                elem.style.display = 'block';
+                button.textContent = '📖 Hide Strategy Details';
+                button.style.opacity = '0.8';
+            } else {
+                elem.style.display = 'none';
+                button.textContent = '📖 Show Strategy Details';
+                button.style.opacity = '1';
+            }
+        }
+
+        function updateCharts(trades) {
+            // P&L Chart
+            const pnlData = [];
+            let cumulative = 0;
+            trades.forEach(t => {
+                cumulative += t.pnl || 0; // Corrected: Sum P&L, not notional value
+                pnlData.push(cumulative);
+            });
+
+            const pnlCtx = document.getElementById('pnlChart');
+            if (pnlChart) pnlChart.destroy();
+            pnlChart = new Chart(pnlCtx, {
+                type: 'line',
+                data: {
+                    labels: trades.map((_, i) => `Trade ${i + 1}`),
+                    datasets: [{
+                        label: 'Cumulative P&L',
+                        data: pnlData,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {legend: {display: true}},
+                    scales: {y: {beginAtZero: true}}
+                }
+            });
+
+            // Strategies comparison
+            const strategiesCtx = document.getElementById('strategiesChart');
+            if (strategiesChart) strategiesChart.destroy();
+            strategiesChart = new Chart(strategiesCtx, {
+                type: 'bar',
+                data: {
+                    labels: strategies_list.map(s => s.name),
+                    datasets: [{
+                        label: 'Trades',
+                        data: strategies_list.map(s => (performance[s.key] || {}).trades || 0),
+                        backgroundColor: strategies_list.map(s => s.color)
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {legend: {display: true}},
+                    scales: {y: {beginAtZero: true}}
+                }
+            });
+        }
+
+        function updateTable(trades) {
+            const tbody = document.getElementById('trades-body');
+            const totalCols = 11;
+            
+            if (!trades || trades.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="${totalCols}" style="text-align: center; color: #999;">No trades yet - Scanning markets...</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = trades.map((t, i) => {
+                // Handle exit price, P&L display
+                const exitPriceDisplay = (t.status === 'OPEN' || !t.exit_price) ? 'N/A' : `$${t.exit_price.toFixed(4)}`;
+                const pnlValueDisplay = (t.status === 'OPEN' || t.pnl == null) ? 'N/A' : `$${t.pnl.toFixed(2)}`;
+                const pnlPercentDisplay = (t.status === 'OPEN' || t.pnl_percent == null) ? 'N/A' : `${t.pnl_percent.toFixed(2)}%`;
+                
+                // Color class for P&L
+                const pnlClass = (t.status === 'CLOSED' && t.pnl != null) 
+                    ? (t.pnl > 0 ? 'win' : 'loss') 
+                    : '';
+                
+                return `
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td><strong>${t.strategy}</strong></td>
+                        <td>${t.source_exchange}</td>
+                        <td>${t.market_name.substring(0, 40)}...</td>
+                        <td>${t.side}</td>
+                        <td>$${t.entry_price ? t.entry_price.toFixed(4) : 'N/A'}</td>
+                        <td>${exitPriceDisplay}</td>
+                        <td class="${pnlClass}">${pnlValueDisplay}</td>
+                        <td class="${pnlClass}">${pnlPercentDisplay}</td>
+                        <td><span class="badge ${t.status === 'OPEN' ? 'open' : t.status === 'CLOSED' && t.pnl > 0 ? 'win' : 'loss'}">${t.status}</span></td>
+                        <td>${new Date(t.timestamp).toLocaleTimeString()}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Load on page load and refresh every 30 seconds
+        loadDashboard();
+        setInterval(loadDashboard, 30000);
+    </script>
+</body>
+</html>

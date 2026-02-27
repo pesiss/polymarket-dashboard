@@ -27,7 +27,7 @@ BACKUP_SUFFIX = ".backup"
 # File paths
 OUTPUT_FILE = "/home/pesiss/.openclaw/workspace/all_trades.json"
 SOURCE_FILES = {
-    "polymarket": "/home/pesiss/.openclaw/agents/polymarket/trades.json",
+    "polymarket": "/home/pesiss/.openclaw/agents/polymarket/challenge_trades.json",
     "aster": "/home/pesiss/.openclaw/agents/aster-dex/aster_trades.json",
     "funding": "/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json",
     "whale": "/home/pesiss/.openclaw/agents/whale-alert/whale_trades.json"

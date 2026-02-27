@@ -55,7 +55,7 @@
 - Polymarket + Aster: Every 5 minutes
 - Funding Rate + Whale Alert: Every 30 minutes
 - Consolidation: Hourly (via main session or cron extension)
-- Dashboard: Vercel (https://polymarket-dashboard-five-mocha.vercel.app/)
+- Dashboard: Vercel (https://polymarket-dashboard-flame.vercel.app/)
 
 ---
 
@@ -154,10 +154,10 @@ Date: [YYYY-MM-DD]
 
 ## Capital Compounding Strategy (Decision: Feb 25, 2026) ✅
 
-**Current Phase (Feb 25 - April 25):** NO COMPOUNDING
-- Fixed position sizes based on initial capital only
-- Reason: Validation phase - need consistent risk to validate strategies
-- Status: **Collecting data, not reinvesting profits yet**
+**Current Phase (Feb 27 - onward):** COMPOUNDING MODE ✅
+- Reinvest 50-100% of profits into larger positions
+- All active strategies (Whale Copy v1/v2, Settlement Edge) have passed 100 closed trades.
+- Status: **Compounding active**
 
 **Phase Transition Trigger:** When ANY strategy hits Phase 2 (100 closed trades)
 - Settlement Edge: 79/100 trades (Phase 1, 79% done) → ~1-2 weeks away

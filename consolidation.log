@@ -1059,3 +1059,804 @@ To https://github.com/pesiss/polymarket-dashboard.git
    96bc28e..05038f3  main -> main
 ✅ Consolidation + Push SUCCESS at 2026-02-27 03:05:01 UTC
 
+[2026-02-27 03:35:01 UTC] Starting consolidation...
+2026-02-27 03:35:01,230 - INFO - Loading Polymarket trades...
+2026-02-27 03:35:01,251 - INFO - Loading Aster DEX trades...
+2026-02-27 03:35:01,251 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 03:35:01,252 - ERROR - Validation failed for aster
+2026-02-27 03:35:01,252 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 03:35:01,252 - WARNING - funding: ZERO trades detected (expected 5+)
+2026-02-27 03:35:01,252 - ERROR - Validation failed for funding
+2026-02-27 03:35:01,252 - INFO - Loading Whale Alert trades...
+2026-02-27 03:35:01,253 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 03:35:01,253 - ERROR - Validation failed for whale
+2026-02-27 03:35:01,253 - INFO - Consolidated 1123 trades from 1 sources
+2026-02-27 03:35:01,255 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 03:35:01,311 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 03:35:01,311 - INFO - Consolidation complete: PNL=$1034.52, ROI=103.5%, Trades=1123
+Result: P&L: $1034.52 | ROI: 103.5% | Closed: 1106
+[main 5ba378a] Auto: Consolidate trades [2026-02-27 03:35:01 UTC] - P&L: $1034.52 | ROI: 103.5% | Closed: 1106
+ 1 file changed, 174 insertions(+), 46 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   f75c10e..5ba378a  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 03:35:01 UTC
+
+[2026-02-27 04:05:01 UTC] Starting consolidation...
+2026-02-27 04:05:01,982 - INFO - Loading Polymarket trades...
+2026-02-27 04:05:02,001 - WARNING - JSON decode error on /home/pesiss/.openclaw/agents/polymarket/trades.json (attempt 1/3): Expecting ',' delimiter: line 11436 column 21 (char 359878)
+2026-02-27 04:05:04,012 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $1043.32 | ROI: 104.3% | Closed: 1112
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 04:05:01 UTC
+
+[2026-02-27 04:35:01 UTC] Starting consolidation...
+2026-02-27 04:35:01,116 - INFO - Loading Polymarket trades...
+2026-02-27 04:35:01,135 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $1043.32 | ROI: 104.3% | Closed: 1112
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 04:35:01 UTC
+
+[2026-02-27 05:05:01 UTC] Starting consolidation...
+2026-02-27 05:05:01,616 - INFO - Loading Polymarket trades...
+2026-02-27 05:05:01,630 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $1043.32 | ROI: 104.3% | Closed: 1112
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 05:05:01 UTC
+
+[2026-02-27 05:35:01 UTC] Starting consolidation...
+2026-02-27 05:35:01,482 - INFO - Loading Polymarket trades...
+2026-02-27 05:35:01,504 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $1043.32 | ROI: 104.3% | Closed: 1112
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 05:35:01 UTC
+
+[2026-02-27 06:05:01 UTC] Starting consolidation...
+2026-02-27 06:05:01,215 - INFO - Loading Polymarket trades...
+2026-02-27 06:05:01,222 - WARNING - JSON decode error on /home/pesiss/.openclaw/agents/polymarket/trades.json (attempt 1/3): Expecting value: line 9365 column 22 (char 294462)
+2026-02-27 06:05:03,240 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $0.00 | ROI: 0.0% | Closed: 0
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+	modified:   memory/2026-02-27-GOLDEN.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 06:05:01 UTC
+
+[2026-02-27 06:35:01 UTC] Starting consolidation...
+2026-02-27 06:35:02,015 - INFO - Loading Polymarket trades...
+2026-02-27 06:35:02,052 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $0.00 | ROI: 0.0% | Closed: 0
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   MEMORY.md
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+	modified:   memory/2026-02-27-GOLDEN.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	safe_config_with_fallback.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 06:35:01 UTC
+
+[2026-02-27 07:05:01 UTC] Starting consolidation...
+2026-02-27 07:05:01,352 - INFO - Loading Polymarket trades...
+2026-02-27 07:05:01,369 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $0.00 | ROI: 0.0% | Closed: 0
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   MEMORY.md
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+	modified:   memory/2026-02-27-GOLDEN.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	safe_config_with_fallback.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 07:05:01 UTC
+
+[2026-02-27 07:35:01 UTC] Starting consolidation...
+2026-02-27 07:35:01,200 - INFO - Loading Polymarket trades...
+2026-02-27 07:35:01,246 - INFO - Loading Aster DEX trades...
+Traceback (most recent call last):
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 379, in <module>
+    success = consolidate_trades()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/pesiss/.openclaw/workspace/consolidate_trades.py", line 220, in consolidate_trades
+    aster_data = load_source_data("aster", SOURCE_FILES["aster"])
+                                           ~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'aster'
+Result: P&L: $0.00 | ROI: 0.0% | Closed: 0
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   MEMORY.md
+	modified:   all_trades.json.backup
+	modified:   consolidate_trades.py
+	modified:   consolidation.log
+	modified:   memory/2026-02-27-GOLDEN.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	safe_config_with_fallback.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+✅ Consolidation + Push SUCCESS at 2026-02-27 07:35:01 UTC
+
+[2026-02-27 08:05:01 UTC] Starting consolidation...
+2026-02-27 08:05:01,954 - INFO - Loading Polymarket trades...
+2026-02-27 08:05:02,008 - INFO - Loading Aster DEX trades...
+2026-02-27 08:05:02,009 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 08:05:02,009 - ERROR - Validation failed for aster
+2026-02-27 08:05:02,009 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 08:05:02,009 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 08:05:02,009 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 08:05:02,009 - INFO - Loading Whale Alert trades...
+2026-02-27 08:05:02,010 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 08:05:02,013 - ERROR - Validation failed for whale
+2026-02-27 08:05:02,013 - INFO - Consolidated 1327 trades from 1 sources
+2026-02-27 08:05:02,016 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 08:05:02,115 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 08:05:02,115 - INFO - Consolidation complete: PNL=$1455.16, ROI=145.5%, Trades=1327
+Result: P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+[main cbad876] Auto: Consolidate trades [2026-02-27 08:05:01 UTC] - P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   e9df345..cbad876  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 08:05:01 UTC
+
+[2026-02-27 08:35:01 UTC] Starting consolidation...
+2026-02-27 08:35:01,146 - INFO - Loading Polymarket trades...
+2026-02-27 08:35:01,171 - INFO - Loading Aster DEX trades...
+2026-02-27 08:35:01,174 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 08:35:01,174 - ERROR - Validation failed for aster
+2026-02-27 08:35:01,175 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 08:35:01,175 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 08:35:01,175 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 08:35:01,175 - INFO - Loading Whale Alert trades...
+2026-02-27 08:35:01,176 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 08:35:01,176 - ERROR - Validation failed for whale
+2026-02-27 08:35:01,176 - INFO - Consolidated 1327 trades from 1 sources
+2026-02-27 08:35:01,181 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 08:35:01,246 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 08:35:01,247 - INFO - Consolidation complete: PNL=$1455.16, ROI=145.5%, Trades=1327
+Result: P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+[main f8ddce1] Auto: Consolidate trades [2026-02-27 08:35:01 UTC] - P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   5a0dd35..f8ddce1  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 08:35:01 UTC
+
+[2026-02-27 09:05:01 UTC] Starting consolidation...
+2026-02-27 09:05:01,536 - INFO - Loading Polymarket trades...
+2026-02-27 09:05:01,559 - INFO - Loading Aster DEX trades...
+2026-02-27 09:05:01,561 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 09:05:01,561 - ERROR - Validation failed for aster
+2026-02-27 09:05:01,562 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 09:05:01,562 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 09:05:01,563 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 09:05:01,563 - INFO - Loading Whale Alert trades...
+2026-02-27 09:05:01,563 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 09:05:01,563 - ERROR - Validation failed for whale
+2026-02-27 09:05:01,563 - INFO - Consolidated 1327 trades from 1 sources
+2026-02-27 09:05:01,568 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 09:05:01,646 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 09:05:01,646 - INFO - Consolidation complete: PNL=$1455.16, ROI=145.5%, Trades=1327
+Result: P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+[main a820bcb] Auto: Consolidate trades [2026-02-27 09:05:01 UTC] - P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   f8ddce1..a820bcb  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 09:05:01 UTC
+
+[2026-02-27 09:35:01 UTC] Starting consolidation...
+2026-02-27 09:35:02,073 - INFO - Loading Polymarket trades...
+2026-02-27 09:35:02,105 - INFO - Loading Aster DEX trades...
+2026-02-27 09:35:02,109 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 09:35:02,109 - ERROR - Validation failed for aster
+2026-02-27 09:35:02,109 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 09:35:02,109 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 09:35:02,109 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 09:35:02,109 - INFO - Loading Whale Alert trades...
+2026-02-27 09:35:02,109 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 09:35:02,110 - ERROR - Validation failed for whale
+2026-02-27 09:35:02,111 - INFO - Consolidated 1327 trades from 1 sources
+2026-02-27 09:35:02,118 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 09:35:02,227 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 09:35:02,228 - INFO - Consolidation complete: PNL=$1455.16, ROI=145.5%, Trades=1327
+Result: P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+[main e4bee2d] Auto: Consolidate trades [2026-02-27 09:35:01 UTC] - P&L: $1455.16 | ROI: 145.5% | Closed: 1306
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   a820bcb..e4bee2d  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 09:35:01 UTC
+
+[2026-02-27 10:05:01 UTC] Starting consolidation...
+2026-02-27 10:05:01,255 - INFO - Loading Polymarket trades...
+2026-02-27 10:05:01,277 - INFO - Loading Aster DEX trades...
+2026-02-27 10:05:01,278 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 10:05:01,278 - ERROR - Validation failed for aster
+2026-02-27 10:05:01,278 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 10:05:01,278 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 10:05:01,278 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 10:05:01,278 - INFO - Loading Whale Alert trades...
+2026-02-27 10:05:01,279 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 10:05:01,279 - ERROR - Validation failed for whale
+2026-02-27 10:05:01,279 - INFO - Consolidated 1334 trades from 1 sources
+2026-02-27 10:05:01,281 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 10:05:01,314 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 10:05:01,314 - INFO - Consolidation complete: PNL=$1456.50, ROI=145.6%, Trades=1334
+Result: P&L: $1456.50 | ROI: 145.6% | Closed: 1316
+[main 4080d3a] Auto: Consolidate trades [2026-02-27 10:05:01 UTC] - P&L: $1456.50 | ROI: 145.6% | Closed: 1316
+ 1 file changed, 181 insertions(+), 69 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   731fa04..4080d3a  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 10:05:01 UTC
+
+[2026-02-27 10:35:01 UTC] Starting consolidation...
+2026-02-27 10:35:01,836 - INFO - Loading Polymarket trades...
+2026-02-27 10:35:01,857 - INFO - Loading Aster DEX trades...
+2026-02-27 10:35:01,858 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 10:35:01,858 - ERROR - Validation failed for aster
+2026-02-27 10:35:01,858 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 10:35:01,858 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 10:35:01,858 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 10:35:01,859 - INFO - Loading Whale Alert trades...
+2026-02-27 10:35:01,859 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 10:35:01,859 - ERROR - Validation failed for whale
+2026-02-27 10:35:01,860 - INFO - Consolidated 1358 trades from 1 sources
+2026-02-27 10:35:01,861 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 10:35:01,926 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 10:35:01,927 - INFO - Consolidation complete: PNL=$1470.34, ROI=147.0%, Trades=1358
+Result: P&L: $1470.34 | ROI: 147.0% | Closed: 1340
+[main 70be2a8] Auto: Consolidate trades [2026-02-27 10:35:01 UTC] - P&L: $1470.34 | ROI: 147.0% | Closed: 1340
+ 1 file changed, 458 insertions(+), 74 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   4080d3a..70be2a8  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 10:35:01 UTC
+
+[2026-02-27 11:05:01 UTC] Starting consolidation...
+2026-02-27 11:05:01,929 - INFO - Loading Polymarket trades...
+2026-02-27 11:05:01,951 - INFO - Loading Aster DEX trades...
+2026-02-27 11:05:01,952 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 11:05:01,952 - ERROR - Validation failed for aster
+2026-02-27 11:05:01,952 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 11:05:01,952 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 11:05:01,952 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 11:05:01,952 - INFO - Loading Whale Alert trades...
+2026-02-27 11:05:01,953 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 11:05:01,953 - ERROR - Validation failed for whale
+2026-02-27 11:05:01,953 - INFO - Consolidated 1382 trades from 1 sources
+2026-02-27 11:05:01,954 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 11:05:02,032 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 11:05:02,032 - INFO - Consolidation complete: PNL=$1485.94, ROI=148.6%, Trades=1382
+Result: P&L: $1485.94 | ROI: 148.6% | Closed: 1360
+[main 1c7b58b] Auto: Consolidate trades [2026-02-27 11:05:01 UTC] - P&L: $1485.94 | ROI: 148.6% | Closed: 1360
+ 1 file changed, 453 insertions(+), 69 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   70be2a8..1c7b58b  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 11:05:01 UTC
+
+[2026-02-27 11:35:01 UTC] Starting consolidation...
+2026-02-27 11:35:01,154 - INFO - Loading Polymarket trades...
+2026-02-27 11:35:01,176 - INFO - Loading Aster DEX trades...
+2026-02-27 11:35:01,178 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 11:35:01,178 - ERROR - Validation failed for aster
+2026-02-27 11:35:01,178 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 11:35:01,178 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 11:35:01,178 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 11:35:01,178 - INFO - Loading Whale Alert trades...
+2026-02-27 11:35:01,179 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 11:35:01,179 - ERROR - Validation failed for whale
+2026-02-27 11:35:01,180 - INFO - Consolidated 1406 trades from 1 sources
+2026-02-27 11:35:01,181 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 11:35:01,227 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 11:35:01,227 - INFO - Consolidation complete: PNL=$1512.09, ROI=151.2%, Trades=1406
+Result: P&L: $1512.09 | ROI: 151.2% | Closed: 1387
+[main 662fad6] Auto: Consolidate trades [2026-02-27 11:35:01 UTC] - P&L: $1512.09 | ROI: 151.2% | Closed: 1387
+ 1 file changed, 470 insertions(+), 86 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   1c7b58b..662fad6  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 11:35:01 UTC
+
+[2026-02-27 12:05:01 UTC] Starting consolidation...
+2026-02-27 12:05:01,184 - INFO - Loading Polymarket trades...
+2026-02-27 12:05:01,211 - INFO - Loading Aster DEX trades...
+2026-02-27 12:05:01,212 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 12:05:01,212 - ERROR - Validation failed for aster
+2026-02-27 12:05:01,212 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 12:05:01,212 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 12:05:01,212 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 12:05:01,212 - INFO - Loading Whale Alert trades...
+2026-02-27 12:05:01,213 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 12:05:01,213 - ERROR - Validation failed for whale
+2026-02-27 12:05:01,213 - INFO - Consolidated 1430 trades from 1 sources
+2026-02-27 12:05:01,216 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 12:05:01,272 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 12:05:01,272 - INFO - Consolidation complete: PNL=$1532.79, ROI=153.3%, Trades=1430
+Result: P&L: $1532.79 | ROI: 153.3% | Closed: 1407
+[main d83666b] Auto: Consolidate trades [2026-02-27 12:05:01 UTC] - P&L: $1532.79 | ROI: 153.3% | Closed: 1407
+ 1 file changed, 445 insertions(+), 61 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   662fad6..d83666b  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 12:05:01 UTC
+
+[2026-02-27 12:35:01 UTC] Starting consolidation...
+2026-02-27 12:35:01,726 - INFO - Loading Polymarket trades...
+2026-02-27 12:35:01,763 - INFO - Loading Aster DEX trades...
+2026-02-27 12:35:01,765 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 12:35:01,765 - ERROR - Validation failed for aster
+2026-02-27 12:35:01,766 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 12:35:01,766 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 12:35:01,766 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 12:35:01,766 - INFO - Loading Whale Alert trades...
+2026-02-27 12:35:01,766 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 12:35:01,766 - ERROR - Validation failed for whale
+2026-02-27 12:35:01,766 - INFO - Consolidated 1454 trades from 1 sources
+2026-02-27 12:35:01,771 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 12:35:01,886 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 12:35:01,886 - INFO - Consolidation complete: PNL=$1560.26, ROI=156.0%, Trades=1454
+Result: P&L: $1560.26 | ROI: 156.0% | Closed: 1432
+[main a99c483] Auto: Consolidate trades [2026-02-27 12:35:01 UTC] - P&L: $1560.26 | ROI: 156.0% | Closed: 1432
+ 1 file changed, 465 insertions(+), 81 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   d83666b..a99c483  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 12:35:01 UTC
+
+[2026-02-27 13:05:01 UTC] Starting consolidation...
+2026-02-27 13:05:01,124 - INFO - Loading Polymarket trades...
+2026-02-27 13:05:01,149 - INFO - Loading Aster DEX trades...
+2026-02-27 13:05:01,151 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 13:05:01,152 - ERROR - Validation failed for aster
+2026-02-27 13:05:01,152 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 13:05:01,152 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 13:05:01,152 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 13:05:01,152 - INFO - Loading Whale Alert trades...
+2026-02-27 13:05:01,152 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 13:05:01,152 - ERROR - Validation failed for whale
+2026-02-27 13:05:01,152 - INFO - Consolidated 1478 trades from 1 sources
+2026-02-27 13:05:01,157 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 13:05:01,228 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 13:05:01,228 - INFO - Consolidation complete: PNL=$1573.63, ROI=157.4%, Trades=1478
+Result: P&L: $1573.63 | ROI: 157.4% | Closed: 1451
+[main 82f3488] Auto: Consolidate trades [2026-02-27 13:05:01 UTC] - P&L: $1573.63 | ROI: 157.4% | Closed: 1451
+ 1 file changed, 447 insertions(+), 63 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   a99c483..82f3488  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 13:05:01 UTC
+
+[2026-02-27 13:35:01 UTC] Starting consolidation...
+2026-02-27 13:35:01,887 - INFO - Loading Polymarket trades...
+2026-02-27 13:35:01,913 - INFO - Loading Aster DEX trades...
+2026-02-27 13:35:01,914 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 13:35:01,914 - ERROR - Validation failed for aster
+2026-02-27 13:35:01,914 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 13:35:01,914 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 13:35:01,914 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 13:35:01,914 - INFO - Loading Whale Alert trades...
+2026-02-27 13:35:01,915 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 13:35:01,915 - ERROR - Validation failed for whale
+2026-02-27 13:35:01,915 - INFO - Consolidated 1502 trades from 1 sources
+2026-02-27 13:35:01,917 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 13:35:01,969 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 13:35:01,969 - INFO - Consolidation complete: PNL=$1614.34, ROI=161.4%, Trades=1502
+Result: P&L: $1614.34 | ROI: 161.4% | Closed: 1483
+[main 8d0d195] Auto: Consolidate trades [2026-02-27 13:35:01 UTC] - P&L: $1614.34 | ROI: 161.4% | Closed: 1483
+ 1 file changed, 486 insertions(+), 102 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   c9275ea..8d0d195  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 13:35:01 UTC
+
+[2026-02-27 14:05:01 UTC] Starting consolidation...
+2026-02-27 14:05:01,237 - INFO - Loading Polymarket trades...
+2026-02-27 14:05:01,266 - INFO - Loading Aster DEX trades...
+2026-02-27 14:05:01,270 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 14:05:01,270 - ERROR - Validation failed for aster
+2026-02-27 14:05:01,271 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 14:05:01,271 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 14:05:01,271 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 14:05:01,272 - INFO - Loading Whale Alert trades...
+2026-02-27 14:05:01,273 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 14:05:01,274 - ERROR - Validation failed for whale
+2026-02-27 14:05:01,274 - INFO - Consolidated 1526 trades from 1 sources
+2026-02-27 14:05:01,277 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 14:05:01,366 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 14:05:01,367 - INFO - Consolidation complete: PNL=$1635.61, ROI=163.6%, Trades=1526
+Result: P&L: $1635.61 | ROI: 163.6% | Closed: 1505
+[main db3aac9] Auto: Consolidate trades [2026-02-27 14:05:01 UTC] - P&L: $1635.61 | ROI: 163.6% | Closed: 1505
+ 1 file changed, 450 insertions(+), 66 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   8d0d195..db3aac9  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 14:05:01 UTC
+
+[2026-02-27 14:35:01 UTC] Starting consolidation...
+2026-02-27 14:35:01,858 - INFO - Loading Polymarket trades...
+2026-02-27 14:35:01,884 - INFO - Loading Aster DEX trades...
+2026-02-27 14:35:01,885 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 14:35:01,885 - ERROR - Validation failed for aster
+2026-02-27 14:35:01,885 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 14:35:01,885 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 14:35:01,885 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 14:35:01,885 - INFO - Loading Whale Alert trades...
+2026-02-27 14:35:01,885 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 14:35:01,885 - ERROR - Validation failed for whale
+2026-02-27 14:35:01,886 - INFO - Consolidated 1550 trades from 1 sources
+2026-02-27 14:35:01,891 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 14:35:02,019 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 14:35:02,019 - INFO - Consolidation complete: PNL=$1658.37, ROI=165.8%, Trades=1550
+Result: P&L: $1658.37 | ROI: 165.8% | Closed: 1529
+[main d4becc4] Auto: Consolidate trades [2026-02-27 14:35:01 UTC] - P&L: $1658.37 | ROI: 165.8% | Closed: 1529
+ 1 file changed, 466 insertions(+), 82 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   db3aac9..d4becc4  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 14:35:01 UTC
+
+[2026-02-27 15:05:01 UTC] Starting consolidation...
+2026-02-27 15:05:01,437 - INFO - Loading Polymarket trades...
+2026-02-27 15:05:01,483 - INFO - Loading Aster DEX trades...
+2026-02-27 15:05:01,486 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 15:05:01,487 - ERROR - Validation failed for aster
+2026-02-27 15:05:01,487 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 15:05:01,487 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 15:05:01,488 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 15:05:01,488 - INFO - Loading Whale Alert trades...
+2026-02-27 15:05:01,489 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 15:05:01,490 - ERROR - Validation failed for whale
+2026-02-27 15:05:01,492 - INFO - Consolidated 1574 trades from 1 sources
+2026-02-27 15:05:01,498 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 15:05:01,631 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 15:05:01,631 - INFO - Consolidation complete: PNL=$1676.99, ROI=167.7%, Trades=1574
+Result: P&L: $1676.99 | ROI: 167.7% | Closed: 1551
+[main 12f54ae] Auto: Consolidate trades [2026-02-27 15:05:01 UTC] - P&L: $1676.99 | ROI: 167.7% | Closed: 1551
+ 1 file changed, 459 insertions(+), 75 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   d4becc4..12f54ae  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 15:05:01 UTC
+
+[2026-02-27 15:35:01 UTC] Starting consolidation...
+2026-02-27 15:35:01,487 - INFO - Loading Polymarket trades...
+2026-02-27 15:35:01,515 - INFO - Loading Aster DEX trades...
+2026-02-27 15:35:01,516 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 15:35:01,516 - ERROR - Validation failed for aster
+2026-02-27 15:35:01,516 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 15:35:01,516 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 15:35:01,517 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 15:35:01,517 - INFO - Loading Whale Alert trades...
+2026-02-27 15:35:01,517 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 15:35:01,517 - ERROR - Validation failed for whale
+2026-02-27 15:35:01,518 - INFO - Consolidated 1598 trades from 1 sources
+2026-02-27 15:35:01,520 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 15:35:01,611 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 15:35:01,611 - INFO - Consolidation complete: PNL=$1707.14, ROI=170.7%, Trades=1598
+Result: P&L: $1707.14 | ROI: 170.7% | Closed: 1580
+[main 30408ee] Auto: Consolidate trades [2026-02-27 15:35:01 UTC] - P&L: $1707.14 | ROI: 170.7% | Closed: 1580
+ 1 file changed, 469 insertions(+), 85 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   12f54ae..30408ee  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 15:35:01 UTC
+
+[2026-02-27 16:05:01 UTC] Starting consolidation...
+2026-02-27 16:05:01,211 - INFO - Loading Polymarket trades...
+2026-02-27 16:05:01,237 - INFO - Loading Aster DEX trades...
+2026-02-27 16:05:01,238 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 16:05:01,238 - ERROR - Validation failed for aster
+2026-02-27 16:05:01,238 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 16:05:01,238 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 16:05:01,238 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 16:05:01,238 - INFO - Loading Whale Alert trades...
+2026-02-27 16:05:01,238 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 16:05:01,238 - ERROR - Validation failed for whale
+2026-02-27 16:05:01,239 - INFO - Consolidated 1622 trades from 1 sources
+2026-02-27 16:05:01,241 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 16:05:01,338 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 16:05:01,338 - INFO - Consolidation complete: PNL=$1730.92, ROI=173.1%, Trades=1622
+Result: P&L: $1730.92 | ROI: 173.1% | Closed: 1605
+[main cad3c97] Auto: Consolidate trades [2026-02-27 16:05:01 UTC] - P&L: $1730.92 | ROI: 173.1% | Closed: 1605
+ 1 file changed, 462 insertions(+), 78 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   30408ee..cad3c97  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 16:05:01 UTC
+
+[2026-02-27 16:35:01 UTC] Starting consolidation...
+2026-02-27 16:35:01,241 - INFO - Loading Polymarket trades...
+2026-02-27 16:35:01,260 - INFO - Loading Aster DEX trades...
+2026-02-27 16:35:01,260 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 16:35:01,260 - ERROR - Validation failed for aster
+2026-02-27 16:35:01,260 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 16:35:01,261 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 16:35:01,261 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 16:35:01,261 - INFO - Loading Whale Alert trades...
+2026-02-27 16:35:01,261 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 16:35:01,261 - ERROR - Validation failed for whale
+2026-02-27 16:35:01,261 - INFO - Consolidated 1646 trades from 1 sources
+2026-02-27 16:35:01,264 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 16:35:01,305 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 16:35:01,305 - INFO - Consolidation complete: PNL=$1756.47, ROI=175.6%, Trades=1646
+Result: P&L: $1756.47 | ROI: 175.6% | Closed: 1624
+[main 22bf1b4] Auto: Consolidate trades [2026-02-27 16:35:01 UTC] - P&L: $1756.47 | ROI: 175.6% | Closed: 1624
+ 1 file changed, 456 insertions(+), 72 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   cad3c97..22bf1b4  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 16:35:01 UTC
+
+[2026-02-27 17:05:01 UTC] Starting consolidation...
+2026-02-27 17:05:01,763 - INFO - Loading Polymarket trades...
+2026-02-27 17:05:01,818 - INFO - Loading Aster DEX trades...
+2026-02-27 17:05:01,819 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 17:05:01,819 - ERROR - Validation failed for aster
+2026-02-27 17:05:01,820 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 17:05:01,820 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 17:05:01,820 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 17:05:01,820 - INFO - Loading Whale Alert trades...
+2026-02-27 17:05:01,820 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 17:05:01,820 - ERROR - Validation failed for whale
+2026-02-27 17:05:01,823 - INFO - Consolidated 1670 trades from 1 sources
+2026-02-27 17:05:01,827 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 17:05:01,961 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 17:05:01,961 - INFO - Consolidation complete: PNL=$1778.11, ROI=177.8%, Trades=1670
+Result: P&L: $1778.11 | ROI: 177.8% | Closed: 1649
+[main a26bde1] Auto: Consolidate trades [2026-02-27 17:05:01 UTC] - P&L: $1778.11 | ROI: 177.8% | Closed: 1649
+ 1 file changed, 471 insertions(+), 87 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   22bf1b4..a26bde1  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 17:05:01 UTC
+
+[2026-02-27 17:35:01 UTC] Starting consolidation...
+2026-02-27 17:35:01,529 - INFO - Loading Polymarket trades...
+2026-02-27 17:35:01,554 - INFO - Loading Aster DEX trades...
+2026-02-27 17:35:01,556 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 17:35:01,556 - ERROR - Validation failed for aster
+2026-02-27 17:35:01,556 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 17:35:01,556 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 17:35:01,556 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 17:35:01,557 - INFO - Loading Whale Alert trades...
+2026-02-27 17:35:01,558 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 17:35:01,558 - ERROR - Validation failed for whale
+2026-02-27 17:35:01,559 - INFO - Consolidated 1694 trades from 1 sources
+2026-02-27 17:35:01,563 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 17:35:01,657 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 17:35:01,657 - INFO - Consolidation complete: PNL=$1807.32, ROI=180.7%, Trades=1694
+Result: P&L: $1807.32 | ROI: 180.7% | Closed: 1677
+[main 1ab4965] Auto: Consolidate trades [2026-02-27 17:35:01 UTC] - P&L: $1807.32 | ROI: 180.7% | Closed: 1677
+ 1 file changed, 463 insertions(+), 79 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   a26bde1..1ab4965  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 17:35:01 UTC
+
+[2026-02-27 17:45:11 UTC] Starting consolidation...
+2026-02-27 17:45:11,173 - INFO - Loading Polymarket trades...
+2026-02-27 17:45:11,201 - INFO - Loading Aster DEX trades...
+2026-02-27 17:45:11,202 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 17:45:11,202 - ERROR - Validation failed for aster
+2026-02-27 17:45:11,202 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 17:45:11,203 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 17:45:11,203 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 17:45:11,203 - INFO - Loading Whale Alert trades...
+2026-02-27 17:45:11,203 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 17:45:11,203 - ERROR - Validation failed for whale
+2026-02-27 17:45:11,204 - INFO - Consolidated 1706 trades from 1 sources
+2026-02-27 17:45:11,206 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 17:45:11,265 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 17:45:11,265 - INFO - Consolidation complete: PNL=$1811.24, ROI=181.1%, Trades=1706
+Result: P&L: $1811.24 | ROI: 181.1% | Closed: 1684
+[main dc33d30] Auto: Consolidate trades [2026-02-27 17:45:11 UTC] - P&L: $1811.24 | ROI: 181.1% | Closed: 1684
+ 1 file changed, 238 insertions(+), 46 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   1ab4965..dc33d30  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 17:45:11 UTC
+
+[2026-02-27 18:05:01 UTC] Starting consolidation...
+2026-02-27 18:05:02,053 - INFO - Loading Polymarket trades...
+2026-02-27 18:05:02,079 - INFO - Loading Aster DEX trades...
+2026-02-27 18:05:02,080 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 18:05:02,080 - ERROR - Validation failed for aster
+2026-02-27 18:05:02,080 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 18:05:02,080 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 18:05:02,080 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 18:05:02,080 - INFO - Loading Whale Alert trades...
+2026-02-27 18:05:02,080 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 18:05:02,080 - ERROR - Validation failed for whale
+2026-02-27 18:05:02,081 - INFO - Consolidated 1718 trades from 1 sources
+2026-02-27 18:05:02,083 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 18:05:02,154 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 18:05:02,154 - INFO - Consolidation complete: PNL=$1817.29, ROI=181.7%, Trades=1718
+Result: P&L: $1817.29 | ROI: 181.7% | Closed: 1697
+[main fdc8b61] Auto: Consolidate trades [2026-02-27 18:05:01 UTC] - P&L: $1817.29 | ROI: 181.7% | Closed: 1697
+ 1 file changed, 256 insertions(+), 64 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   dc33d30..fdc8b61  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 18:05:01 UTC
+
+[2026-02-27 18:35:01 UTC] Starting consolidation...
+2026-02-27 18:35:01,666 - INFO - Loading Polymarket trades...
+2026-02-27 18:35:01,698 - INFO - Loading Aster DEX trades...
+2026-02-27 18:35:01,701 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 18:35:01,701 - ERROR - Validation failed for aster
+2026-02-27 18:35:01,701 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 18:35:01,701 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 18:35:01,701 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 18:35:01,701 - INFO - Loading Whale Alert trades...
+2026-02-27 18:35:01,704 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 18:35:01,705 - ERROR - Validation failed for whale
+2026-02-27 18:35:01,706 - INFO - Consolidated 1742 trades from 1 sources
+2026-02-27 18:35:01,711 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 18:35:01,816 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 18:35:01,816 - INFO - Consolidation complete: PNL=$1847.09, ROI=184.7%, Trades=1742
+Result: P&L: $1847.09 | ROI: 184.7% | Closed: 1721
+[main b0d8072] Auto: Consolidate trades [2026-02-27 18:35:01 UTC] - P&L: $1847.09 | ROI: 184.7% | Closed: 1721
+ 1 file changed, 465 insertions(+), 81 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   fdc8b61..b0d8072  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 18:35:01 UTC
+
+[2026-02-27 19:05:01 UTC] Starting consolidation...
+2026-02-27 19:05:01,799 - INFO - Loading Polymarket trades...
+2026-02-27 19:05:01,823 - INFO - Loading Aster DEX trades...
+2026-02-27 19:05:01,824 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 19:05:01,824 - ERROR - Validation failed for aster
+2026-02-27 19:05:01,824 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 19:05:01,824 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 19:05:01,824 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 19:05:01,824 - INFO - Loading Whale Alert trades...
+2026-02-27 19:05:01,825 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 19:05:01,825 - ERROR - Validation failed for whale
+2026-02-27 19:05:01,825 - INFO - Consolidated 1766 trades from 1 sources
+2026-02-27 19:05:01,827 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 19:05:01,882 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 19:05:01,882 - INFO - Consolidation complete: PNL=$1876.36, ROI=187.6%, Trades=1766
+Result: P&L: $1876.36 | ROI: 187.6% | Closed: 1743
+[main e628a9b] Auto: Consolidate trades [2026-02-27 19:05:01 UTC] - P&L: $1876.36 | ROI: 187.6% | Closed: 1743
+ 1 file changed, 461 insertions(+), 77 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   b0d8072..e628a9b  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 19:05:01 UTC
+
+[2026-02-27 19:35:01 UTC] Starting consolidation...
+2026-02-27 19:35:01,886 - INFO - Loading Polymarket trades...
+2026-02-27 19:35:01,923 - INFO - Loading Aster DEX trades...
+2026-02-27 19:35:01,925 - WARNING - aster: ZERO trades detected (expected 50+)
+2026-02-27 19:35:01,925 - ERROR - Validation failed for aster
+2026-02-27 19:35:01,925 - INFO - Loading Funding Rate Arbitrage trades...
+2026-02-27 19:35:01,925 - ERROR - Error loading /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 19:35:01,925 - ERROR - Failed to load funding from /home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json: [Errno 2] No such file or directory: '/home/pesiss/.openclaw/agents/arbitrage/funding_rate_trades.json'
+2026-02-27 19:35:01,925 - INFO - Loading Whale Alert trades...
+2026-02-27 19:35:01,926 - WARNING - whale: ZERO trades detected (expected 5+)
+2026-02-27 19:35:01,926 - ERROR - Validation failed for whale
+2026-02-27 19:35:01,927 - INFO - Consolidated 1790 trades from 1 sources
+2026-02-27 19:35:01,932 - INFO - Created backup: /home/pesiss/.openclaw/workspace/all_trades.json.backup
+2026-02-27 19:35:02,046 - INFO - Saved /home/pesiss/.openclaw/workspace/all_trades.json
+2026-02-27 19:35:02,047 - INFO - Consolidation complete: PNL=$1881.50, ROI=188.2%, Trades=1790
+Result: P&L: $1881.50 | ROI: 188.2% | Closed: 1769
+[main 3759e70] Auto: Consolidate trades [2026-02-27 19:35:01 UTC] - P&L: $1881.50 | ROI: 188.2% | Closed: 1769
+ 1 file changed, 473 insertions(+), 89 deletions(-)
+To https://github.com/pesiss/polymarket-dashboard.git
+   e628a9b..3759e70  main -> main
+✅ Consolidation + Push SUCCESS at 2026-02-27 19:35:01 UTC
+

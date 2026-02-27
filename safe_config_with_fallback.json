@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.25",
+    "lastTouchedAt": "2026-02-27T06:20:00.000Z"
+  },
+  "auth": {
+    "profiles": {
+      "anthropic:default": {
+        "provider": "anthropic",
+        "mode": "api_key"
+      },
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      },
+      "moonshot:default": {
+        "provider": "moonshot",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-5",
+        "fallbacks": [
+          "moonshot/kimi-k2.5",
+          "google/gemini-2.5-flash"
+        ]
+      },
+      "models": {
+        "anthropic/claude-haiku-4-5-20251001": {
+          "params": {
+            "cacheRetention": "short"
+          }
+        }
+      },
+      "workspace": "/home/pesiss/.openclaw/workspace",
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "heartbeat": {
+        "every": "30m"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "name": "main",
+        "workspace": "/home/pesiss/.openclaw/workspace",
+        "agentDir": "/home/pesiss/.openclaw/agents/main/agent",
+        "subagents": {
+          "allowAgents": ["*"]
+        }
+      },
+      {
+        "id": "musk",
+        "name": "Musk",
+        "workspace": "/home/pesiss/.openclaw/workspace",
+        "agentDir": "/home/pesiss/.openclaw/agents/musk/agent"
+      },
+      {
+        "id": "cody",
+        "name": "Cody",
+        "workspace": "/home/pesiss/.openclaw/workspace",
+        "agentDir": "/home/pesiss/.openclaw/agents/cody/agent"
+      },
+      {
+        "id": "analyst",
+        "name": "Warren",
+        "workspace": "/home/pesiss/.openclaw/workspace",
+        "agentDir": "/home/pesiss/.openclaw/agents/analyst/agent"
+      },
+      {
+        "id": "researcher",
+        "name": "Einstein",
+        "workspace": "/home/pesiss/.openclaw/workspace",
+        "agentDir": "/home/pesiss/.openclaw/agents/researcher/agent"
+      }
+    ]
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8610383037:AAGzRKo3kDRRqcqdVbDplLRcEYdHO_dio_w",
+      "groupPolicy": "allowlist",
+      "streaming": false
+    },
+    "signal": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "groupPolicy": "allowlist"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "68efd425d99f0a7bccd8669cf49c51fa83e65fea"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      },
+      "signal": {
+        "enabled": true
+      }
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "apiKey": "BSAZGBXJAmGRngStKqieTcLH1PXep7X"
+      },
+      "fetch": {
+        "enabled": true
+      }
+    }
+  }
+}
